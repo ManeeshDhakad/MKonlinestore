@@ -1,0 +1,15 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+ 
+<hibernate-configuration>
+    <session-factory>
+        <mapping class="com.mkonlinestore.model.User" />
+        <mapping class="com.mkonlinestore.model.Address" />
+        <mapping class="com.mkonlinestore.model.Product" />
+        <mapping class="com.mkonlinestore.model.Cart" />
+        <mapping class="com.mkonlinestore.model.Wishlist" />
+        <mapping class="com.mkonlinestore.model.Order" />
+    </session-factory>
+        
+</hibernate-configuration>

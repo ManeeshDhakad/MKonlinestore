@@ -1,0 +1,381 @@
+.header-sticky {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+
+}
+
+
+.header-margin {
+	margin-bottom: 0%; 
+	margin-top: 0%; 
+	margin-left: 0%; 
+	margin-right: 0% ; 
+	border:none
+}
+
+.padding-zero {
+	padding: 0px 0px 0px 0px;
+}
+
+body {
+	padding:0;
+  	margin:0;
+  	background:#fff url(../images/body.gif) repeat-x 0 0;
+	font-family: 'Sans-Serif', serif;
+	font-size: 15px;
+	color : #848484;
+}
+
+h1, h2 {
+	color : black;
+}
+
+a {
+	color : #ffffff;
+}
+
+.href-not-active {
+   pointer-events: none;
+   cursor: default;
+}
+
+select, select option {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.common-btn-fb {
+	width:50%;
+  	background-color: #49639F;
+  	border: none;
+  	outline: none;
+  	color: #fff;
+  	font-size: 14px;
+  	font-weight: normal;
+  	padding: 14px 14px 14px 14px;
+  	border-radius: 2px;
+  	text-transform: uppercase;
+  	cursor: pointer; 
+}
+
+.common-btn {
+	width:100%;
+  	background-color: #1CB94E;
+  	border: none;
+  	outline: none;
+  	color: #fff;
+  	font-size: 14px;
+  	font-weight: normal;
+  	padding: 14px 14px 14px 14px;
+  	border-radius: 2px;
+  	text-transform: uppercase;
+  	margin-bottom: 10px;
+}
+
+.common-btn-disabled {
+	width:100%;
+  	background-color: #5bc0de;
+  	border: none;
+  	outline: none;
+  	color: #fff;
+  	font-size: 14px;
+  	font-weight: normal;
+  	padding: 14px 14px 14px 14px;
+  	border-radius: 2px;
+  	text-transform: uppercase;
+  	margin-bottom: 10px;
+  	cursor: not-allowed;
+}
+
+.common-input-text {
+	width: 100%;
+  	height:40px;
+  	outline: none;
+  	border: 1px solid #ddd;
+  	padding: 0 10px;
+  	border-radius: 2px;
+  	color: #333;
+  	font-size:1.4rem;
+  	-webkit-transition:all 0.1s linear;
+  	-moz-transition:all 0.1s linear;
+  	transition:all 0.1s linear;
+  	margin-bottom: 10px;
+}
+
+.common-input-textarea {
+	width: 100%;
+  	height:80px;
+  	outline: none;
+  	border: 1px solid #ddd;
+  	padding: 0 10px;
+  	border-radius: 2px;
+  	color: #333;
+  	font-size:1.4rem;
+  	-webkit-transition:all 0.1s linear;
+  	-moz-transition:all 0.1s linear;
+  	transition:all 0.1s linear;
+  	margin-bottom: 10px;
+}
+
+.breadcrumb {
+	background-color: #fff;
+}
+	
+
+/* Main menu CSS start */
+
+
+.navbar {
+	border-radius: 0px;
+}
+
+.mainmenu {
+}
+
+.mainmenu li { 
+
+	padding: 2px 3px 2px 3px; 
+	/* border-right: 1px solid #ffffff; */
+	cursor: pointer; 
+}
+
+.ccblue .mainmenu 
+{ 
+	background-color: #6f5499 ;
+}
+
+.ccblue .mainmenu li:hover { 
+	background: #027cd5; 
+}
+
+/* Main menu CSS end */
+
+
+/* Login  modal and other input textarea button CSS start */
+.login-box{
+  	position:relative;
+  	width: 100%;
+  	height: 100%;
+  	background:#fff url(../images/body.gif) repeat-x 0 0;
+  	border-radius: 3px;
+  	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
+	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
+	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
+}
+
+.lb-header{
+  	position:relative;
+  	color: #00415d;
+  	margin: 5px 5px 15px 5px;
+  	padding-bottom:10px;
+  	text-align:center;
+  	height:20px;
+}
+
+.lb-header a{
+  	margin: 0 15px;
+  	padding: 0 20px;
+  	text-decoration: none;
+  	color: #666;
+  	font-weight: bold;
+  	-webkit-transition: all 0.1s linear;
+  	-moz-transition: all 0.1s linear;
+  	transition: all 0.1s linear;
+}
+
+.lb-header .active{
+  	color: #029f5b;
+  	font-size: 18px;
+}
+
+.social-login{
+  	position:relative;
+  	float: left;
+  	width: 100%;
+  	height:auto;
+  	padding: 10px 0 15px 0;
+  	border-bottom: 1px solid #eee;
+}
+
+.social-login a{
+  	position:relative;
+  	float: left;
+  	width:calc(40% - 8px);
+  	text-decoration: none;
+  	color: #fff;
+  	border: 1px solid rgba(0,0,0,0.05);
+  	padding: 12px;
+  	border-radius: 2px;
+  	font-size: 12px;
+  	text-transform: uppercase;
+  	margin: 0 5%;
+  	text-align:center;
+}
+
+.social-login a i{
+  	position: relative;
+  	float: left;
+  	width: 20px;
+  	top: 2px;
+}
+
+.social-login a:first-child{
+  	background-color: #49639F;
+}
+
+.social-login a:last-child{
+  	background-color: #DF4A32;
+}
+
+.email-login,.email-signup{
+  	position:relative;
+  	float: left;
+  	width: 100%;
+  	height:auto;
+  	margin-top: 20px;
+  	text-align:center;
+}
+
+.u-form-group{
+  	width:100%;
+  	margin-bottom: 10px;
+}
+
+.u-form-group input[class="email"],
+.u-form-group input[class="password"],
+.u-form-group input[class="name"] {
+  	width: 50%;
+  	height:45px;
+  	outline: none;
+  	border: 1px solid #ddd;
+  	padding: 0 10px;
+  	border-radius: 2px;
+  	color: #333;
+  	font-size:1.4rem;
+  	-webkit-transition:all 0.1s linear;
+  	-moz-transition:all 0.1s linear;
+  	transition:all 0.1s linear;
+}
+
+.u-form-group input:focus{
+  	border-color: #358efb;
+}
+
+.u-form-group input[class="signin-btn"] {
+  	width:50%;
+  	background-color: #1CB94E;
+  	border: none;
+  	outline: none;
+  	color: #fff;
+  	font-size: 14px;
+  	font-weight: normal;
+  	padding: 14px 0;
+  	border-radius: 2px;
+  	text-transform: uppercase;
+}
+
+
+.forgot-password{
+  	width:50%;
+  	text-align: left;
+  	text-decoration: underline;
+  	color: #888;
+  	font-size: 1.5rem;
+}
+
+/* Login  modal and other input textarea button CSS CSS end */
+
+
+
+/* Product images css start */
+
+
+.product-img-border div {
+	transition: 1s ease;
+}
+.product-img-border div:hover{
+	-moz-box-shadow: 0 0 10px orange; 
+	-webkit-box-shadow: 0 0 10px orange; 
+	border: 1px solid #ccc
+	box-shadow: 0 0 10px #ccc; 
+}
+
+.product-thumbnail-border {
+	border:1px solid orange;
+}
+
+.product-img-grow img {
+	transition: 1s ease;
+}
+.product-img-grow img:hover {
+	-webkit-transform: scale(1.3);
+	-ms-transform: scale(1.3);
+	transform: scale(1.3);
+	transition: 1s ease;
+}
+
+.product-img-big {
+	width : 341px;
+	height : 400px;
+}
+
+/* Product images css end */
+
+
+/* Display message css start */
+.isa_info, .isa_success, .isa_warning, .isa_error, .isa_success_modal, .isa_error_modal {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding:5px 12px 5px 12 px;
+	
+}
+.isa_info {
+    color: #00529B;
+    background-color: #BDE5F8;
+}
+.isa_success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+.isa_success_modal {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+.isa_warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+.isa_error {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+.isa_error_modal {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+.isa_info i, .isa_success i, .isa_warning i, .isa_error i, .isa_success_modal i, .isa_error_modal i{
+    margin:10px 10px 10px 10px;
+    vertical-align:middle;
+}
+/* Display message css end /*/
+
+/* Loading image on page load or opreration css start */
+#loading {
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   display: block;
+   opacity: 0.7;
+   background-color: #fff;
+   z-index: 1000;
+   text-align: center;
+}
+
+#loading-image {
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  z-index: 1000;
+}
+/* Loading image on page load or opreration css end /*/
