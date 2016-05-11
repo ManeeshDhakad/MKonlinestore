@@ -23,11 +23,11 @@
 		<section class="ccblue header-sticky">
 			<div class="mainmenu">
 				<a href="home" style="margin-left: 230px"><img
-					style="height: 60px; width: 100px"
+					style="height: 60px; width: 85px"
 					src="<%=request.getContextPath()%>/resources/images/mk-logo.png" />
 					<img
 					style="height: 50px; width: 200px"
-					src="<%=request.getContextPath()%>/resources/images/onlinestore.png" />
+					src="<%=request.getContextPath()%>/resources/images/onlinestore1.png" />
 				</a>   
 
 				<ul class="nav navbar-nav navbar-right" style="margin-right: 230px">

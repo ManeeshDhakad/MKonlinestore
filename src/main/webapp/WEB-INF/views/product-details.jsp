@@ -139,7 +139,7 @@
     				</c:when>
     				
     				<c:otherwise>
-    					<button type="button" class="common-btn-disabled" title="This product already added to cart">Add to Cart</button>
+    					<button type="button" class="common-btn-disabled" title="This product already added to cart">Added to Cart</button>
     				</c:otherwise>
     			</c:choose>
 				

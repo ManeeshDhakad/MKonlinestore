@@ -173,9 +173,13 @@ function saveUsersPersonalInfo(name, email, mobile) {
 		return false;
 	}
 	
-	message = validateName(newName);
-	message = message + validateEmail(newEmail);
-	message = message + validatePhone(newMobile);
+	if(name == "" ||  email == "") 
+		message = "Please fill name and email before you proceed."
+	else {
+		message = validateName(newName);
+		message = message + validateEmail(newEmail);
+		message = message + validatePhone(newMobile);
+	}
 	
 	if(message != "") {
 		$("#div_errorMessage").css('display','block');
@@ -216,8 +220,12 @@ function updateUserPassword() {
 	var confirmNewPassword = document.getElementById('profileUserConfirmNewPassword').value;
 	
 	var message = "";
-	message = validateOldPassword(oldPassword);
-	message = message + validateNewPassword(newPassword, confirmNewPassword);
+	
+	if(oldPassword == "" || newPassword == "" || confirmNewPassword == "")
+		message = "All Fields are required. Please fill valid details before you proceed.";
+	else 
+		message = message + validateNewPassword(newPassword, confirmNewPassword);
+	
 	
 	if(message != "") {
 		$("#div_errorMessage").css('display','block');
@@ -349,8 +357,12 @@ function saveForgotPassword() {
 	var confirmNewPassword = document.getElementById('forgotConfirmNewPassword').value;
 	
 	var message = "";
-	message = validateEmail(email);
-	message = message + validateNewPassword(newPassword, confirmNewPassword);
+	if(email == "" || newPassword == "" || confirmNewPassword == "") 
+		message = "All Fields are required. Please fill valid details before you proceed.";
+	else {
+		message = validateEmail(email);
+		message = message + validateNewPassword(newPassword, confirmNewPassword);
+	}
 	
 	if(message != "") {
 		$("#div_errorMessage").css('display','block');
@@ -387,3 +399,31 @@ function saveForgotPassword() {
 	}
 }
 
+
+function cancelOrder(productCode, orderId) {
+	productCode = productCode.replace(/['"]+/g, '');
+	orderId = orderId.replace(/['"]+/g, '');
+
+	var json =  productCode + "####@@@@####" + orderId;
+	
+	$.ajax({
+		type : "POST",
+		contentType : "application/json",
+		url : "cancel-order",
+		data : JSON.stringify(json),
+		success : function(data) {	
+			if(data.indexOf("fa-check") > -1) {
+				$("#div_successMessage").css('display','block');
+				$("#div_errorMessage").css('display','none');
+				$("#div_successMessage").html(data);
+				$("#orderStatus" + productCode).html("Cancelled");
+				$("#link_cancelOrder" + productCode).css('display','none');
+			}
+			else {
+				$("#div_successMessage").css('display','none');
+				$("#div_errorMessage").css('display','block');
+				$("#div_errorMessage").html(data);
+			}
+		}
+	});
+}

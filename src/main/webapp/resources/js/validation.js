@@ -2,10 +2,7 @@ function validateName(name) {
 	var message = "";
 	var nameRegex = /^[A-Za-z\s]+$/;
 	
-	if(name == "") {
-	     message = "Name field can not be blank. <br>";
-	}
-	else if(!nameRegex.test(name)) {
+	if(!nameRegex.test(name)) {
 		message = "Name should contain only alphabates.<br>";
 	}
 	
@@ -17,10 +14,7 @@ function validateEmail(email) {
     var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     var message = "";
     
-	if(email == "") {
-	     message = "Email field can not be blank.<br>";
-	}    
-	else if(!emailRegex.test(email)) {
+	if(!emailRegex.test(email)) {
 		message = "Email is not valid. Please enter valid email.<br>";
 	}
 	
@@ -31,7 +25,7 @@ function validatePhone(mobile) {
     var mobileRegex = /^[789]\d{9}$/; 
     var message = "";
     
-	if(mobile != "" && !mobileRegex.test(mobile)) {
+	if(!mobileRegex.test(mobile)) {
 		message = "Mobile number is not valid . Please enter valid 10 digit mobile number.<br>";
 	}
 	
@@ -41,10 +35,7 @@ function validatePhone(mobile) {
 function validatePassword(password, confirmPassword) { 
 	var message = "";
     
-    if(password == "" || confirmPassword == "") {
-    	message = "Password and Confirm Password field can not be blank.<br>";
-    }
-    else if( password != confirmPassword) {
+    if( password != confirmPassword) {
     	message = "Password and Confirm Password field not matched.<br>";
     }
     else if(password.length < 6) {
@@ -54,22 +45,11 @@ function validatePassword(password, confirmPassword) {
 	return message;
 }
 
-function validateOldPassword(oldPassword) { 
-	var message = "";
-    
-    if(oldPassword == "") {
-    	message = "Old Password field can not be blank.<br>";
-    }
-    return message;
-}
 
 function validateNewPassword(newPassword, confirmNewPassword) { 
 	var message = "";
     
-    if(newPassword == "" || confirmNewPassword == "") {
-    	message = "New Password and Confirm New Password field can not be blank.<br>";
-    }
-    else if( newPassword != confirmNewPassword) {
+    if( newPassword != confirmNewPassword) {
     	message = "New Password and Confirm New Password field not matched.<br>";
     }
     else if(newPassword.length < 6) {
@@ -83,7 +63,7 @@ function validateUserAddress(name, streetAddress, landmark, city, state, country
 	var message = "";
     
     if(name == "" || streetAddress == "" || landmark =="" || city == "" || state == "" || country == "" || mobile == "") {
-    	message = "All Fields are required. Please fill valid address details.<br>";
+    	message = "All Fields are required. Please fill valid address details.";
     }
     
     return message;

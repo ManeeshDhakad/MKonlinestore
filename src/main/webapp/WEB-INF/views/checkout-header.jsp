@@ -13,7 +13,7 @@
 					src="<%=request.getContextPath()%>/resources/images/mk-logo.png" />
 					<img
 					style="height: 50px; width: 200px"
-					src="<%=request.getContextPath()%>/resources/images/onlinestore.png" />
+					src="<%=request.getContextPath()%>/resources/images/onlinestore1.png" />
 					</a>   
 				
 					<span class="glyphicon glyphicon-ok-circle" style="margin-top:10px; margin-left: 200px"></span>&nbsp; 100% Secured Payment And Original Product

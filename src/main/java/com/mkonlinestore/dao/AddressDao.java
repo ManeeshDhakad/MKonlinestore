@@ -10,5 +10,7 @@ public interface AddressDao {
 	public List<Address> getAddreesList(int userId);
 	
 	public boolean deleteUserAddress(int addressId);
+	
+	public Address getAddreesById(int addressId);
 
 }

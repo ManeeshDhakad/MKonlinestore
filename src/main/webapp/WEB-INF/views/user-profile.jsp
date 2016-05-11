@@ -27,9 +27,9 @@
 		<jsp:include page="header-navbar.jsp" />
 	</div>
 
-	<div id="body-area-left-container" class="col-md-2"></div>
+	<div id="body-area-left-container" class="col-md-1"></div>
 
-	<div id="body-area-middle-container" class="col-md-8">
+	<div id="body-area-middle-container" class="col-md-10">
 
 		<div class="panel panel-success">
 			<div class="panel-heading">
@@ -62,7 +62,7 @@
 
 				<div class="col-md-9">
 
-					<div id="div_userPersonalInfo" class="panel panel-info">
+					<div id="div_userPersonalInfo" class="panel panel-info" >
 						<div class="panel-heading">
 							<h1 class="panel-title">Personal Information</h1>
 						</div>
@@ -113,7 +113,7 @@
 						</div>
 					</div>
 
-					<div id="div_userPasswordUpdate" class="panel panel-info">
+					<div id="div_userPasswordUpdate" class="panel panel-info" style="display: none">
 						<div class="panel-heading">
 							<h1 class="panel-title">Update Your Password</h1>
 						</div>
@@ -162,7 +162,7 @@
 						</div>
 					</div>
 
-					<div id="div_userAddressInfo" class="panel panel-default">
+					<div id="div_userAddressInfo" class="panel panel-default" style="display: none">
 						<div class="panel-heading">
 							<h1 class="panel-title">Manage Address Book</h1>
 						</div>
@@ -258,7 +258,7 @@
 								<c:set var="addressCount" value="0" scope="page" />
 								<c:forEach items="${addressList}" var="address">
 									<div id="div_address${address.addressId}"
-										class="col-md-4 alert alert-info" role="alert"
+										class="col-md-3 alert alert-info" role="alert"
 										style="margin-left: 10px; width: 185px; height: 250px">
 										<strong>${address.addressName}</strong><br>
 										${address.addressStreet}<br> ${address.addressLandmark}<br>
@@ -289,7 +289,7 @@
 						</div>
 					</div>
 
-					<div id="div_userOrderHistory" class="panel panel-info">
+					<div id="div_userOrderHistory" class="panel panel-info" style="display: none">
 						<div class="panel-heading">
 							<h1 class="panel-title">Order History</h1>
 						</div>
@@ -298,9 +298,10 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<th colspan="2" style="width: 65%">ITEM</th>
-										<th style="width: 15%">Status</th>
-										<th style="width: 20%">OPERATION</th>
+										<th colspan="2" style="width: 50%">ITEM</th>
+										<th style="width: 20%">Order Date</th>
+										<th style="width: 10%">TOTAL</th>
+										<th style="width: 10%">Status</th>
 									</tr>
 								</thead>
 
@@ -308,12 +309,12 @@
 
 
 									<c:set var="orderProductCount" value="0" scope="page" />
-									<c:forEach items="${orderHistoryProductList}"
-										var="orderHistoryProduct">
-
-										<tr id="tr_wishlist${orderHistoryProduct.productCode}">
+									<c:forEach items="${orderList}" var="orderHistoryProduct">
+										<c:set var="currOrderID" value="${orderHistoryProduct.orderCode}" scope="page" />
+										
+										<tr id="tr_orderHistory${orderHistoryProduct.productCode}">
 											<td>
-												<form action="product-details" method="post">
+												<form action="product-details" method="get">
 													<input name="productCode" type="text"
 														value="${orderHistoryProduct.productCode}"
 														style="display: none" /> <input type="image"
@@ -321,16 +322,30 @@
 														class="img-responsive" alt="Submit">
 												</form>
 											</td>
-											<td>${orderHistoryProduct.productName} <br> <strong>QTY
-													: ${orderHistoryProduct.productQuantity}</strong> <br> <strong>Price
-													: ${orderHistoryProduct.productPrice}</strong>
+											<td>${orderHistoryProduct.productName} <br> 
+											<strong>QTY : ${orderHistoryProduct.productQuantity}</strong> <br> 
+											<strong>Price : ${orderHistoryProduct.productPrice}</strong><br>
+											
+											<button type="button" class="btn btn-primary" >Order ID : ${orderHistoryProduct.orderCode}</button>
 											</td>
 
-											<td>${orderHistoryProduct.productStatus}</td>
-											<td><input type="submit" class="btn btn-link"
-												value="Remove From Wishlist"
-												onclick="deleteProductFromWishlist('${orderHistoryProduct.productCode}');" />
-
+											
+											<td>${orderHistoryProduct.orderDate}</td>
+											
+											<td>
+												<strong>${orderHistoryProduct.productQuantity * orderHistoryProduct.productPrice}</strong>
+											</td>
+											<td>
+												
+												<span id="orderStatus${orderHistoryProduct.productCode}">${orderHistoryProduct.orderStatus}</span>
+												
+												<c:if test="${orderHistoryProduct.orderStatus != 'Cancelled'}">
+													<br>
+													<br><br>
+													<input id="link_cancelOrder${orderHistoryProduct.productCode}" type="submit" class="common-btn" value="Cancel Order"
+													onclick="cancelOrder('${orderHistoryProduct.productCode}', '${orderHistoryProduct.orderId}');" />
+												</c:if>
+												
 											</td>
 										</tr>
 
@@ -350,7 +365,7 @@
 						</div>
 					</div>
 
-					<div id="div_userWishList" class="panel panel-info">
+					<div id="div_userWishList" class="panel panel-info" style="display: none">
 						<div class="panel-heading">
 							<h1 class="panel-title">Wishlist</h1>
 						</div>
@@ -407,7 +422,7 @@
 
 													<c:otherwise>
 														<button type="button" class="common-btn-disabled"
-															title="This product already added to cart">Add
+															title="This product already added to cart">Added
 															to Cart</button>
 													</c:otherwise>
 												</c:choose></td>
@@ -435,7 +450,7 @@
 		</div>
 	</div>
 
-	<div id="body-area-left-container" class="col-md-2"></div>
+	<div id="body-area-left-container" class="col-md-1"></div>
 
 	<div class="col-md-12 padding-zero" id="footer-container">
 		<jsp:include page="footer.jsp" />

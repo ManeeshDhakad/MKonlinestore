@@ -130,12 +130,12 @@ public class CartDaoImpl implements CartDao {
 		return result;
 	}
 
-	public boolean removeAllProductFromCart(Cart cart) {
+	public boolean removeAllProductFromCart(int userId) {
 		boolean result = false;
 		try {
 			String hql = "delete from Cart as c where c.userId = :userId";
 			int rowDeleted = sessionFactory.getCurrentSession().createQuery(hql).
-										 setParameter("userId", cart.getUserId()).executeUpdate();
+										 setParameter("userId", userId).executeUpdate();
 			if(rowDeleted > 0)
 				result = true;
 		}

@@ -1,14 +1,15 @@
 package com.mkonlinestore.model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "order")
+@Table(name = "order_history")
 public class Order {
 	
 	@Id
@@ -40,14 +41,14 @@ public class Order {
 	@Column(name="orderStatus")
 	private String orderStatus;
 	
+	@Column(name="orderDate")
+	private Timestamp orderDate;
 	
-	public Order() {
-		
-	}
+	public Order() {}
 			
 	public Order(int orderId, int userId, int addressId, String productCode,
 			String productName, double productPrice, int productQuantity,
-			String orderCode, String orderStatus) {
+			String orderCode, String orderStatus, Timestamp orderDate) {
 		super();
 		this.orderId = orderId;
 		this.userId = userId;
@@ -58,6 +59,7 @@ public class Order {
 		this.productQuantity = productQuantity;
 		this.orderCode = orderCode;
 		this.orderStatus = orderStatus;
+		this.orderDate = orderDate;
 	}
 
 	
@@ -132,6 +134,15 @@ public class Order {
 
 	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
+	}
+	
+
+	public Timestamp getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(Timestamp orderDate) {
+		this.orderDate = orderDate;
 	}
 
 //	public String toString(){

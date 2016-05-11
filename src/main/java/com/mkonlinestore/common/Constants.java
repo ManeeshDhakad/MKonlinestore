@@ -106,5 +106,9 @@ public class Constants {
 	
 	public static final String ORDER_ERROR = "<i class=\"fa fa-warning\"></i>&nbsp; Your order in not completed. Something went wrong. Please try again later.";
 
+	public static final String CANCEL_ORDER_SUCCESS = "<i class=\"fa fa-check\"></i>&nbsp; Your order successfully Cancelled. We will refund your money in 7 working days. Enjoy shopping";
+	
+	public static final String CANCEL_ORDER_ERROR = "<i class=\"fa fa-warning\"></i>&nbsp; Your order not caclled. Something went wrong. Contact to our help care";
+	
 }
 

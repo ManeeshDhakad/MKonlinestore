@@ -50,13 +50,21 @@ $(document).ajaxStart(function(){
 $(".email-signup").hide();
 
 $("#signup-box-link").click(function(){
+	$(".isa_success_modal").css('display','none');
+  	$(".isa_error_modal").css('display','none');
+  	
   	$(".email-login").fadeOut(100);
   	$(".email-signup").delay(100).fadeIn(100);
   	$("#login-box-link").removeClass("active");
   	$("#signup-box-link").addClass("active");
+  	
+  	
 });
 
 $("#login-box-link").click(function(){
+	$(".isa_success_modal").css('display','none');
+  	$(".isa_error_modal").css('display','none');
+  	
   	$(".email-login").delay(100).fadeIn(100);;
   	$(".email-signup").fadeOut(100);
   	$("#login-box-link").addClass("active");
@@ -74,7 +82,7 @@ function goToHomePage() {
 	window.location = "home";
 }
 
-var warningTitle = "<i class=\"fa fa-warning\"></i>Can not perform operation due to invalid input.<br>";
+var warningTitle = "<i class=\"fa fa-warning\"></i> ";
 var errorTitle = "<i class=\"fa fa-warning\"></i> ";
 var successTitle = "<i class=\"fa fa-check\"></i> ";
 
@@ -103,16 +111,13 @@ function addProductToCart(code) {
 				$("#crtProductCount").html(crtProductCount);
 				
 				// Product detail page
-				$("#btn_addToCart").prop('title', "This product is added to cart");
-				$("#btn_addToCart").prop('class','common-btn-disabled');
-				$("#btn_addToCart").attr("disabled", true);
+				$("#btn_addToCart").prop('title', "This product is added to cart").
+				prop('value', "ADDED TO CART").prop('class','common-btn-disabled').attr("disabled", true);
 				
 				
 				// User profile page
-				$("#btn_addToCart" + productCode).prop('title', "This product is added to cart");
-				$("#btn_addToCart" + productCode).prop('class','common-btn-disabled');
-				$("#btn_addToCart" + productCode).attr("disabled", true);
-				
+				$("#btn_addToCart" + productCode).prop('title', "This product is added to cart").
+				prop('value', "ADDED TO CART").prop('class','common-btn-disabled').attr("disabled", true);			
 								
 				$("#btn_addToCart").prop('data-toggle','tooltip');
 				$("#btn_addToCart").prop('data-placement','top');
@@ -279,10 +284,10 @@ function loginUser() {
 	var password = document.getElementById('loginPassword').value;
 		
 	var message = "";
-	message = validateEmail(email);
-	
-	if(password == "")
-		message = message + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Password field can not be blank.<br>";
+	if(email == "" || password == "")
+		message = "Please fill valid email and password before you proceed. <br>";
+	else
+		message = validateEmail(email);
 	
 	if(message != "") {
 		$("#div_loginModelSuccessMessage").css('display','none');
@@ -326,9 +331,12 @@ function signupUser() {
 	var confirmPassword = document.getElementById('signupPasswordConfirm').value;
 	var message = "";
 	
-	message = validateName(name);
-	message = message + validateEmail(email);
-	message = message + validatePassword(password, confirmPassword);
+	if(name = "" || email == "" || password == "" || confirmPassword == "")
+		message = "All Fields are required. Please fill valid details before you proceed.";
+	else {
+		message = message + validateEmail(email);
+		message = message + validatePassword(password, confirmPassword);
+	}
 
 	if(message != "") {
 		$("#div_loginModelSuccessMessage").css('display','none');
@@ -400,7 +408,7 @@ function sendFeedbackMail() {
 	var message = "";
 	
 	if(name == "" || email == "" || subject == "" || mailBody == "") {
-		 message = "Please fill valid email details before you proceed.";
+		message = "All Fields are required. Please fill valid details before you proceed.";
 	}
 	else {
 		message = validateEmail(email);

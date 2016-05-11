@@ -25,13 +25,11 @@ public class OrderDaoImpl implements OrderDao {
 		//Transaction tx = null;
 		 
 		try {
+			
 			//tx = sessionFactory.getCurrentSession().beginTransaction(); 
-	        for(Order order : orderList) {
+	        for(Order order : orderList) 
 	        	sessionFactory.getCurrentSession().saveOrUpdate(order);	
-	        }
-			
-			//tx.commit();
-			
+	        
 			result = true;
 		}
 		catch(HibernateException ex) {
@@ -75,10 +73,11 @@ public class OrderDaoImpl implements OrderDao {
 		
 		try {
 			String hql = "update Order as o set o.orderStatus = :orderStatus " +
-						 "where o.oderId = :oderId";
+						 "where o.orderId = :orderId and o.productCode = :productCode";
 			int rowUpdated = sessionFactory.getCurrentSession().createQuery(hql).
 										 setParameter("orderStatus", order.getOrderStatus()).
-										 setParameter("userId", order.getUserId()).executeUpdate();
+										 setParameter("orderId", order.getOrderId()).
+										  setParameter("productCode", order.getProductCode()).executeUpdate();
 			if(rowUpdated > 0)
 				result = true;
 		}

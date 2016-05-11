@@ -191,16 +191,6 @@ public class UserController {
 		
 				// Get order history
 				List<Order> orderList = orderService.getOrderList(user.getUserId());
-				List<Product> orderHistoryProductList = new ArrayList<Product>();
-				for(Order order : orderList) {
-					Product product = new Product();
-					product = productService.getProductDetails(order.getProductCode());
-					product.setProductQuantity(order.getProductQuantity());
-					orderHistoryProductList.add(product);
-				}
-				if(orderHistoryProductList != null && orderHistoryProductList.size() > 0) {
-					view.addObject("orderHistoryProductList", orderHistoryProductList);
-				}
 				if(orderList != null && orderList.size() > 0) {
 					view.addObject("orderList", orderList);
 				}

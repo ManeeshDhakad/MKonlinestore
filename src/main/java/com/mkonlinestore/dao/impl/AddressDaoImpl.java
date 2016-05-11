@@ -59,7 +59,7 @@ public class AddressDaoImpl implements AddressDao {
 		
 		try {
 			Address address = (Address) sessionFactory.getCurrentSession().load(Address.class, addressId);
-	        if(null != address){
+	        if(address != null){
 	        	sessionFactory.getCurrentSession().delete(address);
 	            result = true;
 	        }
@@ -71,6 +71,23 @@ public class AddressDaoImpl implements AddressDao {
 			sessionFactory.getCurrentSession().clear();
 		}
 		return result;
+	}
+
+	public Address getAddreesById(int addressId) {
+		Address address = null;
+
+		try {
+			
+			address = (Address) sessionFactory.getCurrentSession().get(Address.class, addressId);
+	  	}
+		catch(HibernateException ex) {
+			logger.error(ex);
+		}
+		finally {
+			sessionFactory.getCurrentSession().clear();
+		}
+		
+		return address;
 	}
 
 }

@@ -35,4 +35,9 @@ public class AddressServiceImpl implements AddressService {
 		return addressDao.deleteUserAddress(addressId);
 	}
 
+	@Transactional
+	public Address getAddreesById(int addressId) {
+		return addressDao.getAddreesById(addressId);
+	}
+
 }

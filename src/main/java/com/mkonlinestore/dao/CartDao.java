@@ -17,6 +17,6 @@ public interface CartDao {
 	
 	public boolean removeProductFromCart(Cart cart);
 	
-	public boolean removeAllProductFromCart(Cart cart);
+	public boolean removeAllProductFromCart(int userId);
 	
 }

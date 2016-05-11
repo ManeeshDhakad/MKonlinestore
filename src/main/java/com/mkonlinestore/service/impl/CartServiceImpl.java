@@ -46,8 +46,8 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Transactional
-	public boolean removeAllProductFromCart(Cart cart) {
-		return cartDao.removeAllProductFromCart(cart);
+	public boolean removeAllProductFromCart(int userId) {
+		return cartDao.removeAllProductFromCart(userId);
 	}
 
 }

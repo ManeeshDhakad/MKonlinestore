@@ -279,75 +279,81 @@ public class OrderController {
 				
 				// Generate unique id
 				String uniqueID = UUID.randomUUID().toString();
-				String orderCode = "MK-" + uniqueID;
+				String orderCode = "MK-" + uniqueID.substring(0, 7) + uniqueID.subSequence(uniqueID.length() - 4, uniqueID.length() - 1);
 				String orderStatus = "In Process";
 				
 				String productCode = request.getParameter("productCode"); 
-				if(productCode.equalsIgnoreCase("cart")) {
-					// Order from cart
-					for(Product product : cartProductList) {
-						Order order = new Order();			
-						order.setUserId(user.getUserId());
-						order.setAddressId(parser.parseInt(addressId));
-						order.setProductCode(product.getProductCode());
-						order.setProductName(product.getProductName());
-						order.setProductPrice(product.getProductPrice());
-						order.setProductQuantity(product.getProductQuantity());
-						order.setOrderCode(orderCode);
-						order.setOrderCode(orderCode);
-						order.setOrderStatus(orderStatus);						
-						orderList.add(order);
-					}
-					
-					if(orderService.saveOrder(orderList)) {
+				
+				if(productCode != null && !addressId.isEmpty()) {
+					if(productCode.equalsIgnoreCase("cart")) {
+						// Order from cart
+						for(Product product : cartProductList) {
+							Order order = new Order();			
+							order.setUserId(user.getUserId());
+							order.setAddressId(parser.parseInt(addressId));
+							order.setProductCode(product.getProductCode());
+							order.setProductName(product.getProductName());
+							order.setProductPrice(product.getProductPrice());
+							order.setProductQuantity(product.getProductQuantity());
+							order.setOrderCode(orderCode);
+							order.setOrderCode(orderCode);
+							order.setOrderStatus(orderStatus);						
+							orderList.add(order);
+						}
 						
 					}
-					view.addObject("message", Constants.ORDER_SUCCESS);
-					view.addObject("messageStatus", Constants.MESSAGE_SUCCESS);
-				}
-				else {
-					// Order from product detail page by clicking buy now
-					Product productSSN = ssn.checkCheckoutProductSession(session, request, response);
-					if(productSSN != null) {
-						Order order = new Order();
-						order.setUserId(user.getUserId());
-						order.setAddressId(parser.parseInt(addressId));
-						order.setProductCode(productSSN.getProductCode());
-						order.setProductName(productSSN.getProductName());
-						order.setProductPrice(productSSN.getProductPrice());
-						order.setProductQuantity(productSSN.getProductQuantity());
-						order.setOrderCode(orderCode);
-						order.setOrderCode(orderCode);
-						order.setOrderStatus(orderStatus);						
-						orderList.add(order);
+					else {
+						// Order from product detail page by clicking buy now
+						Product productSSN = ssn.checkCheckoutProductSession(session, request, response);
+						if(productSSN != null) {
+							Order order = new Order();
+							order.setUserId(user.getUserId());
+							order.setAddressId(parser.parseInt(addressId));
+							order.setProductCode(productSSN.getProductCode());
+							order.setProductName(productSSN.getProductName());
+							order.setProductPrice(productSSN.getProductPrice());
+							order.setProductQuantity(productSSN.getProductQuantity());
+							order.setOrderCode(orderCode);
+							order.setOrderCode(orderCode);
+							order.setOrderStatus(orderStatus);						
+							orderList.add(order);
+						}
 					}
-				}
 				
-				if(orderService.saveOrder(orderList)) {
-					if(productCode.equalsIgnoreCase("cart"))
-						ssn.removeCartSession(session, request, response);
-					else
-						ssn.removeCheckoutSession(session, request);
+					if(orderService.saveOrder(orderList)) {
+						if(productCode.equalsIgnoreCase("cart")) {
+							ssn.removeCartSession(session, request, response);
+							cartService.removeAllProductFromCart(user.getUserId());
+						}
+						else
+							ssn.removeCheckoutSession(session, request);
 					
-					view.addObject("messageStatus", Constants.MESSAGE_SUCCESS);
-					view.addObject("message", Constants.ORDER_SUCCESS);
+						view.addObject("messageStatus", Constants.MESSAGE_SUCCESS);
+						view.addObject("message", Constants.ORDER_SUCCESS);
+					
+						if(orderList != null && orderList.size() > 0) {
+							view.addObject("orderList", orderList);
+						}
+					
+						Address address = addressService.getAddreesById(orderList.get(0).getAddressId());
+					
+						view.addObject("address", address);
+					}
+					else {
+						view.addObject("messageStatus", Constants.MESSAGE_ERROR);
+						view.addObject("message", Constants.ORDER_ERROR);
+					}
+					
+					cartProductList = cartCotroller.getCartProductList(session, request, response, user);
+					if(cartProductList != null) {
+						view.addObject("cartProductCount", cartProductList.size());
+					}
+				
 				}
 				else {
-					view.addObject("messageStatus", Constants.MESSAGE_ERROR);
-					view.addObject("message", Constants.ORDER_ERROR);
-				}
-				
-				
-				cartProductList = cartCotroller.getCartProductList(session, request, response, user);
-				if(cartProductList != null) {
-					view.addObject("cartProductCount", cartProductList.size());
+					view.setViewName("redirect:/user-profile?type=2");
 				}
 					
-								
-				if(orderList != null && orderList.size() > 0) {
-					view.addObject("orderList", orderList);
-				}
-				
 			}
 			else {
 				view.setViewName("redirect:/home");
@@ -363,5 +369,40 @@ public class OrderController {
 		
 		return view;
 	}
+
+	@RequestMapping(value = "/cancel-order", method = RequestMethod.POST)
+    public @ResponseBody
+    String cancelOrder(HttpSession session, HttpServletRequest request, HttpServletResponse response, @RequestBody String orderDetail) {
+ 
+		String result = Constants.COMMON_ERROR;
+		try {
+						
+			orderDetail = orderDetail.replace("\"", "");
+			String[] orderInfo = orderDetail.split(Constants.DELEMETER, -1); 
+						
+			if(orderInfo != null && orderInfo.length > 0) {
+				User user = ssn.checkUserSession(request);
+				if(user != null) {
+					Order order = new Order();
+					order.setOrderId(parser.parseInt(orderInfo[1]));
+					order.setProductCode(orderInfo[0]);
+					order.setOrderStatus("Cancelled");				
+					
+					if(orderService.updateOrder(order)) 
+						result = Constants.CANCEL_ORDER_SUCCESS;
+					else
+						result = Constants.CANCEL_ORDER_ERROR;	
+				}
+					
+			}			
+			
+		}
+		catch(Exception ex) {
+			logger.error(ex);
+			
+		}
+		
+        return result;
+    }
 	
 }

@@ -45,55 +45,67 @@
 						</div>
  						
  						<c:if test="${messageStatus == 'SUCCESS' }">
-      						
-						
-						
- 						<strong>Your Order List</strong><br>
-						<table class="table" id="cartTable">
-    						<thead>
-      							<tr>
-        							<th colspan="2" style="width : 50%">ITEM</th>
-        							<th style="width : 20%">PRICE</th>
-        							<th style="width : 10%">QTY</th>
-        							<th style="width : 20%" >SUBTOTAL</th>
-      							</tr>
-    						</thead>
+      				
+ 							<strong>Your Order Details</strong><br>
+ 							<button type="button" class="btn btn-primary">Order ID : ${orderList[0].orderCode}</button>
+ 								
+ 							<div class="row" >
+ 								<div class="col-md-9">											
+ 									<table class="table" id="cartTable">
+    									<thead>
+      										<tr>
+        										<th colspan="2" style="width : 60%">ITEM</th>
+        										<th style="width : 10%">PRICE</th>
+        										<th style="width : 10%">QTY</th>
+        										<th style="width : 20%" >SUB TOTAL</th>
+      										</tr>
+    									</thead>
     				
-    						<tbody>
-    							<c:set var="estimatedTotal" value="0" scope="page" />
-      							<c:forEach items="${orderList}" var="orderProduct">
-        							<tr  id="cart_tr_${orderProduct.productCode}">      
-            							<td>
-            								<form action="product-details" method="post">
-      											<input name="productCode" type="text" value="${orderProduct.productCode}" style="display: none" />
-      											<input type="image" src="<%=request.getContextPath()%>/resources/images/product/85x100/${orderProduct.productCode}.jpg" class="img-responsive" alt="Submit">		
-											</form>
-        								</td>
+    									<tbody>
+    								    								
+    										<c:set var="estimatedTotal" value="0" scope="page" />
+      										<c:forEach items="${orderList}" var="orderProduct">
+        										<tr  id="cart_tr_${orderProduct.productCode}">      
+            										<td>
+            											<form action="product-details" method="get">
+      														<input name="productCode" type="text" value="${orderProduct.productCode}" style="display: none" />
+      														<input type="image" src="<%=request.getContextPath()%>/resources/images/product/85x100/${orderProduct.productCode}.jpg" class="img-responsive" alt="Submit">		
+														</form>
+        											</td>
         								
-        								<td>
-        									${orderProduct.productName} <br><br>
-        								</td>
+        											<td>
+        												${orderProduct.productName} <br><br>
+        											</td>
         						
-        								<td><strong>${orderProduct.productPrice}</strong></td>
+        											<td><strong>${orderProduct.productPrice}</strong></td>
         						
-        								<td> ${orderProduct.productQuantity}</td>
+        											<td> ${orderProduct.productQuantity}</td>
        							
-       									<td align="center"><strong>${orderProduct.productPrice * orderProduct.productQuantity}</strong></td>
-        							</tr>
+       												<td align="center"><strong>${orderProduct.productPrice * orderProduct.productQuantity}</strong></td>
+        										</tr>
         					
-        							<c:set var="estimatedTotal" value="${estimatedTotal + (orderProduct.productPrice * orderProduct.productQuantity)}" scope="page" />
+        										<c:set var="estimatedTotal" value="${estimatedTotal + (orderProduct.productPrice * orderProduct.productQuantity)}" scope="page" />
         					
-    							</c:forEach>
+    										</c:forEach>
     				
-       							<tr>
-    								<td></td>
-    								<td></td>
-    								<td></td>
-    								<td align="center"><h3><strong>Estimated Total:</strong></h3></td>
-    								<td align="center"><h3><strong><span id="cartEstimatedTotal">${estimatedTotal}</span></strong></h3></td>
-    							</tr>
- 							</tbody>
-  						</table>
+       										<tr>
+    											<td colspan="4" align="right"><h3><strong>Total Amount Paid:</strong></h3></td>
+    											<td align="center"><h3><strong><span id="cartEstimatedTotal">${estimatedTotal}</span></strong></h3></td>
+    										</tr>
+ 										</tbody>
+  									</table>
+  								</div>
+  								
+  								<div class="col-md-3">
+  									<h3>Order Address</h3>
+									<strong>${address.addressName}</strong><br>
+									${address.addressStreet}<br> ${address.addressLandmark}<br>
+									${address.addressCity} ${address.addressState},&nbsp;
+									${address.addressCountry}<br>
+									Mobile:&nbsp;${address.addressMobile}
+									
+  								</div>
+  							</div>
   						</c:if>
   					</div>
 				

@@ -81,12 +81,12 @@
 					<c:set var="count" value="${count + 1}" scope="page" />
 
 					<c:if test="${ count % 3 == 0}">
-						</div>
+						</div><br>
 					</c:if>
 				</c:forEach>
 				
 				<c:if test="${ count % 3 != 0}">
-					</div>
+					</div><br>
 				</c:if>
 					
 				<c:if test="${ count != 0}">
