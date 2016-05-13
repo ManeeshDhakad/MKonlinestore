@@ -32,17 +32,20 @@ MKonlinestore is a e-commerce website exclusively designed for youth fashion for
 
 #Ecommerce functionality
 
-**Home Page**
+Home Page
+---------
 * contain offer banners. 
 * Newly arival products. 
 * Specials offer on products.
 
-**Product List Page** 
+Product List Page
+-----------------
 * Show product list with 1 pic, name and price. 
 * Also contain breadcrum to go to next and previous page. 
 * Left and right side spage are left for fitering and advertisements.
 
-**Product Detail Page** 
+Product Detail Page
+-------------------
 * Show product details with 3 diffrent images. 
 * Can zoom the images and view to all 3 images on hover and click on thumbnails. 
 * Totally project contains 3 different image for 1 product with 3 different sizes. 
@@ -51,27 +54,32 @@ MKonlinestore is a e-commerce website exclusively designed for youth fashion for
 * Buy now option to go to checkout page.
 * Contain breadcrum to go to next and previous page.
 
-**Cart Page** 
+Cart Page
+---------
 * Manage cart for user login and without login 
 * Update product quantity work without page load on ajax call 
 * Delete product from Cart also work without page load on ajax call 
 * Can go to product detail page
 
-**Wishlist Page** 
+Wishlist Page
+-------------
 * List add the product added to wishlist 
 * Can add product to cart and if product already added to cart then give popup title 
 * Remove product from wishlist
 
-**Profile Page** 
+Profile Page
+-------------
 * Add and remove address. Manage multiple address 
 * Update persional information 
 * Update password 
 * Manage order history, Cancel order
 
-**Checkout Page** 
+Checkout Page
+--------------
 * Manage address book, select delivery address, add new address and make it to delivery address 
 * Edit product summary , update quantity, delete products 
 * Dummy payment details
 
-**Order Completion Page** 
+Order Completion Page
+---------------------
 * Show order summary with selected address details
