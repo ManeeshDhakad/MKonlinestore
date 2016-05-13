@@ -30,7 +30,7 @@ MKonlinestore is a e-commerce website exclusively designed for youth fashion for
 * clone on local system or on eclipse.
 
 
-#Ecommerce functionality :
+#Ecommerce functionality
 
 **Home Page**
 * contain offer banners. 
