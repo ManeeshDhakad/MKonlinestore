@@ -38,9 +38,11 @@
   					</div>
  					<div class="panel-body">
  						<div id="div_cartSuccessMessage" class="isa_success" style="display: none">
+ 							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     						<span id="successMessage">${message}</span>
 						</div>
 						<div id="div_cartErrorMessage" class="isa_error" style="display: none">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     						<span id="errorMessage">${message}</span>
 						</div>
  						
@@ -96,7 +98,7 @@
   									</table>
   								</div>
   								
-  								<div class="col-md-3">
+  								<div class="col-md-3 div-border">
   									<h3>Order Address</h3>
 									<strong>${address.addressName}</strong><br>
 									${address.addressStreet}<br> ${address.addressLandmark}<br>

@@ -14,7 +14,7 @@
 		//((HttpServletResponse)response).sendRedirect(".");
 %>
 
-<div id="loading" style="display: none">
+<div id="loading" >
   	<img id="loading-image" src="<%=request.getContextPath()%>/resources/images/loading.gif" alt="Loading..." />
 </div>
 

@@ -39,9 +39,11 @@
 			<div class="panel-body">
 				<div id="div_successMessage" class="isa_success"
 					style="display: none">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 					<span id="successMessage">${message}</span>
 				</div>
 				<div id="div_errorMessage" class="isa_error" style="display: none">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 					<span id="errorMessage">${message}</span>
 				</div>
 
@@ -60,7 +62,7 @@
 						Wishlist</a>
 				</div>
 
-				<div class="col-md-9">
+				<div class="col-md-9" style="padding: 0px 0px 0px 0px">
 
 					<div id="div_userPersonalInfo" class="panel panel-info" >
 						<div class="panel-heading">

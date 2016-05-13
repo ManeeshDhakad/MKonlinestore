@@ -31,9 +31,11 @@
 		<div id="body-area-middle-container" class="col-md-8">
 			<div id="body-container">
 				<div id="div_successMessage" class="isa_success" style="display: none">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     				<span id="successMessage">${message}</span>
 				</div>
 				<div id="div_errorMessage" class="isa_error" style="display: none">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     				<span id="errorMessage">${message}</span>
 				</div>
 				
@@ -68,6 +70,9 @@
 						<a 	href="https://www.facebook.com/maneesh.dhakad"><img
 							style="width: 30px; height: 30px"
 							src="<%=request.getContextPath()%>/resources/images/facebook.png" /></a>
+						<a href="https://plus.google.com/u/0/117785483572860826604"><img
+							style="width: 35px; height: 35px"
+						src="<%=request.getContextPath()%>/resources/images/google.png" /></a>
 						<a href="https://in.linkedin.com/in/maneesh-dhakad-525ba485"><img
 							style="width: 30px; height: 30px"
 							src="<%=request.getContextPath()%>/resources/images/linked-in.png" /></a>

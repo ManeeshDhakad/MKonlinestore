@@ -174,7 +174,7 @@ function saveUsersPersonalInfo(name, email, mobile) {
 	}
 	
 	if(name == "" ||  email == "") 
-		message = "Please fill name and email before you proceed."
+		message = "Please fill name and email before you proceed.";
 	else {
 		message = validateName(newName);
 		message = message + validateEmail(newEmail);

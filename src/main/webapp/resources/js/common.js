@@ -21,30 +21,33 @@ $(document).ready(function(){
 		}
 	}
 	
-	
-	
-	//Loading image when page load
-	//window.onload = function(){ document.getElementById("loading").style.display = "none" ;} ;
-	
-	//or 
-	
-	//	setTimeout(function(){
-	//		$("#loading").css('display','none');
-	//	}, 500);
+});
+
+$(window).load(function() {
+	$("#loading").css('display','none'); 
 	
 });
 
-
-
-$(document).ajaxStart(function(){
+$(document).ajaxSend(function(event, request, settings) {
 	$("#loading").css('display','block');  
+	
+});
+
+$(document).ajaxComplete(function(event, request, settings) {
 	setTimeout(function(){
 		$("#loading").css('display','none');
 	}, 1000);
-	
-}).ajaxStop(function(){
-	
 });
+
+//$(document).ajaxStart(function(){
+//	$("#loading").css('display','block');  
+//	setTimeout(function(){
+//		$("#loading").css('display','none');
+//	}, 1000);
+//	
+//}).ajaxStop(function(){
+//	
+//});
 
 //Login modal
 $(".email-signup").hide();

@@ -53,6 +53,9 @@
 		<br> <a href="https://www.facebook.com/maneesh.dhakad"><img
 			style="width: 35px; height: 35px"
 			src="<%=request.getContextPath()%>/resources/images/facebook.png" /></a>
+		<a href="https://plus.google.com/u/0/117785483572860826604"><img
+			style="width: 35px; height: 35px"
+			src="<%=request.getContextPath()%>/resources/images/google.png" /></a>
 
 		<a href="https://in.linkedin.com/in/maneesh-dhakad-525ba485"><img
 			style="width: 35px; height: 35px"

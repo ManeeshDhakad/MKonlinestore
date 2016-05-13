@@ -40,9 +40,11 @@
 				<div class="panel-body">
 					<div id="div_successMessage" class="isa_success"
 						style="display: none">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 						<span id="successMessage">${message}</span>
 					</div>
 					<div id="div_errorMessage" class="isa_error" style="display: none">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 						<span id="errorMessage">${message}</span>
 					</div>
 

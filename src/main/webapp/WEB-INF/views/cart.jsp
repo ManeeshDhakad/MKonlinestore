@@ -15,6 +15,9 @@
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css" />
+	
+<link rel="stylesheet" 
+href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></link>
 
 <title>MKonlinestore</title>
 
@@ -40,10 +43,12 @@
 				<div class="panel-body">
 					<div id="div_cartSuccessMessage" class="isa_success"
 						style="display: none">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 						<span id="successMessage">${message}</span>
 					</div>
 					<div id="div_cartErrorMessage" class="isa_error"
 						style="display: none">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 						<span id="errorMessage">${message}</span>
 					</div>
 
@@ -191,6 +196,9 @@
 	<jsp:include page="login-modal.jsp" />
 
 	<!-- JavaScript -->
+	<script type="text/javascript" 
+	src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+	
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript"
