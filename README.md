@@ -6,7 +6,7 @@ Table of contents
   * [Introduction](#introduction)
   * [Technology used](#technology-used)
   * [Installation](#installation)
-  * [E-commerce functionality](#e-commerce-functionality)
+  * [Ecommerce functionality](#ecommerce-functionality)
     * [Home page](#home-page)
     * [Product List Page](#product-list-page)
     * [Product Detail Page](#product-detail-page)
@@ -22,22 +22,20 @@ Table of contents
 MKonlinestore is a e-commerce website exclusively designed for youth fashion for (Men , Women and Kids).
 
 #Technology used
-Front end : JSP, HTML, CSS, Javascript jQuery, Bootstrap
-
-Back end : Java, Spring MVC, Hibernate
-
-Data base : MySql
+* Front end : JSP, HTML, CSS, Javascript jQuery, Bootstrap
+* Back end : Java, Spring MVC, Hibernate
+* Data base : MySql
 
 #Installation 
-clone on local system or on eclipse.
+* clone on local system or on eclipse.
 
 
-#E-commerce functionality :
+#Ecommerce functionality :
 
 **Home Page**
-a. contain offer banners. 
-b. Newly arival products. 
-c. Specials offer on products.
+* contain offer banners. 
+* Newly arival products. 
+* Specials offer on products.
 
 **Product List Page** 
 * Show product list with 1 pic, name and price. 
