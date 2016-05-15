@@ -137,18 +137,21 @@
 				
 				<c:choose>
     				<c:when test="${isProductAddedToCart == 0}">
-    					<input id="btn_addToCart" type="submit" class="common-btn" value="Add To Cart" onclick="addProductToCart('${product.productCode}');" /> 
+    					<button id="btn_addToCart" type="submit" class="common-btn" onclick="addProductToCart('${product.productCode}');" > 
+    						Add To Cart&nbsp;&nbsp;<i class="fa fa-shopping-cart fa-lg"></i>
+    					</button>
     				</c:when>
     				
     				<c:otherwise>
-    					<button type="button" class="common-btn-disabled" title="This product already added to cart">Added to Cart</button>
+    					<button type="button" class="common-btn-disabled" title="This product already added to cart">
+    						Added to Cart&nbsp;&nbsp;<i class="fa fa-shopping-cart fa-lg"></i>
+    					</button>
     				</c:otherwise>
     			</c:choose>
-				
-				
       				<input name="productCode" type="text" value="${product.productCode}" style="display: none" />
-      				<input type="submit" class="common-btn"  onclick="checkoutPage('${product.productCode}'); return false;" value="Buy Now" />		
-				
+      				<button type="submit" class="common-btn"  onclick="checkoutPage('${product.productCode}'); return false;" >		
+						Buy Now&nbsp;&nbsp;<i class="fa fa-forward"></i> 
+					</button>
 			</div> 
 		</div>
 		</div>

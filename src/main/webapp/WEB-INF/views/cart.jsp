@@ -153,23 +153,21 @@ href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></link>
 									</tr>
 
 									<tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td><br>
+										<td colspan="2"><br>
 											<form action="home" method="get">
-												<div class="u-form-group">
-													<input type="submit" class="common-btn"
-														value="Continue Shopping" />
-												</div>
-											</form></td>
+												<button type="submit" class="common-btn">
+														<i class="fa fa-backward"></i> &nbsp;&nbsp;Continue Shopping
+												</button>
+											</form>
+										</td>
+										
+										<td></td>
+										<td colspan="2"><br>
 
-										<td><br>
-
-											<div class="u-form-group">
-												<input type="submit" class="common-btn" value="Place Order"
-													onclick="checkoutPage('cart'); return false;" />
-											</div></td>
+												<button type="submit" class="common-btn"
+													onclick="checkoutPage('cart'); return false;" >
+													Place Order &nbsp;&nbsp;<i class="fa fa-forward"></i> 
+												</button>
 									</tr>
 								</c:otherwise>
 							</c:choose>

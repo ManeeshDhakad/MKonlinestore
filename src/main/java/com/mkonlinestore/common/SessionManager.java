@@ -330,7 +330,7 @@ public class SessionManager {
 	public User checkUserSession(HttpServletRequest request) {
 		Cookie[] cookies = request.getCookies();
 		User user = null;
-		String userId = null ,userName = null, userEmail = null, userPassword = null;
+		String userId = "" ,userName = "", userEmail = "", userPassword = "";
 		
 		for(Cookie ck : cookies) {
 			if(ck.getName().equalsIgnoreCase("userId"))
@@ -343,7 +343,7 @@ public class SessionManager {
 				userPassword = ck.getValue();
 		}
 		
-		if(userId != null && !userId.isEmpty()) {
+		if(userId.isEmpty()) {
 			user = new User(parseDataType.parseInt(userId), userName, userEmail, userPassword);
 		}
 	

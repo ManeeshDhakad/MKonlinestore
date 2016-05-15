@@ -39,6 +39,15 @@ $(document).ajaxComplete(function(event, request, settings) {
 	}, 1000);
 });
 
+function closeSuccessMessageDiv() {
+	$("#loading").css('display','none');
+}
+
+$(".close").click(function(){
+	$(".isa_success").css('display','none');
+  	$(".isa_error").css('display','none');
+});
+
 //$(document).ajaxStart(function(){
 //	$("#loading").css('display','block');  
 //	setTimeout(function(){
@@ -296,6 +305,7 @@ function loginUser() {
 		$("#div_loginModelSuccessMessage").css('display','none');
 		$("#div_loginModelErrorMessage").css('display','block');
 		$("#div_loginModelErrorMessage").html(warningTitle + message);
+		$("#login-modal").effect("shake");
 		return false;
 	}
 	else {
