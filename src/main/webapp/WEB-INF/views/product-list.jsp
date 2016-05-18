@@ -7,14 +7,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/style.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css" />
 
 <title>MKonlinestore</title>
 
@@ -23,15 +15,15 @@
 </head>
 
 <body>
+<div id="wrapper">
 	<div id="header-container">
 		<jsp:include page="header-navbar.jsp" />
 	</div>
+	
+	<div class="col-md-2 hidden-xs hidden-sm"></div>
+	<div id="body-area-middle-container" class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 
-	<div id="body-area-left-container" class="col-md-2"></div>
-
-	<div id="body-area-middle-container" class="col-md-8">
-
-		<div class="panel panel-success">
+		<div class="panel panel-success" id="div_mainBody">
 			<div class="panel-heading">
 				<ol class="breadcrumb" style="margin-bottom: 5px;">
 					<li><a href="home" style="color: hotpink">Home</a></li>
@@ -67,7 +59,7 @@
 						<div class="row product-img-border">
 					</c:if>
 
-					<div class="col-md-4">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 						<form action="product-details" method="get">
 							<input name="productCode" type="text"
 								value="${product.productCode}" style="display: none" /> <input
@@ -83,12 +75,13 @@
 					<c:set var="count" value="${count + 1}" scope="page" />
 
 					<c:if test="${ count % 3 == 0}">
-						</div><br>
+						
+						</div>
 					</c:if>
 				</c:forEach>
 				
 				<c:if test="${ count % 3 != 0}">
-					</div><br>
+					</div>
 				</c:if>
 					
 				<c:if test="${ count != 0}">
@@ -105,26 +98,25 @@
 	
 	</div>
 	
-	<div id="body-area-left-container" class="col-md-2"></div>
+	<div class="col-md-2 hidden-xs hidden-sm"></div>
 	
-	<c:if test="${ count == 0}">
-		<br><br><br><br><br>
-	</c:if>
-	
-	<div class="col-md-12 padding-zero" id="footer-container">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-zero" id="footer-container">
 		<jsp:include page="footer.jsp" />
 	</div>
-
+</div>
 	<jsp:include page="login-modal.jsp" />
 
-	<!-- JavaScript -->
-	<script type="text/javascript"
+
+<!-- JavaScript -->
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/common.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
+
+
 </body>
 </html>

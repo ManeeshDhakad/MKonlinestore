@@ -7,17 +7,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/style.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css" />
-	
-<link rel="stylesheet" 
-href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></link>
 
 <title>MKonlinestore</title>
 
@@ -31,11 +20,8 @@ href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></link>
 		<jsp:include page="header-navbar.jsp" />
 	</div>
 
-	<div id="body-area-left-container" class="col-md-2"></div>
-
-	<div id="body-area-middle-container" class="col-md-8">
-		<div id="body-container">
-
+	<div class="col-md-2 hidden-xs hidden-sm"></div>
+	<div id="body-area-middle-container" class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 			<div class="panel panel-success">
 				<div class="panel-heading">
 					<h1 class="panel-title">Cart</h1>
@@ -155,7 +141,7 @@ href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></link>
 									<tr>
 										<td colspan="2"><br>
 											<form action="home" method="get">
-												<button type="submit" class="common-btn">
+												<button class="common-btn">
 														<i class="fa fa-backward"></i> &nbsp;&nbsp;Continue Shopping
 												</button>
 											</form>
@@ -164,7 +150,7 @@ href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></link>
 										<td></td>
 										<td colspan="2"><br>
 
-												<button type="submit" class="common-btn"
+												<button class="common-btn"
 													onclick="checkoutPage('cart'); return false;" >
 													Place Order &nbsp;&nbsp;<i class="fa fa-forward"></i> 
 												</button>
@@ -181,31 +167,27 @@ href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></link>
 
 		</div>
 		
-		</div>
-		
+	
 					
-	<div id="body-area-left-container" class="col-md-2"></div>
+	<div class="col-md-2 hidden-xs hidden-sm"></div>
 
 
-	<div class="col-md-12 padding-zero" id="footer-container">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="footer-container">
 		<jsp:include page="footer.jsp" />
 	</div>
 	
 	<jsp:include page="login-modal.jsp" />
-
-	<!-- JavaScript -->
-	<script type="text/javascript" 
-	src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 	
-	<script type="text/javascript"
+	<!-- JavaScript -->
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js">
-		
-	</script>
-	<script type="text/javascript"
+<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/common.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
+	
+	
 </body>
 </html>

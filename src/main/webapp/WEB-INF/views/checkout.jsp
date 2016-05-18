@@ -27,9 +27,8 @@
 		<jsp:include page="checkout-header.jsp" />
 	</div>
 
-	<div id="body-area-left-container" class="col-md-2"></div>
-
-	<div id="body-area-middle-container" class="col-md-8">
+	<div class="col-md-2 hidden-xs hidden-sm"></div>
+	<div id="body-area-middle-container" class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 		<br>
 		
 		<div id="div_successMessage" class="isa_success" style="display: none">
@@ -58,7 +57,7 @@
 					role="tabpanel" aria-labelledby="checkoutAddressHeading">
 					<div class="panel-body">
 					
-						<button class="btn btn-default btn-lg btn-block" style="width: 25%" type="button" data-toggle="collapse" data-target="#div_addNewAddress" aria-expanded="false" aria-controls="div_addNewAddress">
+						<button class="common-btn-border" style="width: 25%" type="button" data-toggle="collapse" data-target="#div_addNewAddress" aria-expanded="false" aria-controls="div_addNewAddress">
   							Add New Address
 						</button>		
 						<br>
@@ -69,7 +68,7 @@
 								</div>
 									
 								<div class="col-md-4">
-									<input type="text" id="userAddressName" name="userAddressName" class="common-input-text" placeholder="Name" />
+									<input type="text" id="userAddressName" name="userAddressName" class="common-input-text" placeholder="Name*" />
 								</div>
 							</div>
 										
@@ -79,7 +78,7 @@
 								</div>
 								
 								<div class="col-md-4">
-									<textarea name="message" id="userStreetAddress" name="userStreetAddress" class="common-input-textarea" placeholder="Street Address" ></textarea>
+									<textarea name="message" id="userStreetAddress" name="userStreetAddress" class="common-input-textarea" placeholder="Street Address*" ></textarea>
 								</div>
 							</div>
 										
@@ -89,7 +88,7 @@
 								</div>
 									
 								<div class="col-md-4">
-									<input type="text" id="userAddressLandmark" name="userAddressLandmark" class="common-input-text" placeholder="Landmark" />
+									<input type="text" id="userAddressLandmark" name="userAddressLandmark" class="common-input-text" placeholder="Landmark*" />
 								</div>
 							</div>
 										
@@ -99,7 +98,7 @@
 								</div>
 								
 								<div class="col-md-4">
-									<input type="text" id="userAddressCity" name="userAddressCity" class="common-input-text" placeholder="City" />
+									<input type="text" id="userAddressCity" name="userAddressCity" class="common-input-text" placeholder="City*" />
 								</div>
 							</div>
 										
@@ -109,7 +108,7 @@
 								</div>
 							
 								<div class="col-md-4">
-									<input type="text" id="userAddressState" name="userAddressState" class="common-input-text" placeholder="State" />
+									<input type="text" id="userAddressState" name="userAddressState" class="common-input-text" placeholder="State*" />
 								</div>
 							</div>
 										
@@ -119,7 +118,7 @@
 								</div>
 							
 								<div class="col-md-4">
-									<input type="text" id="userAddressCounty" name="userAddressCounty" class="common-input-text" placeholder="Country" />
+									<input type="text" id="userAddressCounty" name="userAddressCounty" class="common-input-text" placeholder="Country*" />
 								</div>
 							</div>
 									
@@ -129,7 +128,7 @@
 								</div>
 								
 								<div class="col-md-4">
-									<input type="text" id="userAddressMobile" name="userAddressMobile" class="common-input-text"  placeholder="Mobile" />
+									<input type="text" id="userAddressMobile" name="userAddressMobile" class="common-input-text"  placeholder="Mobile*" />
 								</div>
 							</div>
 										
@@ -333,22 +332,10 @@
 				</div>
 			</div>
 		</div>
-
-		<div id="footer-container">
-			<ul class="nav nav-pills">
-				<li><a href="/">© 2016 mkonlinestore.com</a></li>
-				<li><a href="#">Terms of Service</a></li>
-				<li><a href="#">Privacy</a></li>
-			</ul>
-		</div>
 	</div>
 	
-	<div id="body-area-left-container" class="col-md-2"></div>
+	<div class="col-md-2 hidden-xs hidden-sm"></div>
 
-<!-- 	<div class="col-md-12 padding-zero" id="footer-container"> -->
-<%-- 		<jsp:include page="footer.jsp" /> --%>
-<!-- 	</div> -->
-	
 	<jsp:include page="login-modal.jsp" />
 
 	<!-- JavaScript -->

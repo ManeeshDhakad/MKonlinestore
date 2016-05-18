@@ -6,14 +6,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/style.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css" />
 
 <title>MKonlinestore</title>
 
@@ -27,9 +19,8 @@
 		<jsp:include page="header-navbar.jsp" />
 	</div>
 
-	<div id="body-area-left-container" class="col-md-1"></div>
-
-	<div id="body-area-middle-container" class="col-md-10">
+	<div class="col-md-1 hidden-xs hidden-sm"></div>
+	<div id="body-area-middle-container" class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
 
 		<div class="panel panel-success">
 			<div class="panel-heading">
@@ -47,7 +38,7 @@
 					<span id="errorMessage">${message}</span>
 				</div>
 
-				<div class="col-md-3 list-group">
+				<div class="col-xs-12 col-sm-3 col-md-3 list-group">
 
 					<a id="userProfileLink" href="#" class="list-group-item active"><span
 						class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;My Profile </a> <a
@@ -62,7 +53,7 @@
 						Wishlist</a>
 				</div>
 
-				<div class="col-md-9" style="padding: 0px 0px 0px 0px">
+				<div class="col-xs-12 col-sm-9 col-md-9" style="padding: 0px 0px 0px 0px">
 
 					<div id="div_userPersonalInfo" class="panel panel-info" >
 						<div class="panel-heading">
@@ -76,7 +67,7 @@
 								<div class="col-md-5">
 									<input type="text" id="profileUserName" name="profileUserName"
 										value="${user.userName}" class="common-input-text"
-										placeholder="Name" />
+										placeholder="Enter Name*" />
 								</div>
 							</div>
 
@@ -86,7 +77,7 @@
 								<div class="col-md-5">
 									<input type="text" id="profileUserEmail"
 										name="profileUserEmail" value="${user.userEmail}"
-										class="common-input-text" placeholder="Email" />
+										class="common-input-text" placeholder="Enter Email*" />
 								</div>
 							</div>
 
@@ -128,7 +119,7 @@
 								<div class="col-md-5">
 									<input type="password" id="profileUserOldPassword"
 										name="profileUserOldPassword" class="common-input-text"
-										placeholder="Old Password" />
+										placeholder="Enter Old Password*" />
 								</div>
 							</div>
 
@@ -138,7 +129,7 @@
 								<div class="col-md-5">
 									<input type="password" id="profileUserNewPassword"
 										name="profileUserNewPassword" class="common-input-text"
-										placeholder="New Password" "/>
+										placeholder="Enter New Password*" "/>
 								</div>
 							</div>
 
@@ -148,7 +139,7 @@
 								<div class="col-md-5">
 									<input type="password" id="profileUserConfirmNewPassword"
 										name="profileUserConfirmNewPassword" class="common-input-text"
-										placeholder="Confirm New Password" />
+										placeholder="Enter Confirm New Password*" />
 								</div>
 							</div>
 
@@ -171,7 +162,7 @@
 
 						<div class="panel-body">
 
-							<button class="btn btn-default btn-lg btn-block"
+							<button class="common-btn-border"
 								style="width: 35%" type="button" data-toggle="collapse"
 								data-target="#div_addNewAddress" aria-expanded="false"
 								aria-controls="div_addNewAddress">Add New Address</button>
@@ -182,7 +173,7 @@
 
 									<div class="col-md-5">
 										<input type="text" id="userAddressName" name="userAddressName"
-											class="common-input-text" placeholder="Name" />
+											class="common-input-text" placeholder="Name*" />
 									</div>
 								</div>
 
@@ -192,7 +183,7 @@
 									<div class="col-md-5">
 										<textarea name="message" id="userStreetAddress"
 											name="userStreetAddress" class="common-input-textarea"
-											placeholder="Street Address"></textarea>
+											placeholder="Street Address*"></textarea>
 									</div>
 								</div>
 
@@ -202,7 +193,7 @@
 									<div class="col-md-5">
 										<input type="text" id="userAddressLandmark"
 											name="userAddressLandmark" class="common-input-text"
-											placeholder="Landmark" />
+											placeholder="Landmark*" />
 									</div>
 								</div>
 
@@ -211,7 +202,7 @@
 
 									<div class="col-md-5">
 										<input type="text" id="userAddressCity" name="userAddressCity"
-											class="common-input-text" placeholder="City" />
+											class="common-input-text" placeholder="City*" />
 									</div>
 								</div>
 
@@ -221,7 +212,7 @@
 									<div class="col-md-5">
 										<input type="text" id="userAddressState"
 											name="userAddressState" class="common-input-text"
-											placeholder="State" />
+											placeholder="State*" />
 									</div>
 								</div>
 
@@ -231,7 +222,7 @@
 									<div class="col-md-5">
 										<input type="text" id="userAddressCounty"
 											name="userAddressCounty" class="common-input-text"
-											placeholder="Country" />
+											placeholder="Country*" />
 									</div>
 								</div>
 
@@ -241,7 +232,7 @@
 									<div class="col-md-5">
 										<input type="text" id="userAddressMobile"
 											name="userAddressMobile" class="common-input-text"
-											placeholder="Mobile" />
+											placeholder="Mobile*" />
 									</div>
 								</div>
 
@@ -300,10 +291,10 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<th colspan="2" style="width: 50%">ITEM</th>
+										<th colspan="2" style="width: 45%">ITEM</th>
 										<th style="width: 20%">Order Date</th>
 										<th style="width: 10%">TOTAL</th>
-										<th style="width: 10%">Status</th>
+										<th style="width: 25%">Status</th>
 									</tr>
 								</thead>
 
@@ -328,7 +319,7 @@
 											<strong>QTY : ${orderHistoryProduct.productQuantity}</strong> <br> 
 											<strong>Price : ${orderHistoryProduct.productPrice}</strong><br>
 											
-											<button type="button" class="btn btn-primary" >Order ID : ${orderHistoryProduct.orderCode}</button>
+											<span style="border: 1px solid orange; padding: 3px 3px 3px 3px;">Order ID : ${orderHistoryProduct.orderCode}</span>
 											</td>
 
 											
@@ -344,8 +335,10 @@
 												<c:if test="${orderHistoryProduct.orderStatus != 'Cancelled'}">
 													<br>
 													<br><br>
-													<input id="link_cancelOrder${orderHistoryProduct.productCode}" type="submit" class="common-btn" value="Cancel Order"
-													onclick="cancelOrder('${orderHistoryProduct.productCode}', '${orderHistoryProduct.orderId}');" />
+													<button id="link_cancelOrder${orderHistoryProduct.productCode}" type="submit" class="common-btn" 
+													onclick="cancelOrder('${orderHistoryProduct.productCode}', '${orderHistoryProduct.orderId}');" >
+													Cancel Order&nbsp;&nbsp;<i class="fa fa-times-circle"></i>
+													</button>
 												</c:if>
 												
 											</td>
@@ -417,15 +410,17 @@
 
 												<c:choose>
 													<c:when test="${isProductAddedToCart == 0}">
-														<input id="btn_addToCart${wishlistProduct.productCode}"
-															type="submit" class="common-btn" value="Add To Cart"
-															onclick="addProductToCart('${wishlistProduct.productCode}');" />
+														<button id="btn_addToCart${wishlistProduct.productCode}"
+															 class="common-btn" onclick="addProductToCart('${wishlistProduct.productCode}');" >
+															 Add To Cart&nbsp;&nbsp;<i class="fa fa-shopping-cart fa-lg"></i>
+														</button>
 													</c:when>
 
 													<c:otherwise>
 														<button type="button" class="common-btn-disabled"
-															title="This product already added to cart">Added
-															to Cart</button>
+															title="This product already added to cart">
+															Added to Cart&nbsp;&nbsp;<i class="fa fa-shopping-cart fa-lg"></i>
+														</button>
 													</c:otherwise>
 												</c:choose></td>
 										</tr>
@@ -452,25 +447,25 @@
 		</div>
 	</div>
 
-	<div id="body-area-left-container" class="col-md-1"></div>
+	<div class="col-md-1 hidden-xs hidden-sm"></div>
 
-	<div class="col-md-12 padding-zero" id="footer-container">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-zero" id="footer-container">
 		<jsp:include page="footer.jsp" />
 	</div>
 
 		<jsp:include page="login-modal.jsp" />
-
+		
 		<!-- JavaScript -->
+<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/common.js"></script>
+<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
+<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/user-profile.js"></script>
 
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/resources/js/jquery-1.9.1.min.js"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/resources/js/common.js"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/resources/js/user-profile.js"></script>
 </body>
 </html>

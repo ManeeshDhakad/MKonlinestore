@@ -343,7 +343,7 @@ public class SessionManager {
 				userPassword = ck.getValue();
 		}
 		
-		if(userId.isEmpty()) {
+		if(!userId.isEmpty()) {
 			user = new User(parseDataType.parseInt(userId), userName, userEmail, userPassword);
 		}
 	

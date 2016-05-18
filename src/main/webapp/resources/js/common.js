@@ -7,8 +7,6 @@ $(document).ready(function(){
 	// Success and error messages
 	
 	var msgStatus = document.getElementById('messageStatus').value;
-	
-	
 	if(msgStatus != "" || msgStatus != null || msgStatus != NaN || msgStatus.length > 0) {
 		
 		if(msgStatus) {
@@ -30,7 +28,6 @@ $(window).load(function() {
 
 $(document).ajaxSend(function(event, request, settings) {
 	$("#loading").css('display','block');  
-	
 });
 
 $(document).ajaxComplete(function(event, request, settings) {
@@ -94,6 +91,10 @@ function goToHomePage() {
 	window.location = "home";
 }
 
+function goToViewCart() {
+	window.location = "view-cart";
+}
+
 var warningTitle = "<i class=\"fa fa-warning\"></i> ";
 var errorTitle = "<i class=\"fa fa-warning\"></i> ";
 var successTitle = "<i class=\"fa fa-check\"></i> ";
@@ -101,7 +102,7 @@ var successTitle = "<i class=\"fa fa-check\"></i> ";
 
 function addProductToCart(code) {
 	var productCode = code.replace(/['"]+/g, '');
-	var productCount = $("#crtProductCount").html();
+	var productCount = $(".crtProductCount").html();
 	var crtProductCount;
 
 	if(productCount == null || productCount == "NaN" || productCount == NaN || productCount == "") {
@@ -120,7 +121,7 @@ function addProductToCart(code) {
 		success : function(data) {
 						
 			if(data.indexOf("fa-check") > -1) {
-				$("#crtProductCount").html(crtProductCount);
+				$(".crtProductCount").html(crtProductCount);
 				
 				// Product detail page
 				$("#btn_addToCart").prop('title', "This product is added to cart").
@@ -258,7 +259,7 @@ function removeProductFromCart(code) {
 	var productSubTotal = parseFloat($("#productSubTotal" + productCode).html());
 	estimatedTotal = estimatedTotal - productSubTotal;
 		
-	var crtProductCount = parseInt($("#crtProductCount").html());
+	var crtProductCount = parseInt($(".crtProductCount").html());
 	
 	if(crtProductCount  >= 0)
 		crtProductCount = crtProductCount - 1;
@@ -272,7 +273,7 @@ function removeProductFromCart(code) {
 			if(data.indexOf("fa-check") > -1) {
 				$("#cart_tr_" + productCode).css('display','none');
 				$("#cartEstimatedTotal").html(estimatedTotal);
-				$("#crtProductCount").html(crtProductCount);
+				$(".crtProductCount").html(crtProductCount);
 				if(estimatedTotal == 0) {
 					window.location = "view-cart";
 				}

@@ -5,23 +5,31 @@
 <div id="header-navbar" >
 	<nav class="navbar header-margin" style="height: 60px">
 		<section class="ccblue header-sticky">
-			<div class="mainmenu">
+			<div class="mainmenu col-xs-12">
 								
 				<div style="color: white; font-size: 18px">
-					<a href="home" style="margin-left: 230px"><img
-					style="height: 60px; width: 100px"
-					src="<%=request.getContextPath()%>/resources/images/mk-logo.png" />
-					<img
-					style="height: 50px; width: 200px"
-					src="<%=request.getContextPath()%>/resources/images/onlinestore1.png" />
-					</a>   
-				
-					<span class="glyphicon glyphicon-ok-circle" style="margin-top:10px; margin-left: 200px"></span>&nbsp; 100% Secured Payment And Original Product
+					<div class="col-md-2 hidden-xs"></div>
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<a href="home"><img
+							style="height: 50px; width: 70px"
+							src="<%=request.getContextPath()%>/resources/images/mk-logo.png" />
+							<img class="hidden-xs hidden-sm"
+							style="height: 50px; width: 130px"
+							src="<%=request.getContextPath()%>/resources/images/onlinestore1.png" />
+						</a>   
+					</div>
+					<div class="col-sm-6 col-md-6 hidden-xs" >
+						<span class="glyphicon glyphicon-ok-circle" style="margin-top: 10px">100% Secured Payment </span>
+					</div>
 				</div>
 				
 			</div>
 		</section>
 	</nav>
+</div>
+<div class="visible-xs-block isa_error">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <i class="fa fa-warning"></i> Please increase window size for better experience.
 </div>
 
 <!-- Refresh page on back button -->

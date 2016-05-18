@@ -7,16 +7,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/style.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css" />
-	
-	
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  
 <title>MKonlinestore</title>
 
 <link rel="icon" type="image/png"
@@ -28,9 +18,8 @@
 		<jsp:include page="header-navbar.jsp" />
 	</div>
   
-	<div id="body-area-left-container" class="col-md-2"></div>
-
-	<div id="body-area-middle-container" class="col-md-8">
+	<div class="col-md-2 hidden-xs hidden-sm"></div>
+	<div id="body-area-middle-container" class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 
 		<div class="panel panel-success">
 			<div class="panel-heading">
@@ -65,23 +54,22 @@
     			<span id="errorMessage">${message}</span>
 			</div>
 			
-			<div class="col-md-7">
+			<div class="col-xs-12 col-sm-7 col-md-7">
 					
 					
-					<div id="product-detail-big-img" class="product-img-grow ">
+					<div id="col-xs-12 product-detail-big-img" class="product-img-grow ">
 						<img id="main-img" src="<%=request.getContextPath()%>/resources/images/product/600x800/${product.productCode}.jpg" class="img-responsive product-img-big" alt="Responsive image" />
 					</div>
 					<br>
-					<div >
-						<div class="col-md-3"><a href="<%=request.getContextPath()%>/resources/images/product/600x800/${product.productCode}.jpg"  onmouseover="swapImageProductDetail(this); return false;" onclick="swapImageProductDetail(this); return false;"><img src="<%=request.getContextPath()%>/resources/images/product/85x100/${product.productCode}.jpg" class=" product-thumbnail-border" alt="" /></a></div>
-						<div class="col-md-3"><a href="<%=request.getContextPath()%>/resources/images/product/600x800/${product.productCode}_1.jpg" onmouseover="swapImageProductDetail(this); return false;" onclick="swapImageProductDetail(this); return false;"><img src="<%=request.getContextPath()%>/resources/images/product/85x100/${product.productCode}_1.jpg" class="product-thumbnail-border" alt="" /></a></div>
-						<div class="col-md-3"><a href="<%=request.getContextPath()%>/resources/images/product/600x800/${product.productCode}_2.jpg" onmouseover="swapImageProductDetail(this); return false;" onclick="swapImageProductDetail(this); return false;"><img src="<%=request.getContextPath()%>/resources/images/product/85x100/${product.productCode}_2.jpg" class="product-thumbnail-border" alt="" /></a></div>
-						<div class="col-md-3"></div>
-					</div>
+					
+						<div class="col-xs-4 col-sm-4 col-md-3" style="padding-right: 0px; padding-left: 0px;"><a href="<%=request.getContextPath()%>/resources/images/product/600x800/${product.productCode}.jpg"  onmouseover="swapImageProductDetail(this); return false;" onclick="swapImageProductDetail(this); return false;"><img src="<%=request.getContextPath()%>/resources/images/product/85x100/${product.productCode}.jpg" class=" product-thumbnail-border" alt="" /></a> &nbsp;</div>
+						<div class="col-xs-4 col-sm-4 col-md-3" style="padding-right: 0px; padding-left: 0px;"><a href="<%=request.getContextPath()%>/resources/images/product/600x800/${product.productCode}_1.jpg" onmouseover="swapImageProductDetail(this); return false;" onclick="swapImageProductDetail(this); return false;"><img src="<%=request.getContextPath()%>/resources/images/product/85x100/${product.productCode}_1.jpg" class="product-thumbnail-border" alt="" /></a>&nbsp;</div>
+						<div class="col-xs-4 col-sm-4 col-md-3" style="padding-right: 0px; padding-left: 0px;"><a href="<%=request.getContextPath()%>/resources/images/product/600x800/${product.productCode}_2.jpg" onmouseover="swapImageProductDetail(this); return false;" onclick="swapImageProductDetail(this); return false;"><img src="<%=request.getContextPath()%>/resources/images/product/85x100/${product.productCode}_2.jpg" class="product-thumbnail-border" alt="" /></a></div>
+						<div class="col-md-3 hidden-xs hidden-sm"></div>
 					
 			</div>
 		
-			<div class="col-md-5">
+			<div class="col-xs-12 col-sm-5 col-md-5">
 			
 				<c:set var="isProductAddedToWishlist" value="0" scope="page" />
 				<c:forEach items="${wishlistProductList}" var="wishlistProduct">
@@ -137,52 +125,51 @@
 				
 				<c:choose>
     				<c:when test="${isProductAddedToCart == 0}">
-    					<button id="btn_addToCart" type="submit" class="common-btn" onclick="addProductToCart('${product.productCode}');" > 
+    					<button id="btn_addToCart" class="common-btn" onclick="addProductToCart('${product.productCode}');" > 
     						Add To Cart&nbsp;&nbsp;<i class="fa fa-shopping-cart fa-lg"></i>
     					</button>
     				</c:when>
     				
     				<c:otherwise>
-    					<button type="button" class="common-btn-disabled" title="This product already added to cart">
+    					<button class="common-btn-disabled" title="This product already added to cart">
     						Added to Cart&nbsp;&nbsp;<i class="fa fa-shopping-cart fa-lg"></i>
     					</button>
     				</c:otherwise>
     			</c:choose>
       				<input name="productCode" type="text" value="${product.productCode}" style="display: none" />
-      				<button type="submit" class="common-btn"  onclick="checkoutPage('${product.productCode}'); return false;" >		
+      				<button class="common-btn"  onclick="checkoutPage('${product.productCode}'); return false;" >		
 						Buy Now&nbsp;&nbsp;<i class="fa fa-forward"></i> 
 					</button>
 			</div> 
 		</div>
 		</div>
 		
-		<div id="footer-container" >
-			<ul class="nav nav-pills">
-				<li><a href="/">© 2016 mkonlinestore.com</a></li>
-				<li><a href="#">Terms of Service</a></li>
-				<li><a href="#">Privacy</a></li>
-			</ul>
+		<div id="productReview" class="alert alert-info">
+			<jsp:include page="review.jsp" />
 		</div>
+		
 	</div>
 
-	<div id="body-area-left-container" class="col-md-2"></div>
+	<div class="col-md-2 hidden-xs hidden-sm"></div>
 	
-	<div class="col-md-12 padding-zero" id="footer-container">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-zero" id="footer-container">
 		<jsp:include page="footer.jsp" />
 	</div>
 
 	<jsp:include page="login-modal.jsp" />
 	
-	
 	<!-- JavaScript -->
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
-	
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/common.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
+<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/review.js"></script>
+	
+	
 </body>
 </html>

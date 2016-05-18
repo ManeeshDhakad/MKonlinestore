@@ -5,14 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/style.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css" />
 
 <title>MKonlinestore</title>
 
@@ -27,9 +19,8 @@
 	</div>
 
 	<div>
-		<div id="body-area-left-container" class="col-md-2"></div>
-
-		<div id="body-area-middle-container" class="col-md-8">
+		<div class="col-md-2 hidden-xs hidden-sm"></div>
+		<div id="body-area-middle-container" class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 			<div class="panel panel-success">
 				<div class="panel-heading">
 					<h1 class="panel-title">
@@ -56,7 +47,7 @@
 							<div class="col-md-4">
 								<input type="text" id="forgotPasswordEmail"
 									name="forgotPasswordEmail" class="common-input-text"
-									placeholder="Email" />
+									placeholder="Email*" />
 							</div>
 						</div>
 
@@ -66,7 +57,7 @@
 							<div class="col-md-4">
 								<input type="password" id="forgotNewPassword"
 									name="forgotNewPassword" class="common-input-text"
-									placeholder="New Password" "/>
+									placeholder="New Password*" "/>
 							</div>
 						</div>
 
@@ -76,7 +67,7 @@
 							<div class="col-md-4">
 								<input type="password" id="forgotConfirmNewPassword"
 									name="forgotConfirmNewPassword" class="common-input-text"
-									placeholder="Confirm New Password" />
+									placeholder="Confirm New Password*" />
 							</div>
 						</div>
 
@@ -97,27 +88,26 @@
 
 		</div>
 
-		<div id="body-area-left-container" class="col-md-2"></div>
+		<div class="col-md-2 hidden-xs hidden-sm"></div>
 	</div>
 
 	
-	<div class="col-md-12 padding-zero" id="footer-container">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-zero" id="footer-container">
 		<jsp:include page="footer.jsp" />
 	</div>
 	
 	<jsp:include page="login-modal.jsp" />
-
+	
 	<!-- JavaScript -->
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/common.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/resources/js/user-profile.js"></script>
+	
 
 </body>
 </html>

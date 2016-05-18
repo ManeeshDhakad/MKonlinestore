@@ -26,10 +26,8 @@
 		<jsp:include page="header-navbar.jsp" />
 	</div>
 	<div >
-		<div id="body-area-left-container" class="col-md-2"></div>
-
-		<div id="body-area-middle-container" class="col-md-8">
-			<div id="body-container">
+		<div class="col-md-2 hidden-xs hidden-sm"></div>
+		<div id="body-area-middle-container" class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 				<div id="div_successMessage" class="isa_success" style="display: none">
 					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     				<span id="successMessage">${message}</span>
@@ -83,29 +81,27 @@
   				</div>					
 			</div>
 
-			<div id="body-area-left-container" class="col-md-2"></div>
+			<div class="col-md-2 hidden-xs hidden-sm"></div>
 		</div>
 
-	</div>
+	
 
-	<div class="col-md-12 padding-zero" id="footer-container">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-zero" id="footer-container">
 		<jsp:include page="footer.jsp" />
 	</div>
 
 	<jsp:include page="login-modal.jsp" />
 
 	<!-- JavaScript -->
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js">
-		
-	</script>
-	<script type="text/javascript"
+<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/common.js"></script>
-		
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
+
 	
 </body>
 </html>

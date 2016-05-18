@@ -7,15 +7,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/style.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css" />
-		
 
 <title>MKonlinestore</title>
 
@@ -29,12 +20,9 @@
 		<jsp:include page="header-navbar.jsp" />
 	</div>
 
-	<div id="body-area-left-container" class="col-md-2"></div>
-
-	<div id="body-area-middle-container" class="col-md-8">
-
-		<div id="body-container">
-
+	<div class="col-md-2 hidden-xs hidden-sm"></div>
+	<div id="body-area-middle-container" class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+	
 			<div id="div_successMessage" class="isa_success"
 				style="display: none">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -45,8 +33,11 @@
 				<span id="errorMessage">${message}</span>
 			</div>
 
-			<jsp:include page="offer-slider.jsp" />
-
+			<div >
+				<jsp:include page="offer-slider.jsp" />
+			</div>
+			
+			<div>
 			<div id="new-arrivals" class="panel panel-success">
 				<div class="panel-heading">
 					<h1 class="panel-title">
@@ -59,8 +50,20 @@
 						<c:set var="newArrivalsCount" value="0" scope="page" />
 						<c:forEach items="${mansProductList}" var="mansProduct">
 						
-							<c:if test="${ newArrivalsCount < 3}">
-								<div class="col-md-4">
+							<c:if test="${ newArrivalsCount < 2}">
+								<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+									<form action="product-details" method="get">
+										<input name="productCode" type="text"
+											value="${mansProduct.productCode}" style="display: none" /> <input
+											type="image" src="<%=request.getContextPath()%>/resources/images/product/300x400/${mansProduct.productCode}.jpg"
+											title="${mansProduct.productName}" class="img-responsive"
+											alt="Submit"> ${mansProduct.productName} <br /> <strong>Rs.
+											${mansProduct.productPrice}</strong>
+									</form>
+								</div>
+							</c:if>
+							<c:if test="${ newArrivalsCount == 3}">
+								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 hidden-xs">
 									<form action="product-details" method="get">
 										<input name="productCode" type="text"
 											value="${mansProduct.productCode}" style="display: none" /> <input
@@ -80,6 +83,7 @@
 				</div>
 			</div>
 
+			</div>
 			<div id="deals-for-you" class="panel panel-success">
 				<div class="panel-heading">
 					<h1 class="panel-title">
@@ -93,8 +97,22 @@
 						<c:forEach items="${womansProductList}" var="womansProduct">
 							
 
-							<c:if test="${ dealsForYouCount < 3}">
-								<div class="col-md-4">
+							<c:if test="${ dealsForYouCount < 2}">
+								<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+									<form action="product-details" method="get">
+										<input name="productCode" type="text"
+											value="${womansProduct.productCode}" style="display: none" />
+										<input type="image"
+											src="<%=request.getContextPath()%>/resources/images/product/300x400/${womansProduct.productCode}.jpg"
+											title="${womansProduct.productName}" class="img-responsive"
+											alt="Submit"> ${womansProduct.productName} <br /> <strong>Rs.
+											${womansProduct.productPrice}</strong>
+									</form>
+								</div>
+							</c:if>
+							
+							<c:if test="${ dealsForYouCount == 3}">
+								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 hidden-xs">
 									<form action="product-details" method="get">
 										<input name="productCode" type="text"
 											value="${womansProduct.productCode}" style="display: none" />
@@ -114,28 +132,25 @@
 				</div>
 			</div>
 		</div>
-	</div>
-    
-	<div id="body-area-left-container" class="col-md-2"></div>
 	
-	<div class="col-md-12 padding-zero" id="footer-container">
+	<div class="col-md-2 hidden-xs hidden-sm"></div>
+   
+	<div class="col-md-12 col-xs-12 col-sm-12 padding-zero" id="footer-container">
 		<jsp:include page="footer.jsp" />
 	</div>
 	
 	<jsp:include page="login-modal.jsp" />
 	
 	<!-- JavaScript -->
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/common.js"></script>
-
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
 	
-
 </body>
 	
 	
