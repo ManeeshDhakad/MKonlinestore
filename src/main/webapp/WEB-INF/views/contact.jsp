@@ -22,8 +22,12 @@
 		<div class="col-md-2 hidden-xs hidden-sm"></div>
 		<div id="body-area-middle-container" class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 			<div class="panel panel-success">
-				<div class="panel-heading">
-   					<h1 class="panel-title"><strong>Contact us</strong></h1>
+				<div class="panel-heading" align="center">
+   					<h3>Contact us</h3>  
+   					<p>Phone : +91 7847827212  <br>
+   					Email : <a style="color: #848484" href="mailto:mkonlinestore16@gmail.com?subject=Customer%20Feedback">mkonlinestore16@gmail.com</a>
+   					</p>
+   					
   				</div>
   				
   				<div class="panel-body">
@@ -36,78 +40,37 @@
     				<span id="errorMessage">${message}</span>
 				</div>
 
-				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-md-6">
-						<div class="panel panel-info">
-							<div class="panel-heading">
-   							 	<h1 class="panel-title">MKonlinestore.com Contact Details</h1>
-  							</div>
- 						 	<div class="panel-body">
-								Phone : 08010101010 <br /> 
-								Email : mkonlinestore@gmail.com <br />
-								Address : Bangalore Karnataka, India
+				<div align="center" >
+								<h4>Send your feedback</h4>
 								
-								</p>
-  							</div>
-  						</div>
-						
-					</div>
-
-					<div class="col-xs-12 col-sm-6 col-md-6">
-						<div class="panel panel-info">
-							<div class="panel-heading">
-   							 	<h1 class="panel-title">Send your feedback</h1>
-  							</div>
- 						 	
- 						 	<div class="panel-body">
- 						 		<div class="row">
-									<div class="col-md-4">Name</div>
-
-									<div class="col-md-8">
-										<input type="text" id="feedbackMailName" name="feedbackMailName" class="common-input-text" placeholder="Name" />
-									</div>
+  						
+ 						 		<div class="input-group"    style="margin-left: 9%">
+									<span class="input-group-addon glyphicon glyphicon-user" id="icon_feedbackMailName"></span>
+									<input type="text" id="feedbackMailName" name="feedbackMailName" class="form-control common-input-transparent" aria-describedby="icon_feedbackMailName" placeholder="Enter Name*" style="width: 80%" />
 								</div>
 								
-								<div class="row">
-									<div class="col-md-4">Email</div>
-
-									<div class="col-md-8">
-										<input type="text" id="feedbackMailEmail" name="feedbackMailEmail" class="common-input-text" placeholder="Email" />
-									</div>
+								<div class="input-group" style="margin-left: 9%">
+									<span class="input-group-addon glyphicon glyphicon-envelope" id="icon_feedbackMailEmail"></span>
+									<input type="text" id="feedbackMailEmail" name="feedbackMailEmail" class="form-control common-input-transparent" aria-describedby="icon_feedbackMailEmail" placeholder="Enter Email*" style="width: 80%" />
 								</div>
 								
-								<div class="row">
-									<div class="col-md-4">Subject</div>
-
-									<div class="col-md-8">
-										<input type="text" id="feedbackMailSubject" name="feedbackMailSubject" class="common-input-text" placeholder="Subject" />
-									</div>
+								<div class="input-group" style="margin-left: 9%">
+									<span class="input-group-addon glyphicon glyphicon-header" id="icon_feedbackMailSubject"></span>
+									<input type="text" id="feedbackMailSubject" name="feedbackMailSubject" class="form-control common-input-transparent" aria-describedby="icon_feedbackMailSubject" placeholder="Enter Subject*" style="width: 80%"  />
 								</div>
 								
-								<div class="row">
-									<div class="col-md-4">Message</div>
-
-									<div class="col-md-8">
-										<textarea id="feedbackMailMessage" name="feedbackMailMessage" class="common-input-textarea" placeholder="Messages" style="height : 100px;" ></textarea>
-									</div>
+								<div class="input-group" style="margin-left: 9%">
+									<span class="input-group-addon glyphicon glyphicon-edit" id="icon_feedbackMailMessage"></span>
+									<textarea id="feedbackMailMessage" name="feedbackMailMessage" class="form-control common-input-transparent" aria-describedby="icon_feedbackMailMessage" placeholder="Enter Messages*" style="height : 100px; width: 80%" ></textarea>
 								</div>
 								
-								<div class="row">
-									<div class="col-md-4"></div>
-
-									<div class="col-md-8">
-										<input type="submit" class="common-btn" onclick="sendFeedbackMail(); return false;" value="Send Mail" />
-									</div>
+								<div class="input-group" style="margin-left: 9%">
+									<span class="input-group-addon glyphicon glyphicon-send" id="icon_sendMailMessage" style="display: none"></span>
+									<input type="submit" class="form-control common-btn" onclick="sendFeedbackMail(); return false;" style="width: 82%; height: 45px" aria-describedby="icon_sendMailMessage" value="send mail" />
 								</div>
-								 
 								
-								
-								
-								
-							</div>
 						</div>
-					</div>
-				</div>
+				
 			</div>
 			</div>
 
@@ -122,7 +85,9 @@
 
 	<jsp:include page="login-modal.jsp" />
 	
+	
 	<!-- JavaScript -->
+	
 <script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript"
@@ -132,6 +97,10 @@
 <script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
 	
-
+<script>
+	$(document).ready(function(){
+		$("#menu_contact").addClass("mainmenu-underline");
+	});
+</script>
 </body>
 </html>

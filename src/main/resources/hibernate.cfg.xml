@@ -10,6 +10,7 @@
         <mapping class="com.mkonlinestore.model.Cart" />
         <mapping class="com.mkonlinestore.model.Wishlist" />
         <mapping class="com.mkonlinestore.model.Order" />
+        <mapping class="com.mkonlinestore.model.Review" />
     </session-factory>
         
 </hibernate-configuration>

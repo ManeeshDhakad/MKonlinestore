@@ -21,10 +21,10 @@
 	<div>
 		<div class="col-md-2 hidden-xs hidden-sm"></div>
 		<div id="body-area-middle-container" class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-			<div class="panel panel-success">
-				<div class="panel-heading">
+			<div class="panel panel-success" align="center">
+				<div class="panel-heading" >
 					<h1 class="panel-title">
-						<strong>Forgot Password? Update new password!</strong>
+						<strong>Update new password</strong>
 					</h1>
 				</div>
 
@@ -39,45 +39,31 @@
 						<span id="errorMessage">${message}</span>
 					</div>
 
-					<div>
+					<div align="center">
 
-						<div class="row">
-							<div class="col-md-4">Email</div>
-
-							<div class="col-md-4">
-								<input type="text" id="forgotPasswordEmail"
-									name="forgotPasswordEmail" class="common-input-text"
-									placeholder="Email*" />
-							</div>
+      					<div class="input-group" style="margin-left: 9%">
+      						<span class="input-group-addon glyphicon glyphicon-envelope" id="icon_forgotPasswordEmail"></span>
+							<input type="text" id="forgotPasswordEmail" name="forgotPasswordEmail" aria-describedby="icon_forgotPasswordEmail" style="width: 80%" class="form-control common-input-transparent" placeholder="Enter Email*" />
 						</div>
 
-						<div class="row">
-							<div class="col-md-4">New Password</div>   
-
-							<div class="col-md-4">
-								<input type="password" id="forgotNewPassword"
-									name="forgotNewPassword" class="common-input-text"
-									placeholder="New Password*" "/>
-							</div>
+						<div class="input-group" style="margin-left: 9%">
+      						<span class="input-group-addon glyphicon glyphicon-lock" id="icon_forgotNewPassword"></span>
+							<input type="password" id="forgotNewPassword" aria-describedby="icon_forgotNewPassword" style="width: 80%"
+									name="forgotNewPassword" class="form-control common-input-transparent" placeholder="Enter New Password*" />
 						</div>
 
-						<div class="row">
-							<div class="col-md-4">Confirm New Password</div>
-
-							<div class="col-md-4">
-								<input type="password" id="forgotConfirmNewPassword"
-									name="forgotConfirmNewPassword" class="common-input-text"
-									placeholder="Confirm New Password*" />
-							</div>
+						<div class="input-group" style="margin-left: 9%">
+      						<span class="input-group-addon glyphicon glyphicon-lock" id="icon_forgotConfirmNewPassword"></span>
+							<input type="password" id="forgotConfirmNewPassword" aria-describedby="icon_forgotConfirmNewPassword" style="width: 80%"
+									name="forgotConfirmNewPassword" class="form-control common-input-transparent"
+									placeholder="Enter Confirm New Password*" />
+							
 						</div>
 
-						<div class="row">
-							<div class="col-md-4"></div>
-
-							<div class="col-md-4">
-								<input type="submit" class="common-btn" value="Save Changes"
-									onclick="saveForgotPassword(); return false;" />
-							</div>
+						<div class="input-group" style="margin-left: 9%">
+      						<span class="input-group-addon glyphicon glyphicon-send" id="icon_savePasswordBTN" style="display: none"></span>
+							<input type="submit" style="height: 45px; width: 82%" id="savePasswordBTN" class="form-control common-btn" value="Save Changes" aria-describedby="icon_savePasswordBTN" onclick="saveForgotPassword(); return false;" />
+						
 						</div>
 
 					</div>
@@ -107,7 +93,8 @@
 		src="<%=request.getContextPath()%>/resources/js/common.js"></script>
 <script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
-	
+<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/user-profile.js"></script>
 
 </body>
 </html>

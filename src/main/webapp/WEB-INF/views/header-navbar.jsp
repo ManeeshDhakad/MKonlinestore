@@ -24,7 +24,7 @@
 %>
 
 <div id="loading" >
-  	<img id="loading-image" src="<%=request.getContextPath()%>/resources/images/loading.gif" alt="Loading..." />
+  	<img id="loading-image" class="img-responsive" src="<%=request.getContextPath()%>/resources/images/loading.gif" alt="Loading..." />
 </div>
 
 <c:if test="${loginUserSesson != null}">
@@ -36,25 +36,27 @@
 		%>
 </c:if>
 
-<div id="header-navbar" >
+<div id="header-navbar" style="margin-bottom: 15px">
 	<nav class="navbar header-margin"  style="height : 50px">
 		<section class="ccblue header-sticky">
 			<div class="mainmenu row">
 			
-				<div class="col-md-1 hidden-xs"></div>
+				<div class="col-md-2 hidden-xs"></div>
 				
-				<div class="col-xs-12 col-sm-4 col-md-3">
-				
-					<a href="home" ><img
-						style="height: 48px; width: 75px"
+				<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
+					<a href="home">
+					<img class="hidden-sm hidden-md hidden-lg"
+						style="height: 37px; width: 75px; margin-top: 5px"
 						src="<%=request.getContextPath()%>/resources/images/mk-logo.png" />
-						<img class="hidden-xs hidden-sm hidden-md"
-						style="height: 48px; width: 150px"
-						src="<%=request.getContextPath()%>/resources/images/onlinestore1.png" />
+						
+						<img class="hidden-xs"
+						style="height: 37px; width: 160px; margin-top: 5px"
+						src="<%=request.getContextPath()%>/resources/images/mkonlinestore.png" />
 					</a> 
 						
-					<button class="btn btn-primary padding-zero dropdown-toggle hidden-sm hidden-md hidden-lg" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    					Onlinestore
+					<button class="dropdown-toggle hidden-sm hidden-md hidden-lg" style="background: initial; border:none" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    					<img style="height: 30px; width: 60px"
+						src="<%=request.getContextPath()%>/resources/images/drop-down.png" />
     					<span class="caret"></span>
   					</button>
   					<ul class="dropdown-menu padding-zero" aria-labelledby="dropdownMenu">
@@ -63,7 +65,7 @@
 							class="glyphicon glyphicon glyphicon-log-in"></span> Log In	</a></li>
 						
 						<% } else {%>
-							<% userName = userName.substring(0, userName.indexOf(" ") - 0); %>
+							
 							<li><a href="user-profile?type=1"><span class="glyphicon glyphicon-user"></span> <%= userName%></a></li>
 						<% } %>
   					
@@ -82,7 +84,7 @@
    						
   					</ul>
   					
-  					<button class="btn btn-primary hidden-sm hidden-md hidden-lg padding-zero"  type="button" onclick="goToViewCart(); return false;">
+  					<button class="btn btn-primary hidden-sm hidden-md hidden-lg " style="background: initial; border: none;" type="button" onclick="goToViewCart(); return false;">
  						 <span class="glyphicon glyphicon-shopping-cart"> </span>
 						 <c:if test="${cartProductCount == null}">
 							<c:set var="cartProductCount" value="0"></c:set>
@@ -90,39 +92,34 @@
 							CART <strong><span class="badge crtProductCount" >${cartProductCount}</span></strong> 
 					</button>
 					
-  					
-
-					
 				</div>  
-				<div class="col-sm-8 col-md-8 hidden-xs">
+				<div class="col-sm-8 col-md-8 col-lg-8 hidden-xs">
 					<ul class="nav navbar-nav">
-						<li ><a href="product-catelog?category=mens"><span> MEN </span></a></li>
-						<li ><a href="product-catelog?category=womens"><span> WOMEN </span></a></li>
-						<li ><a href="product-catelog?category=kids"><span> KID </span></a></li>
+						<li id="menu_man" ><a href="product-catelog?category=mens"><span> MEN </span></a></li>
+						<li id="menu_woman" ><a href="product-catelog?category=womens"><span> WOMEN </span></a></li>
+						<li id="menu_kid" ><a href="product-catelog?category=kids"><span> KID </span></a></li>
 					
-						<li class="hidden-xs hidden-sm hidden-md"><a href="about"><span
+						<li id="menu_about" class="hidden-xs hidden-sm hidden-md" ><a href="about"><span
 							class="glyphicon glyphicon-info-sign"></span> About</a></li>
-						<li class="hidden-xs hidden-sm hidden-md"><a href="contact"><span
+						<li id="menu_contact" class="hidden-xs hidden-sm hidden-md"><a href="contact"><span
 							class="glyphicon glyphicon-phone-alt"></span> Contact</a></li>
-						<li class="hidden-xs">
-							<button class="btn btn-primary" style="padding: 13px 10px 13px 10px;" type="button" onclick="goToViewCart(); return false;">
+						<li id="menu_cart" class="hidden-xs">
+							<a  href="#" onclick="goToViewCart(); return false;">
  						 		<span class="glyphicon glyphicon-shopping-cart"> </span>
 						 		<c:if test="${cartProductCount == null}">
 									<c:set var="cartProductCount" value="0"></c:set>
 								</c:if>
 									CART <strong><span class="badge crtProductCount" >${cartProductCount}</span></strong> 
-							</button>
+							</a>
 						</li>
 					
-					
-					
     					<%if(userName == null || userName.length() == 0){ %>
- 								<li class="hidden-xs"><a data-toggle="modal" data-target="#login-modal" style="cursor: pointer"> <span
+ 								<li class="hidden-xs"><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#login-modal" style="cursor: pointer"> <span
 								class="glyphicon glyphicon glyphicon-log-in"></span> Log In	</a></li>
 					
 						<% } else { %>
 							
-							<li class="dropdown hidden-xs"><a href="#" class="dropdown-toggle"
+							<li id="menu_profile" class="dropdown hidden-xs"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false">Hi <span id="headerUserName"><%= userName%></span><span class="caret"></span></a>
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
@@ -144,14 +141,16 @@
 			</div>
 		</section>
 	</nav>
+	
+	
 
 </div>
+
 <div class="visible-xs-block isa_error">
 	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <i class="fa fa-warning"></i> Please increase window size for better experience.
 </div>
 
-<br>
 
 
 <!-- Refresh page on back button -->
@@ -162,5 +161,4 @@
 
 <!-- Success and error messages -->
 <input type="hidden" id="profileType" value="${profileType}">
-
 

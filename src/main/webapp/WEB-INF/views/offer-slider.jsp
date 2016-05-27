@@ -1,4 +1,4 @@
-<div id="product-offers"  class="carousel slide hidden-xs" style="width: 100% " data-ride="carousel">
+<div id="product-offers"  class="carousel slide hidden-xs" style="width: 100%; height:300px" data-ride="carousel">
   	<!-- Indicators -->
   	<ol class="carousel-indicators" >
    		<li data-target="#product-offers" data-slide-to="0" class="active"></li>
@@ -10,7 +10,7 @@
   	</ol>
 
   	<!-- Wrapper for slides -->
-  	<div class="carousel-inner" role="listbox" style="width: 100% ">
+  	<div class="carousel-inner" role="listbox" style="width: 100%; height:300px">
     	<div class="item active">
       		<a href="product-catelog?category=mens" ><img src="<%=request.getContextPath()%>/resources/images/offer/offer-1.jpg" class="img-responsive" alt="Offer on Man's product"></a>
     	</div>
@@ -48,6 +48,6 @@
     	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     	<span class="sr-only">Next</span>
   	</a>
-  	<br>
+  	
 </div>
-
+<br>

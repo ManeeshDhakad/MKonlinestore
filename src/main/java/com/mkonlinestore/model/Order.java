@@ -1,5 +1,6 @@
 package com.mkonlinestore.model;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -42,13 +43,13 @@ public class Order {
 	private String orderStatus;
 	
 	@Column(name="orderDate")
-	private Timestamp orderDate;
+	private String orderDate;
 	
 	public Order() {}
 			
 	public Order(int orderId, int userId, int addressId, String productCode,
 			String productName, double productPrice, int productQuantity,
-			String orderCode, String orderStatus, Timestamp orderDate) {
+			String orderCode, String orderStatus, String orderDate) {
 		super();
 		this.orderId = orderId;
 		this.userId = userId;
@@ -137,11 +138,11 @@ public class Order {
 	}
 	
 
-	public Timestamp getOrderDate() {
+	public String getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(Timestamp orderDate) {
+	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
 

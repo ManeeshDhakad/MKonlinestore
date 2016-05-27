@@ -1,7 +1,7 @@
+<%@page import="java.sql.Timestamp"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false"  pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -55,115 +55,93 @@
 
 				<div class="col-xs-12 col-sm-9 col-md-9" style="padding: 0px 0px 0px 0px">
 
-					<div id="div_userPersonalInfo" class="panel panel-info" >
+					<div id="div_userPersonalInfo" class="panel panel-info" align="center">
 						<div class="panel-heading">
 							<h1 class="panel-title">Personal Information</h1>
 						</div>
 
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-4">Name</div>
-
-								<div class="col-md-5">
-									<input type="text" id="profileUserName" name="profileUserName"
-										value="${user.userName}" class="common-input-text"
-										placeholder="Enter Name*" />
-								</div>
+						<div class="panel-body" >
+							<div class="input-group" style="margin-left: 9%">
+      							<span class="input-group-addon glyphicon glyphicon-user" id="icon_profileUserName"></span>
+								<input type="text" id="profileUserName" name="profileUserName" value="${user.userName}" class="form-control common-input-transparent"
+										style="width: 80%" placeholder="Enter Name*" aria-describedby="icon_profileUserName" />
 							</div>
 
-							<div class="row">
-								<div class="col-md-4">Email</div>
-
-								<div class="col-md-5">
+							<div class="input-group" style="margin-left: 9%">
+      							<span class="input-group-addon glyphicon glyphicon-envelope" id="icon_profileUserEmail"></span>
 									<input type="text" id="profileUserEmail"
-										name="profileUserEmail" value="${user.userEmail}"
-										class="common-input-text" placeholder="Enter Email*" />
-								</div>
+										name="profileUserEmail" value="${user.userEmail}" aria-describedby="icon_profileUserEmail"
+										style="width: 80%" class="form-control common-input-transparent" placeholder="Enter Email*" />
 							</div>
 
-							<div class="row">
-								<div class="col-md-4">Mobile</div>
-
-								<div class="col-md-5">
-									<c:set var="userMobile" value="${user.userMobile}" scope="page" />
-									<c:if test="${user.userMobile == 0}">
-										<c:set var="userMobile" value="" scope="page"></c:set>
-									</c:if>
-									<input type="text" id="profileUserMobile"
-										name="profileUserMobile" class="common-input-text"
-										value="${userMobile}" placeholder="Mobile" />
-								</div>
+							<div class="input-group" style="margin-left: 9%">
+      							<span class="input-group-addon glyphicon glyphicon-earphone" id="icon_userMobile"></span>
+								<c:set var="userMobile" value="${user.userMobile}" scope="page" />
+								<c:if test="${user.userMobile == 0}">
+									<c:set var="userMobile" value="" scope="page"></c:set>
+								</c:if>
+								<input type="text" id="profileUserMobile" name="profileUserMobile" class="form-control common-input-transparent" aria-describedby="icon_userMobile"
+										style="width: 80%" value="${userMobile}" placeholder="Enter Mobile" />
 							</div>
-							<div class="row">
-								<div class="col-md-4"></div>
-
-								<div class="col-md-5">
-									<input type="submit" class="common-btn" value="Save Changes"
+							<div class="input-group" style="margin-left: 9%">
+      							<span class="input-group-addon glyphicon glyphicon-send" id="icon_updateUserInfoBTN" style="display: none"></span>
+									<input style="height: 45px; width: 82%" id="updateUserInfoBTN" type="submit" class="form-control common-btn" value="Save Changes" aria-describedby="icon_updateUserInfoBTN"
 										onclick="saveUsersPersonalInfo('${user.userName}', '${user.userEmail}', '${userMobile}'); return false;" />
-								</div>
+								
 							</div>
 
 						</div>
 					</div>
 
-					<div id="div_userPasswordUpdate" class="panel panel-info" style="display: none">
+					<div id="div_userPasswordUpdate" class="panel panel-info" style="display: none" align="center">
 						<div class="panel-heading">
 							<h1 class="panel-title">Update Your Password</h1>
 						</div>
 
 						<div class="panel-body">
 
-							<div class="row">
-								<div class="col-md-4">Old Password</div>
-
-								<div class="col-md-5">
-									<input type="password" id="profileUserOldPassword"
-										name="profileUserOldPassword" class="common-input-text"
+							<div class="input-group" style="margin-left: 9%">
+      							<span class="input-group-addon glyphicon glyphicon-lock" id="icon_profileUserOldPassword"></span>
+								<input type="password" id="profileUserOldPassword" aria-describedby="icon_profileUserOldPassword"
+										name="profileUserOldPassword" class="form-control common-input-transparent" style="width: 80%"
 										placeholder="Enter Old Password*" />
-								</div>
 							</div>
 
-							<div class="row">
-								<div class="col-md-4">New Password</div>
-
-								<div class="col-md-5">
-									<input type="password" id="profileUserNewPassword"
-										name="profileUserNewPassword" class="common-input-text"
-										placeholder="Enter New Password*" "/>
-								</div>
+							<div class="input-group" style="margin-left: 9%">
+      							<span class="input-group-addon glyphicon glyphicon-lock" id="icon_profileUserNewPassword"></span>
+									<input type="password" id="profileUserNewPassword" aria-describedby="icon_profileUserNewPassword"
+										name="profileUserNewPassword" class="form-control common-input-transparent" style="width: 80%"
+										placeholder="Enter New Password*" />
+								
 							</div>
 
-							<div class="row">
-								<div class="col-md-4">Confirm New Password</div>
-
-								<div class="col-md-5">
-									<input type="password" id="profileUserConfirmNewPassword"
-										name="profileUserConfirmNewPassword" class="common-input-text"
+							<div class="input-group" style="margin-left: 9%">
+      							<span class="input-group-addon glyphicon glyphicon-lock" id="icon_profileUserConfirmNewPassword"></span>
+									<input type="password" id="profileUserConfirmNewPassword" aria-describedby="icon_profileUserConfirmNewPassword"
+										name="profileUserConfirmNewPassword" class="form-control common-input-transparent" style="width: 80%"
 										placeholder="Enter Confirm New Password*" />
-								</div>
+							
 							</div>
 
-							<div class="row">
-								<div class="col-md-4"></div>
-
-								<div class="col-md-5">
-									<input type="submit" class="common-btn" value="Save Changes"
+							<div class="input-group" style="margin-left: 9%">
+      							<span class="input-group-addon glyphicon glyphicon-send" id="icon_updatePasswordBTN" style="display: none"></span>
+								<input style="height: 45px; width: 82%" id="updatePasswordBTN" type="submit" class="form-control common-btn" value="Save Changes" aria-describedby="icon_updatePasswordBTN"
 										onclick="updateUserPassword(); return false;" />
-								</div>
+							
 							</div>
 
 						</div>
 					</div>
 
 					<div id="div_userAddressInfo" class="panel panel-default" style="display: none">
-						<div class="panel-heading">
+						<div class="panel-heading" align="center">
 							<h1 class="panel-title">Manage Address Book</h1>
 						</div>
 
 						<div class="panel-body">
 
 							<button class="common-btn-border"
-								style="width: 35%" type="button" data-toggle="collapse"
+								style="width: 30%" type="button" data-toggle="collapse"
 								data-target="#div_addNewAddress" aria-expanded="false"
 								aria-controls="div_addNewAddress">Add New Address</button>
 							<br>
@@ -283,7 +261,7 @@
 					</div>
 
 					<div id="div_userOrderHistory" class="panel panel-info" style="display: none">
-						<div class="panel-heading">
+						<div class="panel-heading" align="center">
 							<h1 class="panel-title">Order History</h1>
 						</div>
 
@@ -319,11 +297,13 @@
 											<strong>QTY : ${orderHistoryProduct.productQuantity}</strong> <br> 
 											<strong>Price : ${orderHistoryProduct.productPrice}</strong><br>
 											
-											<span style="border: 1px solid orange; padding: 3px 3px 3px 3px;">Order ID : ${orderHistoryProduct.orderCode}</span>
+											<span><strong>Order ID : </strong>${orderHistoryProduct.orderCode}</span>
 											</td>
 
 											
-											<td>${orderHistoryProduct.orderDate}</td>
+											<td>
+												${orderHistoryProduct.orderDate}												
+											</td>
 											
 											<td>
 												<strong>${orderHistoryProduct.productQuantity * orderHistoryProduct.productPrice}</strong>
@@ -351,7 +331,7 @@
 
 									<c:if test="${orderProductCount == 0}">
 										<tr>
-											<td colspan="5"><strong>Order History Is Empty.</strong></td>
+											<td colspan="5" align="center">Order History Is Empty.</td>
 										</tr>
 									</c:if>
 
@@ -361,7 +341,7 @@
 					</div>
 
 					<div id="div_userWishList" class="panel panel-info" style="display: none">
-						<div class="panel-heading">
+						<div class="panel-heading" align="center">
 							<h1 class="panel-title">Wishlist</h1>
 						</div>
 
@@ -432,7 +412,7 @@
 
 									<c:if test="${wishlistProductCount == 0}">
 										<tr>
-											<td colspan="5"><strong>Wishlist Is Empty.</strong></td>
+											<td colspan="5" align="center">Wishlist Is Empty.</td>
 										</tr>
 									</c:if>
 
@@ -441,7 +421,7 @@
 						</div>
 					</div>
 				</div>
-
+				<a href="#" class="back-to-top">Back to Top</a>	
 			</div>
 			
 		</div>
@@ -466,6 +446,10 @@
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
 <script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/user-profile.js"></script>
-
+<script>
+	$(document).ready(function(){
+		$("#menu_profile").addClass("mainmenu-underline");
+	});
+</script>
 </body>
 </html>

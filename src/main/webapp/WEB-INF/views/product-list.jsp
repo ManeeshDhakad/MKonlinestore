@@ -41,6 +41,9 @@
 					</c:choose>
 				</ol>
 			</div>
+			
+			<!-- Product category -->
+			<input type="hidden" id="productCategory" value="${productCategory}">
 
 			<div class="panel-body">
 				<div id="div_successMessage" class="isa_success" style="display: none">
@@ -66,8 +69,56 @@
 								type="image"
 								src="<%=request.getContextPath()%>/resources/images/product/300x400/${product.productCode}.jpg"
 								title="${product.productName}" class="img-responsive"
-								alt="Submit"> ${product.productName} <br /> <strong>Rs.
-								${product.productPrice} &nbsp;&nbsp;</strong>
+								alt="Submit"> ${product.productName} <br /> 
+								<c:set var="reviewRating" value="${ratings[count]}" scope="page" />
+								<c:choose>
+								<c:when test="${reviewRating == 0 }">
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								</c:when>
+								<c:when test="${reviewRating < 2 }">
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								</c:when>
+								<c:when test="${reviewRating < 3 }">
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								</c:when>
+								<c:when test="${reviewRating < 4 }">
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								</c:when>
+								<c:when test="${reviewRating < 5 }">
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								</c:when>
+								<c:when test="${reviewRating == 5 }">
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								</c:when>
+								
+								</c:choose>(${ reviews[count]})
+								&nbsp;&nbsp;&nbsp;
+								<strong><span>Rs.	${product.productPrice} &nbsp;&nbsp;</span></strong>
+								
 
 						</form>
 					</div>
@@ -90,15 +141,23 @@
 						<span>Thats all we have, Enjoy shopping!</span>
 					</div>
 				</c:if>
+				<c:if test="${ count == 0}">
+					<div style="text-align: center">
+						
+						<span>There are no products in this category!</span>
+					</div>
+				</c:if>
 					
-					
+				<a href="#" class="back-to-top">Back to Top</a>	
 			</div>
 		</div>
 
-	
+		
 	</div>
 	
-	<div class="col-md-2 hidden-xs hidden-sm"></div>
+	<div class="col-md-2 hidden-xs hidden-sm">
+	
+	</div>
 	
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-zero" id="footer-container">
 		<jsp:include page="footer.jsp" />
@@ -108,6 +167,9 @@
 
 
 <!-- JavaScript -->
+<script type="text/javascript">
+		$("#menu_man").addClass("menu-underline");
+</script>
 <script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript"
@@ -117,6 +179,21 @@
 <script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
 
-
+<script>
+	$(document).ready(function(){
+		var category = document.getElementById('productCategory').value;
+		
+		if(category == 1) {
+			$("#menu_man").addClass("mainmenu-underline");
+		}
+		else if(category == 2) {
+			$("#menu_woman").addClass("mainmenu-underline");
+		}
+		else if(category == 3) {
+			$("#menu_kid").addClass("mainmenu-underline");
+		}
+		
+	});
+</script>
 </body>
 </html>

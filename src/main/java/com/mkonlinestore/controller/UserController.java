@@ -103,8 +103,6 @@ public class UserController {
 			user.setUserEmail(userDetail[1].toLowerCase());
 			user.setUserPassword(userDetail[2]);
 				
-			System.out.println("\n\n sign up \n\n");
-			// Signup user
 			if(userService.signupUser(user)) 
 				result = Constants.SIGNUP_SUCCESS;
 			else

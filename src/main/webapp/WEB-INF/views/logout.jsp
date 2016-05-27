@@ -126,6 +126,7 @@
 						</c:forEach>
 					</div>
 				</div>
+				<a href="#" class="back-to-top">Back to Top</a>	
 			</div>
 		</div>
 	

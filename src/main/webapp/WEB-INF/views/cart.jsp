@@ -139,7 +139,7 @@
 									</tr>
 
 									<tr>
-										<td colspan="2"><br>
+										<td colspan="2" style="width: 30%"><br>
 											<form action="home" method="get">
 												<button class="common-btn">
 														<i class="fa fa-backward"></i> &nbsp;&nbsp;Continue Shopping
@@ -148,7 +148,7 @@
 										</td>
 										
 										<td></td>
-										<td colspan="2"><br>
+										<td colspan="2" style="width: 25%"><br>
 
 												<button class="common-btn"
 													onclick="checkoutPage('cart'); return false;" >
@@ -179,6 +179,7 @@
 	<jsp:include page="login-modal.jsp" />
 	
 	<!-- JavaScript -->
+	
 <script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript"
@@ -187,7 +188,11 @@
 		src="<%=request.getContextPath()%>/resources/js/common.js"></script>
 <script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
-	
+<script>
+	$(document).ready(function(){
+		$("#menu_cart").addClass("mainmenu-underline");
+	});
+</script>
 	
 </body>
 </html>

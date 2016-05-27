@@ -79,6 +79,12 @@
 								scope="page" />
 
 						</c:forEach>
+						
+						<c:if test="${newArrivalsCount  == 0}"> 
+							<div style="text-align: center">
+								<span>New arrivals not yet available!</span>
+							</div>
+						</c:if>
 					</div>
 				</div>
 			</div>
@@ -128,8 +134,17 @@
 							<c:set var="dealsForYouCount" value="${dealsForYouCount + 1}"
 								scope="page" />
 						</c:forEach>
+						
+						<c:if test="${dealsForYouCount  == 0}"> 
+							<div style="text-align: center">
+								<span>You don't have any deals for now!</span>
+							</div>
+						</c:if>
+						
 					</div>
+					
 				</div>
+				<a href="#" class="back-to-top">Back to Top</a>	
 			</div>
 		</div>
 	
@@ -150,7 +165,7 @@
 		src="<%=request.getContextPath()%>/resources/js/common.js"></script>
 <script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
-	
+
 </body>
 	
 	

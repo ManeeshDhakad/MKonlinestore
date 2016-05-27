@@ -10,12 +10,9 @@
 				<div style="color: white; font-size: 18px">
 					<div class="col-md-2 hidden-xs"></div>
 					<div class="col-xs-12 col-sm-4 col-md-4">
-						<a href="home"><img
-							style="height: 50px; width: 70px"
-							src="<%=request.getContextPath()%>/resources/images/mk-logo.png" />
-							<img class="hidden-xs hidden-sm"
-							style="height: 50px; width: 130px"
-							src="<%=request.getContextPath()%>/resources/images/onlinestore1.png" />
+						<a href="home">
+							<img style="height: 50px; width: 180px"
+							src="<%=request.getContextPath()%>/resources/images/mkonlinestore.png" />
 						</a>   
 					</div>
 					<div class="col-sm-6 col-md-6 hidden-xs" >

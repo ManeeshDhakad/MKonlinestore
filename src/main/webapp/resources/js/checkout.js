@@ -5,7 +5,7 @@ function goToPayment() {
 		$("#loading").css('display','none');
 	}, 1000);
 	
-	$("#div_successMessage").html(successTitle + "Order Summary Edited Successfully. Please fill payment details.");
+	$("#successMessage").html(successTitle + "Please fill payment details.");
 	$("#checkoutOrderSummaryCompleted").removeAttr('style');
 	
 	// Switch to Payment 
@@ -28,7 +28,7 @@ function makeDeliveryAddress(addressId) {
 			if(data.indexOf("fa-check") > -1) {
 				$("#div_successMessage").css('display','block');
 				$("#div_errorMessage").css('display','none');
-				$("#div_successMessage").html( data);
+				$("#successMessage").html( data);
 				$("#checkoutAddressCompleted").removeAttr('style');
 								
 				// Switch to Order Summary
@@ -40,7 +40,7 @@ function makeDeliveryAddress(addressId) {
 			else {
 				$("#div_successMessage").css('display','none');
 				$("#div_errorMessage").css('display','block');
-				$("#div_errorMessage").html(data);
+				$("#errorMessage").html(data);
 			}
 		}
 	});
@@ -85,12 +85,12 @@ function updateCheckoutProductQunatity(code, price, qty) {
 				document.getElementById("paymentCardAmount").value = "Amount Payable :" + estimatedTotal;
 				$("#div_successMessage").css('display','block');
 				$("#div_errorMessage").css('display','none');
-				$("#div_successMessage").html( data);
+				$("#successMessage").html( data);
 			}
 			else {
 				$("#div_successMessage").css('display','none');
 				$("#div_errorMessage").css('display','block');
-				$("#div_errorMessage").html(data);
+				$("#errorMessage").html(data);
 				$('#select_' + productCode +   ' option[value='+ oldQTY +']').attr('selected','selected');
 			}
 		}
@@ -123,23 +123,18 @@ function removeProductFromCheckout(code) {
 				}
 				$("#div_successMessage").css('display','block');
 				$("#div_errorMessage").css('display','none');
-				$("#div_successMessage").html( data);
+				$("#successMessage").html( data);
 			}
 			else {
 				$("#div_successMessage").css('display','none');
 				$("#div_errorMessage").css('display','block');
-				$("#div_errorMessage").html(data);
+				$("#errorMessage").html(data);
 			}
 		}
 	});
 }
 
-function orderCompletion() { 
-	$("#loading").css('display','block');
-	setTimeout(function(){
-		$("#loading").css('display','none');
-	}, 1000);
-	
+function orderCompletion() { 		
 	var cardName = document.getElementById('paymentCardName').value;
 	var cardNumber = document.getElementById('paymentCardNumber').value;
 	var cardCVV = document.getElementById('paymentCardCVV').value;
@@ -150,10 +145,11 @@ function orderCompletion() {
 	     message = "<i class=\"fa fa-warning\"></i> Please fill payment details before you proceed.";
 	     $("#div_successMessage").css('display','none');
 	     $("#div_errorMessage").css('display','block');
-	     $("#div_errorMessage").html(message);
+	     $("#errorMessage").html(message);
 	     return false;
 	}    
 	else {
+		$("#loading").css('display','block');
 		window.location = "order?productCode=" + getParameterByName('productCode');
 	}
 

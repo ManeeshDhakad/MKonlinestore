@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mkonlinestore.common.Constants;
-import com.mkonlinestore.common.Mail;
+import com.mkonlinestore.common.SendMailSSL;
 import com.mkonlinestore.common.SessionManager;
 import com.mkonlinestore.model.Product;
 import com.mkonlinestore.model.User;
@@ -36,7 +36,7 @@ public class HomeController {
 	CartController cartCotroller;
 	
 	@Autowired
-	Mail mail;
+	SendMailSSL mail;
 	
 	SessionManager ssn = new SessionManager();
 	int category;
@@ -178,11 +178,13 @@ public class HomeController {
 			
 			// User Mail
 			String userMailSubject = "RE: " + subject;
-			String userMailbody = "Hi " + name + ", <br>"  + Constants.MK_FEEDBACK_MAIL_BODY;
+			String userMailbody = "Hi " + name + ", \n\n"  + Constants.MK_FEEDBACK_MAIL_BODY;
+			
+			// Send to customer
 			mail.sendMail(Constants.MK_EMAIL, userEmail, userMailSubject, userMailbody);
 			
-			// Feedback Mail
-			mail.sendMail(userEmail, Constants.MK_EMAIL, subject, body);
+			// Send to our support team
+			mail.sendMail(userEmail, Constants.MK_EMAIL, subject, body.toString());
 			
 			result = Constants.FEEDBACK_MAIL_SUCCESS;
 			 

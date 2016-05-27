@@ -46,6 +46,10 @@ a {
 	
 }
 
+a:hover, a:focus {
+    text-decoration: none;
+}
+
 input[type="image"] {
 	outline : none;
 	border : 0;
@@ -167,27 +171,6 @@ select, select option {
 }
 
   
-.email-icon {
-	background: #fff url(../images/icons/glyphicons-envelope.png) no-repeat;
-	background-position: 3px 8px;
-	padding: 10px 10px 10px 25px;
-	background-size: 15px 18px;
-}
-
-.password-icon {
-	background: #fff url(../images/icons/glyphicons-lock.png) no-repeat;
-	background-position: 3px 8px;
-	padding: 10px 10px 10px 25px;
-	background-size: 15px 18px;
-}
-
-.user-icon {
-	background: #fff url(../images/icons/glyphicons-user.png) no-repeat;
-	background-position: 3px 8px;
-	padding: 10px 10px 10px 25px;
-	background-size: 15px 18px;
-}
-
  
 .common-input-text:focus , .common-input-textarea:focus{ 
     outline: none; 
@@ -225,22 +208,27 @@ select, select option {
 }
 
 .mainmenu {
+	background: transparent;
+}
+
+
+.mainmenu-underline {
+	border-bottom: 4px solid white;
 }
 
 .mainmenu li { 
-
-	padding: 3px 4px 3px 3px; 
-	/* border-right: 1px solid #ffffff; */
+	padding: 3px 5px 3px 5px; 
 	cursor: pointer; 
 }
 
 .ccblue .mainmenu 
 { 
-	background-color: #6f5499 ;
+	/*background-color: darkslateblue;  #2e3b4b #6f5499 #2F4F4F*/
+	background:#fff url(../images/header1.jpg) repeat-x 0 0;
 }
 
 .ccblue .mainmenu li:hover { 
-	background: #027cd5; 
+	/*background: #027cd5; */
 }
 
 /* Main menu CSS end */
@@ -251,7 +239,7 @@ select, select option {
   	position:relative;
   	width: 100%;
   	height: 100%;
-  	background:#fff url(../images/mk-logo.png) no-repeat 40px 21px;
+  	background:#fff url(../images/bag.jpg) no-repeat 40px 21px;
   	border-radius: 3px;
   	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
 	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
@@ -433,6 +421,34 @@ select, select option {
   top: 40%;
   left: 45%;
 }
+
+#modal-loading {
+   left: 0px;
+   top: 0px;
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   display: block;
+   opacity: 0.7;
+   background-color: #fff;
+   z-index: 1000;
+   text-align: center;
+}
+
+#modal-loading-image {
+  position: absolute;
+  top: 40%;
+  left: 45%;
+}
+
+
+
+.spinner { 
+	position: absolute;
+    width: 25px; 
+    height: 25px;
+    display: none;
+}
 /* Loading image on page load or opreration css end /*/
 
 
@@ -445,8 +461,33 @@ select, select option {
 
 .stars
 {
-    margin: 20px 0;
-    font-size: 24px;
+    font-size: 18px;
+    color: orange;
+}
+
+.review-star-empty {
+	font-size: 16px;
+    color: bisque;
+}
+
+.review-star {
+	font-size: 16px;
     color: orange;
 }
 /* Review CSS end */
+
+
+a.back-to-top {
+	display: none;
+	width: 60px;
+	height: 60px;
+	text-indent: -9999px;
+	position: fixed;
+	z-index: 999;
+	right: 11%;
+	bottom: 9%;
+	background: #27AE61 url(../images/back-to-top.png) no-repeat center 43%;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+}

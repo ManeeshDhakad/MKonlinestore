@@ -3,24 +3,29 @@
 	<div class="modal-dialog ">
 		
 			<div class="modal-body">	
-			
+				<div id="modal-loading">
+  					<img id="modal-loading-image" class="img-responsive" src="<%=request.getContextPath()%>/resources/images/loading.gif" alt="Loading..." />
+				</div>
+					
   				<div class="login-box">
-  					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove"> </span></button>
+  					<a href="#" style="float: right; color: black; font-size: 20px;" onclick="closeLoginModal(); return false;"><span class="glyphicon glyphicon-remove-circle"> </span></a>
 					<br>
 					<div id="div_loginModelSuccessMessage" class="isa_success_modal" style="display: none">
 						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    					<span id="successMessage"></span>
+    					<span id="loginModelSuccessMessage"></span>
 					</div>
 					<div id="div_loginModelErrorMessage" class="isa_error_modal" style="display: none">
 						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    					<span id="errorMessage"></span>
+    					<span id="loginModelErrorMessage"></span>
 					</div>
 				
-  					<h3><center>Login to your account</center></h3>
+  					<h2 style="margin-top: 5px;"><center>Login to your account</center></h2>
     				<div class="lb-header">
       					<a href="#" class="active" id="login-box-link">Login</a>
       					<a href="#" id="signup-box-link">Sign Up</a>
     				</div>
+    				
+    				
     				
     				<div class="social-login">
   
@@ -38,7 +43,9 @@
       					</div>
       					
       					<div>
-      						<input type="submit" class="common-btn" value="Log in" onclick="loginUser(); return false;" style="width: 50%" /> 
+      						<button id="loginBTN" class="common-btn" onclick="loginUser(); return false;" style="width: 50%" > 
+      							Log in
+      						</button>
       					</div>
       
       					<button type="button" class="btn btn-link" onclick="forgotPassword()">Forgot password?</button>
@@ -49,7 +56,7 @@
     					<center>
     					<div class="input-group">
     						<span class="input-group-addon glyphicon glyphicon-user" id="icon_signupName"></span>
-    						<input id="signupName" name="signupName" type="text" class="form-control common-input-transparent" placeholder="Enter Name*" aria-describedby="icon_signupName"/>
+    						<input id="signupName" name="signupName" type="text" class="form-control common-input-transparent" placeholder="Enter Name*" aria-describedby="icon_signupName" />
     					</div>
     					
       					<div class="input-group">
@@ -67,7 +74,11 @@
       						<input id="signupPasswordConfirm" name="signupPasswordConfirm" type="password" class="form-control common-input-transparent" placeholder="Enter Confirm Password*" saria-describedby="icon_signupCofirmPassword" />
       					</div>
             					
-      					<div><input type="submit" class="common-btn" value="Sign Up" onclick="signupUser(); return false;" style="width: 50%" /> </div>
+      					<div>
+      						<button id="signupBTN" class="common-btn" onclick="signupUser(); return false;" style="width: 50%" >
+      							Sign Up
+      						</button> 
+      					</div>
       					</center>
     				</div>
   				</div>

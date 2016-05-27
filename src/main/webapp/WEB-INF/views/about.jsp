@@ -25,6 +25,8 @@
 	<div id="header-container">
 		<jsp:include page="header-navbar.jsp" />
 	</div>
+	
+	
 	<div >
 		<div class="col-md-2 hidden-xs hidden-sm"></div>
 		<div id="body-area-middle-container" class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -59,23 +61,26 @@
    						<h1 class="panel-title"><strong>About Developer</strong> </h1>
   					</div>
  					<div class="panel-body">
+ 					<p>
  						<strong>Maneesh Dhakad</strong><br>
- 						SDE - 2 at Teradata <br/>
- 						MCA - NIT Trichy <br/>
+ 						SDE-2   : Teradata <br/>
+ 						MCA     : NIT Trichy <br/>
+ 						Email   : maneeshdhakad67@gmail.com<br/>
+ 						Contact : +91 7847827212<br/>
  						
- 						
+ 					</p>	
 						<br /> Follow me on: 
 						<a 	href="https://www.facebook.com/maneesh.dhakad"><img
 							style="width: 30px; height: 30px"
 							src="<%=request.getContextPath()%>/resources/images/facebook.png" /></a>
 						<a href="https://plus.google.com/u/0/117785483572860826604"><img
-							style="width: 35px; height: 35px"
+							style="width: 30px; height: 30px"
 						src="<%=request.getContextPath()%>/resources/images/google.png" /></a>
 						<a href="https://in.linkedin.com/in/maneesh-dhakad-525ba485"><img
 							style="width: 30px; height: 30px"
 							src="<%=request.getContextPath()%>/resources/images/linked-in.png" /></a>
 						<a href="https://github.com/ManeeshDhakad"><img
-							style="width: 35px; height: 35px"
+							style="width: 30px; height: 30px"
 							src="<%=request.getContextPath()%>/resources/images/github.png" /></a>
 					</div>
   				</div>					
@@ -93,6 +98,8 @@
 	<jsp:include page="login-modal.jsp" />
 
 	<!-- JavaScript -->
+	
+	
 <script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript"
@@ -101,7 +108,11 @@
 		src="<%=request.getContextPath()%>/resources/js/common.js"></script>
 <script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
-
+<script>
+	$(document).ready(function(){
+		$("#menu_about").addClass("mainmenu-underline");
+	});
+</script>
 	
 </body>
 </html>

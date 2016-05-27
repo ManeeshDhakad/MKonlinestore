@@ -9,7 +9,7 @@ $(document).ready(function(){
 	var msgStatus = document.getElementById('messageStatus').value;
 	if(msgStatus != "" || msgStatus != null || msgStatus != NaN || msgStatus.length > 0) {
 		
-		if(msgStatus) {
+		if(msgStatus.indexOf("SUCCESS") > -1) {
 			$(".isa_success").css('display','block');
 			$(".isa_error").css('display','none');
 		}
@@ -18,21 +18,31 @@ $(document).ready(function(){
 			$(".isa_success").css('display','none');
 		}
 	}
-	
+		
 });
+
+
+var modalLoadingState = false;
 
 $(window).load(function() {
 	$("#loading").css('display','none'); 
-	
+	$("#modal-loading").css('display','none');
 });
 
 $(document).ajaxSend(function(event, request, settings) {
-	$("#loading").css('display','block');  
+	if(modalLoadingState == true)
+		$("#modal-loading").css('display','block');
+	else
+		$("#loading").css('display','block');  
 });
 
 $(document).ajaxComplete(function(event, request, settings) {
 	setTimeout(function(){
-		$("#loading").css('display','none');
+		if(modalLoadingState == true)
+			$("#modal-loading").css('display','none');
+		else
+			$("#loading").css('display','none');
+		
 	}, 1000);
 });
 
@@ -41,19 +51,54 @@ function closeSuccessMessageDiv() {
 }
 
 $(".close").click(function(){
-	$(".isa_success").css('display','none');
-  	$(".isa_error").css('display','none');
+	if(modalLoadingState == true) {
+		$(".isa_success_modal").css('display','none');
+	  	$(".isa_error_modal").css('display','none');
+	}
+	else {
+		$(".isa_success").css('display','none');
+	  	$(".isa_error").css('display','none');
+	}
 });
 
-//$(document).ajaxStart(function(){
-//	$("#loading").css('display','block');  
-//	setTimeout(function(){
-//		$("#loading").css('display','none');
-//	}, 1000);
-//	
-//}).ajaxStop(function(){
-//	
-//});
+
+function closeLoginModal() {
+	// Clear login form
+	$("#loginEmail").val('');
+	$("#loginPassword").val('');
+		
+	// Clear signup form
+	$("#signupName").val('');
+	$("#signupEmail").val('');
+	$("#signupPassword").val('');
+	$("#signupPasswordConfirm").val('');
+	
+	// Close login modal
+	$('#login-modal').modal('hide');
+	
+	modalLoadingState = false;
+	
+	return false;
+}
+
+
+
+// Back to top 
+var amountScrolled = 300;
+
+$(window).scroll(function() {
+	if ( $(window).scrollTop() > amountScrolled ) {
+		$('a.back-to-top').fadeIn('slow');
+	} else {
+		$('a.back-to-top').fadeOut('slow');
+	}
+});
+$('a.back-to-top').click(function() {
+	$('html, body').animate({
+		scrollTop: 0
+	}, 700);
+	return false;
+});
 
 //Login modal
 $(".email-signup").hide();
@@ -125,12 +170,12 @@ function addProductToCart(code) {
 				
 				// Product detail page
 				$("#btn_addToCart").prop('title', "This product is added to cart").
-				prop('value', "ADDED TO CART").prop('class','common-btn-disabled').attr("disabled", true);
+				text("ADDED TO CART").prop('class','common-btn-disabled').attr("disabled", true);
 				
 				
 				// User profile page
 				$("#btn_addToCart" + productCode).prop('title', "This product is added to cart").
-				prop('value', "ADDED TO CART").prop('class','common-btn-disabled').attr("disabled", true);			
+				text("ADDED TO CART").prop('class','common-btn-disabled').attr("disabled", true);			
 								
 				$("#btn_addToCart").prop('data-toggle','tooltip');
 				$("#btn_addToCart").prop('data-placement','top');
@@ -292,7 +337,8 @@ function removeProductFromCart(code) {
 
 
 function loginUser() {
-
+	modalLoadingState = true;
+		
 	var email = document.getElementById('loginEmail').value;
 	var password = document.getElementById('loginPassword').value;
 		
@@ -303,11 +349,10 @@ function loginUser() {
 		message = validateEmail(email);
 	
 	if(message != "") {
-		$("#div_loginModelSuccessMessage").css('display','none');
-		$("#div_loginModelErrorMessage").css('display','block');
-		$("#div_loginModelErrorMessage").html(warningTitle + message);
-		$("#login-modal").effect("shake");
-		return false;
+		$(".isa_success_modal").css('display','none');
+		$(".isa_error_modal").css('display','block');
+		$("#loginModelErrorMessage").html(warningTitle + message);
+				
 	}
 	else {
 		var json = email + "####@@@@####" + password;
@@ -328,9 +373,9 @@ function loginUser() {
 						window.location.reload();
 				}
 				else {
-					$("#div_loginModelSuccessMessage").css('display','none');
-					$("#div_loginModelErrorMessage").css('display','block');
-					$("#div_loginModelErrorMessage").html(data);
+					$(".isa_success_modal").css('display','none');
+					$(".isa_error_modal").css('display','block');
+					$("#loginModelErrorMessage").html(data);
 				}
 			}
 		});
@@ -339,13 +384,15 @@ function loginUser() {
 }
 
 function signupUser() {
+	modalLoadingState = true;
+	
 	var name = document.getElementById('signupName').value;
 	var email = document.getElementById('signupEmail').value;
 	var password = document.getElementById('signupPassword').value;
 	var confirmPassword = document.getElementById('signupPasswordConfirm').value;
 	var message = "";
 	
-	if(name = "" || email == "" || password == "" || confirmPassword == "")
+	if(name == "" || email == "" || password == "" || confirmPassword == "")
 		message = "All Fields are required. Please fill valid details before you proceed.";
 	else {
 		message = message + validateEmail(email);
@@ -353,10 +400,10 @@ function signupUser() {
 	}
 
 	if(message != "") {
-		$("#div_loginModelSuccessMessage").css('display','none');
-		$("#div_loginModelErrorMessage").css('display','block');
-		$("#div_loginModelErrorMessage").html(warningTitle + message);
-		return false;
+		$(".isa_success_modal").css('display','none');
+		$(".isa_error_modal").css('display','block');
+		$("#loginModelErrorMessage").html(warningTitle + message);
+		
 	}
 	else {
 		var json = name + "####@@@@####" + email + "####@@@@####" + password;
@@ -368,20 +415,26 @@ function signupUser() {
 			data : JSON.stringify(json),
 			success : function(data) {	
 				if(data.indexOf("fa-check") > -1) {
-					$("#div_loginModelSuccessMessage").css('display','block');
-					$("#div_loginModelErrorMessage").css('display','none');
-					$("#div_loginModelSuccessMessage").html(data);
+					$("#signupName").val('');
+					$("#signupEmail").val('');
+					$("#signupPassword").val('');
+					$("#signupPasswordConfirm").val('');
+					
+					$(".isa_success_modal").css('display','block');
+					$(".isa_error_modal").css('display','none');
+					$("#loginModelSuccessMessage").html(data);
 					
 					
 				}
 				else {
-					$("#div_loginModelSuccessMessage").css('display','none');
-					$("#div_loginModelErrorMessage").css('display','block');
-					$("#div_loginModelErrorMessage").html(data);
+					$(".isa_success_modal").css('display','none');
+					$(".isa_error_modal").css('display','block');
+					$("#loginModelErrorMessage").html(data);
 				}
 			}
 		});
 	}
+	
 }
 
 
@@ -444,9 +497,14 @@ function sendFeedbackMail() {
 			data : JSON.stringify(json),
 			success : function(data) {	
 				if(data.indexOf("fa-check") > -1) {
+					$("#feedbackMailName").val('');
+					$("#feedbackMailEmail").val('');
+					$("#feedbackMailSubject").val('');
+					$("#feedbackMailMessage").val('');
+					
 					$(".isa_success").css('display','block');
 					$(".isa_error").css('display','none');
-					$("errorMessage").html(data);
+					$("#successMessage").html(data);
 				}
 				else {
 					$(".isa_error").css('display','block');

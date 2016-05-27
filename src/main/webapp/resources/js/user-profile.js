@@ -49,13 +49,14 @@ $("#div_userWishList").css('display','none');
 
 $("#userProfileLink").click(function(){     
 	$("#loading").css('display','block');
-	setTimeout(function(){
+	setInterval(function(){
 		$("#loading").css('display','none');
 	}, 1000);
 	
+	
 	$("#div_userPasswordUpdate").css('display','none');
 	$("#div_userAddressInfo").css('display','none');
-	$("#div_userPersonalInfo").css('display','block');
+	
 	$("#div_userOrderHistory").css('display','none');
 	$("#div_userWishList").css('display','none');
 	
@@ -67,6 +68,9 @@ $("#userProfileLink").click(function(){
 	
 	$(".isa_success").css('display','none');
 	$(".isa_error").css('display','none');
+	
+	$("#div_userPersonalInfo").css('display','block');
+	
 });
 
 	
@@ -78,7 +82,6 @@ $("#userAddressLink").click(function(){
 	
 	$("#div_userPersonalInfo").css('display','none');
 	$("#div_userPasswordUpdate").css('display','none');
-	$("#div_userAddressInfo").css('display','block');
 	$("#div_userOrderHistory").css('display','none');
 	$("#div_userWishList").css('display','none');
 	
@@ -90,6 +93,8 @@ $("#userAddressLink").click(function(){
 	
 	$(".isa_success").css('display','none');
 	$(".isa_error").css('display','none');
+	
+	$("#div_userAddressInfo").css('display','block');
 });  
 
 $("#userPasswordLink").click(function(){       
@@ -99,7 +104,7 @@ $("#userPasswordLink").click(function(){
 	}, 1000);
 	
 	$("#div_userPersonalInfo").css('display','none');
-	$("#div_userPasswordUpdate").css('display','block');
+	
 	$("#div_userAddressInfo").css('display','none');
 	$("#div_userOrderHistory").css('display','none');
 	$("#div_userWishList").css('display','none');
@@ -112,6 +117,8 @@ $("#userPasswordLink").click(function(){
 	
 	$(".isa_success").css('display','none');
 	$(".isa_error").css('display','none');
+	
+	$("#div_userPasswordUpdate").css('display','block');
 });
 
 $("#userOrderLink").click(function(){       
@@ -123,7 +130,7 @@ $("#userOrderLink").click(function(){
 	$("#div_userPersonalInfo").css('display','none');
 	$("#div_userPasswordUpdate").css('display','none');
 	$("#div_userAddressInfo").css('display','none');
-	$("#div_userOrderHistory").css('display','block');
+	
 	$("#div_userWishList").css('display','none');
 	
 	$("#userOrderLink").addClass("active");
@@ -134,6 +141,8 @@ $("#userOrderLink").click(function(){
 	
 	$(".isa_success").css('display','none');
 	$(".isa_error").css('display','none');
+	
+	$("#div_userOrderHistory").css('display','block');
 });
 
 $("#userWishlistLink").click(function(){     
@@ -146,7 +155,7 @@ $("#userWishlistLink").click(function(){
 	$("#div_userPasswordUpdate").css('display','none');
 	$("#div_userAddressInfo").css('display','none');
 	$("#div_userOrderHistory").css('display','none');
-	$("#div_userWishList").css('display','block');
+	
 	
 	$("#userWishlistLink").addClass("active");
 	$("#userOrderLink").removeClass("active");
@@ -156,6 +165,8 @@ $("#userWishlistLink").click(function(){
 	
 	$(".isa_success").css('display','none');
 	$(".isa_error").css('display','none');
+	
+	$("#div_userWishList").css('display','block');
 });
 
 
@@ -184,7 +195,7 @@ function saveUsersPersonalInfo(name, email, mobile) {
 	if(message != "") {
 		$("#div_errorMessage").css('display','block');
 		$("#div_successMessage").css('display','none');
-		$("#div_errorMessage").html(warningTitle + message);
+		$("#errorMessage").html(warningTitle + message);
 		return false;
 	}
 	else {
@@ -201,7 +212,7 @@ function saveUsersPersonalInfo(name, email, mobile) {
 						$("#headerUserName").html(newName);
 					$("#div_errorMessage").css('display','none');
 					$("#div_successMessage").css('display','block');
-					$("#div_successMessage").html(data);
+					$("#successMessage").html(data);
 				} 
 				else {
 					$("#div_errorMessage").css('display','block');
@@ -230,7 +241,7 @@ function updateUserPassword() {
 	if(message != "") {
 		$("#div_errorMessage").css('display','block');
 		$("#div_successMessage").css('display','none');
-		$("#div_errorMessage").html(warningTitle + message);
+		$("#errorMessage").html(warningTitle + message);
 		return false;
 	}
 	else {
@@ -245,7 +256,7 @@ function updateUserPassword() {
 				if(data.indexOf("fa-check") > -1) {
 					$("#div_successMessage").css('display','block');
 					$("#div_errorMessage").css('display','none');
-					$("#div_successMessage").html(data);
+					$("#successMessage").html(data);
 					
 					// Clear all fields
 					$("#profileUserOldPassword").val('');
@@ -256,7 +267,7 @@ function updateUserPassword() {
 				else {
 					$("#div_successMessage").css('display','none');
 					$("#div_errorMessage").css('display','block');
-					$("#div_errorMessage").html(data);
+					$("#errorMessage").html(data);
 				}
 			}
 		});
@@ -275,12 +286,14 @@ function addUserAddress(page) {
 	
 	var message = "";
 	message = validateUserAddress(name, streetAddress, landmark, city, state, country, mobile);
-	message = message + validatePhone(mobile);
+	
+	if(message == "")
+		message = message + validatePhone(mobile);
 	
 	if(message != "") {
 		$("#div_errorMessage").css('display','block');
 		$("#div_successMessage").css('display','none');
-		$("#div_errorMessage").html(warningTitle + message);
+		$("#errorMessage").html(warningTitle + message);
 		return false;
 	}
 	else {
@@ -295,7 +308,7 @@ function addUserAddress(page) {
 				if(data.indexOf("fa-check") > -1) {
 					$("#div_successMessage").css('display','block');
 					$("#div_errorMessage").css('display','none');
-					$("#div_successMessage").html(data);
+					$("#successMessage").html(data);
 					$("#checkoutAddressCompleted").removeAttr('style');
 					
 					// Clear all fields
@@ -316,7 +329,7 @@ function addUserAddress(page) {
 				else {
 					$("#div_successMessage").css('display','none');
 					$("#div_errorMessage").css('display','block');
-					$("#div_errorMessage").html(data);
+					$("#errorMessage").html(data);
 				}
 			}
 		});
@@ -338,13 +351,13 @@ function deleteUserAddress(addresId) {
 			if(data.indexOf("fa-check") > -1) {
 				$("#div_successMessage").css('display','block');
 				$("#div_errorMessage").css('display','none');
-				$("#div_successMessage").html(data);
+				$("#successMessage").html(data);
 				$("#div_address" + addresId).css('display','none');
 			}
 			else {
 				$("#div_successMessage").css('display','none');
 				$("#div_errorMessage").css('display','block');
-				$("#div_errorMessage").html(data);
+				$("#errorMessage").html(data);
 			}
 		}
 	});
@@ -367,7 +380,7 @@ function saveForgotPassword() {
 	if(message != "") {
 		$("#div_errorMessage").css('display','block');
 		$("#div_successMessage").css('display','none');
-		$("#div_errorMessage").html(warningTitle + message);
+		$("#errorMessage").html(warningTitle + message);
 		return false;
 	}
 	else {
@@ -382,7 +395,7 @@ function saveForgotPassword() {
 				if(data.indexOf("fa-check") > -1) {
 					$("#div_successMessage").css('display','block');
 					$("#div_errorMessage").css('display','none');
-					$("#div_successMessage").html(data);
+					$("#successMessage").html(data);
 					
 					// Clear all fields
 					$("#forgotNewPassword").val('');
@@ -392,7 +405,7 @@ function saveForgotPassword() {
 				else {
 					$("#div_successMessage").css('display','none');
 					$("#div_errorMessage").css('display','block');
-					$("#div_errorMessage").html(data);
+					$("#errorMessage").html(data);
 				}
 			}
 		});
@@ -415,14 +428,14 @@ function cancelOrder(productCode, orderId) {
 			if(data.indexOf("fa-check") > -1) {
 				$("#div_successMessage").css('display','block');
 				$("#div_errorMessage").css('display','none');
-				$("#div_successMessage").html(data);
+				$("#successMessage").html(data);
 				$("#orderStatus" + productCode).html("Cancelled");
 				$("#link_cancelOrder" + productCode).css('display','none');
 			}
 			else {
 				$("#div_successMessage").css('display','none');
 				$("#div_errorMessage").css('display','block');
-				$("#div_errorMessage").html(data);
+				$("#errorMessage").html(data);
 			}
 		}
 	});

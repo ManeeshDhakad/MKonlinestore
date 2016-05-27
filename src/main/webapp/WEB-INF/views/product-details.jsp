@@ -1,4 +1,5 @@
 
+<%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false"  pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -42,6 +43,8 @@
     			<li class="active">${product.productName}</li>
 			</ol>
 			</div>
+			<!-- Product category -->
+			<input type="hidden" id="productCategory" value="${product.productCategory}">
 			
 			<div class="panel-body">
 				
@@ -54,6 +57,7 @@
     			<span id="errorMessage">${message}</span>
 			</div>
 			
+			<c:if test="${product.productCode  != null}">
 			<div class="col-xs-12 col-sm-7 col-md-7">
 					
 					
@@ -68,6 +72,16 @@
 						<div class="col-md-3 hidden-xs hidden-sm"></div>
 					
 			</div>
+			
+			<c:set var="reviewRating" value="0" scope="page" />
+			<c:set var="reviewCount" value="0" scope="page" />
+			<c:forEach items="${reviewList}" var="review">
+				<c:set var="reviewCount" value="${reviewCount + 1 }" scope="page" />
+				<c:set var="reviewRating" value="${reviewRating + review.reviewRating}" scope="page" />
+			</c:forEach>
+			<c:if test="${reviewCount != 0 }">
+				<c:set var="reviewRating" value="${reviewRating / reviewCount}" scope="page" />
+			</c:if>	
 		
 			<div class="col-xs-12 col-sm-5 col-md-5">
 			
@@ -95,8 +109,56 @@
     				<tbody>
     				
     					<tr>
-							
-							<td colspan="2" style="margin-top: 10px">
+							<td>
+								<c:choose>
+									<c:when test="${reviewRating == 0 }">
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+									</c:when>
+									<c:when test="${reviewRating < 2 }">
+										<span class="glyphicon glyphicon-star review-star"></span>
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+									</c:when>
+									<c:when test="${reviewRating < 3 }">
+										<span class="glyphicon glyphicon-star review-star"></span>
+										<span class="glyphicon glyphicon-star review-star"></span>
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+									</c:when>
+									<c:when test="${reviewRating < 4 }">
+										<span class="glyphicon glyphicon-star review-star"></span>
+										<span class="glyphicon glyphicon-star review-star"></span>
+										<span class="glyphicon glyphicon-star review-star"></span>
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+									</c:when>
+									<c:when test="${reviewRating < 5 }">
+										<span class="glyphicon glyphicon-star review-star"></span>
+										<span class="glyphicon glyphicon-star review-star"></span>
+										<span class="glyphicon glyphicon-star review-star"></span>
+										<span class="glyphicon glyphicon-star review-star"></span>
+										<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+									</c:when>
+									<c:when test="${reviewRating == 5 }">
+										<span class="glyphicon glyphicon-star review-star"></span>
+										<span class="glyphicon glyphicon-star review-star"></span>
+										<span class="glyphicon glyphicon-star review-star"></span>
+										<span class="glyphicon glyphicon-star review-star"></span>
+										<span class="glyphicon glyphicon-star review-star"></span>
+									</c:when>
+									
+								</c:choose><br>
+								<a href="#productReviewList" style="color:hotpink;">${reviewCount} Reviews </a>
+							</td>
+							<td style="margin-top: 10px">
+								
 								<c:choose>
     								<c:when test="${isProductAddedToWishlist == 0}">
     									<a href="#" id="addToWishListLink" style="color : hotpink;" onclick="addProductToWishList('${product.productCode}'); return false;"><span class="glyphicon glyphicon-heart-empty"></span> ADD TO WISHLIST</a>
@@ -106,6 +168,7 @@
     									<a href="#" style="color : hotpink;" class="href-not-active"  title="Product already added to your Wishlist"><span class="glyphicon glyphicon-heart-empty"></span> ADDED TO WISHLIST</a>
     								</c:otherwise>
     							</c:choose>
+    							
 							</td>
 						</tr>
     				
@@ -141,13 +204,111 @@
 						Buy Now&nbsp;&nbsp;<i class="fa fa-forward"></i> 
 					</button>
 			</div> 
-		</div>
+			</c:if>
+			<c:if test="${product.productCode  == null}"> 
+				<div style="text-align: center">
+						
+					<span>Selected product details not available!</span>
+				</div>
+			</c:if>
 		</div>
 		
-		<div id="productReview" class="alert alert-info">
+		</div>
+		
+		<c:if test="${product.productCode  != null}"> 
+		<div id="productSubmitReview" class="alert alert-info">
 			<jsp:include page="review.jsp" />
 		</div>
 		
+		<div id="productReviewList" class="alert alert-success">
+		
+			<table class="table">
+				<thead>
+					<tr>
+						<th colspan="2">
+							<strong>Top reviews</strong>
+							<br>
+						</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<c:set var="reviewCount" value="0" scope="page" />
+					<c:set var="reviewDate" value="0" scope="page" />
+					<c:forEach items="${reviewList}" var="review">
+						<c:set var="reviewRating" value="${review.reviewRating}" scope="page" />
+						<c:set var="reviewCount" value="${reviewCount + 1}" scope="page" />
+						
+						<tr>
+							<td style="width: 20%">
+								<c:choose>
+								<c:when test="${reviewRating == 0 }">
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								</c:when>
+								<c:when test="${reviewRating < 2 }">
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								</c:when>
+								<c:when test="${reviewRating < 3 }">
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								</c:when>
+								<c:when test="${reviewRating < 4 }">
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								</c:when>
+								<c:when test="${reviewRating < 5 }">
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+								</c:when>
+								<c:when test="${reviewRating == 5 }">
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								<span class="glyphicon glyphicon-star review-star"></span>
+								</c:when>
+								
+								</c:choose><br>
+								${review.userName }<br>
+								
+								${review.reviewDate}
+								
+							</td>
+							
+							<td align="left">
+								<p>${review.reviewComment}</p>
+							</td>
+						</tr>
+				
+					</c:forEach>
+			
+					<c:if test="${reviewCount == 0 }">
+						<tr>
+							<td colspan="2">Be first to give review</td>
+						</tr> 
+					</c:if>	
+				</tbody>
+			</table>
+			<a href="#" class="back-to-top">Back to Top</a>	
+		</div>
+		</c:if>
 	</div>
 
 	<div class="col-md-2 hidden-xs hidden-sm"></div>
@@ -157,6 +318,8 @@
 	</div>
 
 	<jsp:include page="login-modal.jsp" />
+	
+	<jsp:include page="message-modal.jsp" />
 	
 	<!-- JavaScript -->
 <script type="text/javascript"
@@ -169,7 +332,21 @@
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
 <script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/review.js"></script>
-	
-	
+<script type="text/javascript">
+	$(document).ready(function(){
+		var category = document.getElementById('productCategory').value;
+		
+		if(category == 1) {
+			$("#menu_man").addClass("mainmenu-underline");
+		}
+		else if(category == 2) {
+			$("#menu_woman").addClass("mainmenu-underline");
+		}
+		else if(category == 3) {
+			$("#menu_kid").addClass("mainmenu-underline");
+		}
+		
+	});
+</script>	
 </body>
 </html>

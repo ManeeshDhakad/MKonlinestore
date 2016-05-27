@@ -298,7 +298,7 @@
 				<div class="panel-heading" role="tab" id="checkoutPaymentHeading">
 					<h4 class="panel-title"><i id="checkoutPaymentCompleted" class="fa fa-check isa_info" style="display: none"></i>
 						3. &nbsp;
-						<a id="checkoutPaymentLink" class="collapsed" role="button" data-toggle="collapse"
+						<a id="checkoutPaymentLink" class="collapsed href-not-active" role="button" data-toggle="collapse"
 							data-parent="#checkoutPage" href="#checkoutPaymentBody"
 							aria-expanded="false" aria-controls="checkoutPaymentBody"> Make
 							Payment </a>
@@ -330,6 +330,7 @@
 
 					</div>
 				</div>
+				<a href="#" class="back-to-top">Back to Top</a>	
 			</div>
 		</div>
 	</div>

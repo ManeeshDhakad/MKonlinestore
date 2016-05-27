@@ -10,13 +10,13 @@ $(function(){
   var newReview = $('#new-review');
   var openReviewBtn = $('#open-review-box');
   var closeReviewBtn = $('#close-review-box');
-  var ratingsField = $('#ratings-hidden');
+  var ratingsField = $('#reviewRating');
 
   openReviewBtn.click(function(e)
   {
     reviewBox.slideDown(400, function()
       {
-        $('#new-review').trigger('autosize.resize');
+        $('#reviewComment').trigger('autosize.resize');
         newReview.focus();
       });
     openReviewBtn.fadeOut(100);
@@ -32,11 +32,48 @@ $(function(){
         openReviewBtn.fadeIn(200);
       });
     closeReviewBtn.hide();
+    $("#reviewComment").val('');
+    $("#reviewMessage").css('display','none');
+    $("#reviwStars").prop('data-rating','0');
     
   });
 
   $('.starrr').on('starrr:change', function(e, value){
-  	alert(value);
     ratingsField.val(value);
   });
 });
+
+
+function saveReview() {
+	var comment = document.getElementById('reviewComment').value;
+	var rating = document.getElementById('reviewRating').value;
+	
+	var message = "";
+	if(comment == "" || rating == 0) {
+		message = warningTitle + " Please fill review comment and select rating before you proceed.";
+		$("#reviewMessage").css('display','block');
+		document.getElementById("reviewMessage").innerHTML = message;
+	}
+	else {
+		var json = getParameterByName('productCode') + "####@@@@####" + comment + "####@@@@####" + rating;
+	
+		$.ajax({
+			type : "POST",
+			contentType : "application/json",
+			url : "save-product-review",
+			data : JSON.stringify(json),
+			success : function(data) {	
+				$("#reviewMessage").css('display','block');
+//				$(".isa_success_modal").css('display','block');
+//				$(".isa_error_modal").css('display','none');
+//				$("#MessageModalSuccessMessage").html(data);
+//				$('#message-modal').modal('show');
+				
+				document.getElementById("reviewMessage").innerHTML = data;
+			}
+		});
+	}
+	
+	
+	return false;
+}

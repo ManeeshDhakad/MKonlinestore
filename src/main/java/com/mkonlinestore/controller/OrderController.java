@@ -1,8 +1,11 @@
 package com.mkonlinestore.controller;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -272,7 +275,6 @@ public class OrderController {
 				
 				List<Product> cartProductList = cartCotroller.getCartProductList(session, request, response, user);
 				
-				List<Product> orderProductList = new ArrayList<Product>();
 				List<Order> orderList = new ArrayList<Order>();
 								
 				String addressId = ssn.checkCheckoutAddressSession(session, request, response);
@@ -282,6 +284,10 @@ public class OrderController {
 				String orderCode = "MK-" + uniqueID.substring(0, 7) + uniqueID.subSequence(uniqueID.length() - 4, uniqueID.length() - 1);
 				String orderStatus = "In Process";
 				
+				 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+				 Date date = new Date();
+				 String orderDate = dateFormat.format(date).toString();
+				 
 				String productCode = request.getParameter("productCode"); 
 				
 				if(productCode != null && !addressId.isEmpty()) {
@@ -296,8 +302,8 @@ public class OrderController {
 							order.setProductPrice(product.getProductPrice());
 							order.setProductQuantity(product.getProductQuantity());
 							order.setOrderCode(orderCode);
-							order.setOrderCode(orderCode);
-							order.setOrderStatus(orderStatus);						
+							order.setOrderStatus(orderStatus);	
+							order.setOrderDate(orderDate);
 							orderList.add(order);
 						}
 						
@@ -314,8 +320,8 @@ public class OrderController {
 							order.setProductPrice(productSSN.getProductPrice());
 							order.setProductQuantity(productSSN.getProductQuantity());
 							order.setOrderCode(orderCode);
-							order.setOrderCode(orderCode);
-							order.setOrderStatus(orderStatus);						
+							order.setOrderStatus(orderStatus);		
+							order.setOrderDate(orderDate);
 							orderList.add(order);
 						}
 					}
