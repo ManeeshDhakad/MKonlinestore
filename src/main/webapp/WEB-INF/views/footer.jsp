@@ -6,9 +6,9 @@
 <div class="row">
 	<div class="col-md-2 hidden-xs hidden-sm"></div>
 	<div class="footer-left col-xs-6 col-sm-6 col-md-3">
-		<a href="home" class="hidden-xs" style="text-decoration: none;" title="Home page"><span class="glyphicon glyphicon-home"></span> Home</a>&nbsp;&nbsp;
-		<a href="about" class="hidden-xs" style="text-decoration: none;" title="About us"><span class="glyphicon glyphicon-info-sign"></span> About</a>&nbsp;&nbsp;
-		<a href="contact" class="hidden-xs" style="text-decoration: none;" title="Contact us"><span class="glyphicon glyphicon-phone-alt"></span> Contact</a>	
+		<a href="home" class="hidden-xs" style="text-decoration: none;color: white" title="Home page"><span class="glyphicon glyphicon-home"></span> Home</a>&nbsp;&nbsp;
+		<a href="about" class="hidden-xs" style="text-decoration: none;color: white" title="About us"><span class="glyphicon glyphicon-info-sign"></span> About</a>&nbsp;&nbsp;
+		<a href="contact" class="hidden-xs" style="text-decoration: none;color: white" title="Contact us"><span class="glyphicon glyphicon-phone-alt"></span> Contact</a>	
 		<p class="footer-company-name">MKonlinetore.in &copy; 2016</p>	
 	</div>
 
@@ -45,9 +45,9 @@
 			style="width: 30x; height: 30px"
 			src="<%=request.getContextPath()%>/resources/images/linked-in.png" /></a>
 
-		<a  href="https://github.com/ManeeshDhakad/MKonlinestore" title="Follow us on github"><img
-			style="width: 30px; height: 30px"
-			src="<%=request.getContextPath()%>/resources/images/github.png" /></a>
+<!-- 		<a  href="https://github.com/ManeeshDhakad/MKonlinestore" title="Follow us on github"><img -->
+<!-- 			style="width: 30px; height: 30px" -->
+<%-- 			src="<%=request.getContextPath()%>/resources/images/github.png" /></a> --%>
 
 	</div>
 </div>

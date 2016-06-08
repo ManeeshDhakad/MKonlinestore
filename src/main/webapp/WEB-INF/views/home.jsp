@@ -46,35 +46,23 @@
 				</div>
 
 				<div class="panel-body">
-					<div class="row product-img-border">
+					<div>
+						<a href="#" style="color: hotpink;" class="new-arrivals-product-prev"><span class="glyphicon glyphicon-chevron-left"></span>  Prev </a>
+						<a href="#"  style="color: hotpink; float: right;" class="new-arrivals-product-next">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+					</div>
+					<div class="row product-img-border new-arrivals-product-list">			
+						
 						<c:set var="newArrivalsCount" value="0" scope="page" />
 						<c:forEach items="${mansProductList}" var="mansProduct">
-						
-							<c:if test="${ newArrivalsCount < 2}">
-								<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
-									<form action="product-details" method="get">
-										<input name="productCode" type="text"
-											value="${mansProduct.productCode}" style="display: none" /> <input
-											type="image" src="<%=request.getContextPath()%>/resources/images/product/300x400/${mansProduct.productCode}.jpg"
+								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									<a href="product-details?productCode=${mansProduct.productCode}">
+										<img
+											src="<%=request.getContextPath()%>/resources/images/product/300x400/${mansProduct.productCode}.jpg"
 											title="${mansProduct.productName}" class="img-responsive"
-											alt="Submit"> ${mansProduct.productName} <br /> <strong>Rs.
+											alt="${mansProduct.productName}"> ${mansProduct.productName} <br /> <strong>Rs.
 											${mansProduct.productPrice}</strong>
-									</form>
+									</a>
 								</div>
-							</c:if>
-							<c:if test="${ newArrivalsCount == 3}">
-								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 hidden-xs">
-									<form action="product-details" method="get">
-										<input name="productCode" type="text"
-											value="${mansProduct.productCode}" style="display: none" /> <input
-											type="image" src="<%=request.getContextPath()%>/resources/images/product/300x400/${mansProduct.productCode}.jpg"
-											title="${mansProduct.productName}" class="img-responsive"
-											alt="Submit"> ${mansProduct.productName} <br /> <strong>Rs.
-											${mansProduct.productPrice}</strong>
-									</form>
-								</div>
-							</c:if>
-
 							<c:set var="newArrivalsCount" value="${newArrivalsCount + 1}"
 								scope="page" />
 
@@ -98,38 +86,25 @@
 				</div>
 
 				<div class="panel-body">
-				    <div class="row product-img-border">
+					<div>
+						<a href="#" style="color: hotpink;" class="deals-for-you-product-prev"><span class="glyphicon glyphicon-chevron-left"></span>  Prev </a>
+						<a href="#"  style="color: hotpink; float: right;" class="deals-for-you-product-next">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+					</div>
+					
+				    <div class="row product-img-border deals-for-you-product-list">
 						<c:set var="dealsForYouCount" value="0" scope="page" />
 						<c:forEach items="${womansProductList}" var="womansProduct">
 							
-
-							<c:if test="${ dealsForYouCount < 2}">
-								<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
-									<form action="product-details" method="get">
-										<input name="productCode" type="text"
-											value="${womansProduct.productCode}" style="display: none" />
-										<input type="image"
+								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									<a href="product-details?productCode=${womansProduct.productCode}">
+										<img 
 											src="<%=request.getContextPath()%>/resources/images/product/300x400/${womansProduct.productCode}.jpg"
 											title="${womansProduct.productName}" class="img-responsive"
-											alt="Submit"> ${womansProduct.productName} <br /> <strong>Rs.
+											alt="${womansProduct.productName}"> ${womansProduct.productName} <br /> <strong>Rs.
 											${womansProduct.productPrice}</strong>
-									</form>
+									</a>
 								</div>
-							</c:if>
 							
-							<c:if test="${ dealsForYouCount == 3}">
-								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 hidden-xs">
-									<form action="product-details" method="get">
-										<input name="productCode" type="text"
-											value="${womansProduct.productCode}" style="display: none" />
-										<input type="image"
-											src="<%=request.getContextPath()%>/resources/images/product/300x400/${womansProduct.productCode}.jpg"
-											title="${womansProduct.productName}" class="img-responsive"
-											alt="Submit"> ${womansProduct.productName} <br /> <strong>Rs.
-											${womansProduct.productPrice}</strong>
-									</form>
-								</div>
-							</c:if>
 
 							<c:set var="dealsForYouCount" value="${dealsForYouCount + 1}"
 								scope="page" />
@@ -165,6 +140,62 @@
 		src="<%=request.getContextPath()%>/resources/js/common.js"></script>
 <script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/validation.js"></script>
+		
+<script type="text/javascript">
+// New arrivals slider
+var new_arrivals_start = 0;
+var new_arrivals_nb = 3;
+var new_arrivals_end = new_arrivals_start + new_arrivals_nb;
+var new_arrivals_length = $('.new-arrivals-product-list div').length;
+var new_arrivals_list = $('.new-arrivals-product-list div');
+
+new_arrivals_list.hide().filter(':lt('+(new_arrivals_end)+')').show();
+
+
+$('.new-arrivals-product-prev, .new-arrivals-product-next').click(function(e){
+   e.preventDefault();
+
+   if( $(this).hasClass('new-arrivals-product-prev') ){
+	   new_arrivals_start -= new_arrivals_nb;
+   } else {
+	   new_arrivals_start += new_arrivals_nb;
+   }
+
+   if( (new_arrivals_start < 0) || (new_arrivals_start >= new_arrivals_length) ) new_arrivals_start = 0;
+   	new_arrivals_end = new_arrivals_start + new_arrivals_nb;       
+
+   if( new_arrivals_start == 0 ) new_arrivals_list.hide().filter(':lt('+(new_arrivals_end)+')').show();
+   else new_arrivals_list.hide().filter(':lt('+(new_arrivals_end)+'):gt('+(new_arrivals_start-1)+')').show();
+});
+
+
+// Deals for you slider
+var deals_for_you_start = 0;
+var deals_for_you_nb = 3;
+var deals_for_you_end = deals_for_you_start + deals_for_you_nb;
+var deals_for_you_length = $('.deals-for-you-product-list div').length;
+var deals_for_you_list = $('.deals-for-you-product-list div');
+
+deals_for_you_list.hide().filter(':lt('+(deals_for_you_end)+')').show();
+
+
+$('.deals-for-you-product-prev, .deals-for-you-product-next').click(function(e){
+   e.preventDefault();
+
+   if( $(this).hasClass('deals-for-you-product-prev') ){
+	   deals_for_you_start -= deals_for_you_nb;
+   } else {
+	   deals_for_you_start += deals_for_you_nb;
+   }
+
+   if( deals_for_you_start < 0 || deals_for_you_start >= deals_for_you_length ) deals_for_you_start = 0;
+   	deals_for_you_end = deals_for_you_start + deals_for_you_nb;       
+
+   if( deals_for_you_start == 0 ) deals_for_you_list.hide().filter(':lt('+(deals_for_you_end)+')').show();
+   else deals_for_you_list.hide().filter(':lt('+(deals_for_you_end)+'):gt('+(deals_for_you_start-1)+')').show();
+});
+
+</script>
 
 </body>
 	

@@ -54,17 +54,15 @@
 							<c:forEach items="${cartProductList}" var="cartProduct">
 								<tr id="cart_tr_${cartProduct.productCode}">
 									<td>
-										<form action="product-details" method="get">
-											<input name="productCode" type="text"
-												value="${cartProduct.productCode}" style="display: none" />
-											<input type="image"
+										<a href="product-details?productCode=${cartProduct.productCode}" >
+											<img
 												src="<%=request.getContextPath()%>/resources/images/product/85x100/${cartProduct.productCode}.jpg"
-												class="img-responsive" alt="Submit">
-										</form>
+												class="img-responsive" alt="${cartProduct.productName}">
+										</a>
 									</td>
 
 									<td>${cartProduct.productName}<br> <br> <input
-										type="submit" class="btn btn-link" value="Remove"
+										type="submit" class="common-btn-border-no-padding" value="Remove"
 										onclick="removeProductFromCart('${cartProduct.productCode}');" />
 									</td>
 

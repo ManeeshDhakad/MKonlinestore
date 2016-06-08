@@ -9,7 +9,7 @@ public interface CartDao {
 	
 	public Cart getCartProductDetails(Cart cart);
 	
-	public List<Cart> getCartProductList(Cart cart);
+	public List<Cart> getCartProductList(int userId);
 	
 	public boolean addProductToCart(Cart cart);
 	

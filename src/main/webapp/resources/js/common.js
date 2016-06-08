@@ -7,7 +7,7 @@ $(document).ready(function(){
 	// Success and error messages
 	
 	var msgStatus = document.getElementById('messageStatus').value;
-	if(msgStatus != "" || msgStatus != null || msgStatus != NaN || msgStatus.length > 0) {
+	if(msgStatus != "" || msgStatus != null || msgStatus.length > 0) {
 		
 		if(msgStatus.indexOf("SUCCESS") > -1) {
 			$(".isa_success").css('display','block');
@@ -146,6 +146,7 @@ var successTitle = "<i class=\"fa fa-check\"></i> ";
 
 
 function addProductToCart(code) {
+	try {
 	var productCode = code.replace(/['"]+/g, '');
 	var productCount = $(".crtProductCount").html();
 	var crtProductCount;
@@ -157,7 +158,7 @@ function addProductToCart(code) {
 		crtProductCount = parseInt(productCount);
 	
 	crtProductCount = crtProductCount + 1;
-	
+
 	$.ajax({
 		type : "POST",
 		contentType : "application/json",
@@ -170,12 +171,12 @@ function addProductToCart(code) {
 				
 				// Product detail page
 				$("#btn_addToCart").prop('title', "This product is added to cart").
-				text("ADDED TO CART").prop('class','common-btn-disabled').attr("disabled", true);
+				html("ADDED TO CART&nbsp;&nbsp;<i class=\"fa fa-shopping-cart fa-lg\">").prop('class','common-btn-disabled').attr("disabled", true);
 				
 				
 				// User profile page
 				$("#btn_addToCart" + productCode).prop('title', "This product is added to cart").
-				text("ADDED TO CART").prop('class','common-btn-disabled').attr("disabled", true);			
+				html("ADDED TO CART&nbsp;&nbsp;<i class=\"fa fa-shopping-cart fa-lg\">").prop('class','common-btn-disabled').attr("disabled", true);			
 								
 				$("#btn_addToCart").prop('data-toggle','tooltip');
 				$("#btn_addToCart").prop('data-placement','top');
@@ -190,12 +191,17 @@ function addProductToCart(code) {
 			}
 		}
 	});
+	}
+	catch (e) {
+		console.error(e.message);
+	}
 	
 }
 
 function addProductToWishList(code) {
 	var productCode = code.replace(/['"]+/g, '');
 	
+	try {
 	$.ajax({
 		type : "POST",
 		contentType : "application/json",
@@ -220,11 +226,16 @@ function addProductToWishList(code) {
 			}
 		}
 	});
+	}
+	catch (e) {
+		console.error(e.message);
+	}
 }
 
 function deleteProductFromWishlist(code) {
 	var productCode = code.replace(/['"]+/g, '');
 	
+	try {
 	$.ajax({
 		type : "POST",
 		contentType : "application/json",
@@ -244,13 +255,19 @@ function deleteProductFromWishlist(code) {
 			}
 		}
 	});
+	}
+	catch (e) {
+		console.error(e.message);
+	}
 }
 
+var oldQuantity = new Object(); // Hold last qty
 function updateProductQunatity(code, price, qty) {
+	try {
 	var productCode = code.replace(/['"]+/g, '');
 	var productPrice = price.replace(/['"]+/g, '');
 	var oldQTY = qty.replace(/['"]+/g, '');
-	
+		
 	var estimatedTotal = parseFloat($("#cartEstimatedTotal").html());
 	var productSubTotal = parseFloat($("#productSubTotal" + productCode).html());
 	
@@ -258,6 +275,11 @@ function updateProductQunatity(code, price, qty) {
 	var selectQTY = document.getElementById('select_' + productCode);
     var productQTYIndex = selectQTY.selectedIndex;
     var newQTY = selectQTY[productQTYIndex].text;
+    
+    if(oldQuantity[productCode] != undefined || oldQuantity[productCode] != null)
+    	oldQTY = oldQuantity[productCode];
+    
+    oldQuantity[productCode] = newQTY;
     
     if(newQTY > oldQTY) {
     	var remainQTY = newQTY - oldQTY;
@@ -271,7 +293,7 @@ function updateProductQunatity(code, price, qty) {
     }
     
     var json = productCode + "####@@@@####" + newQTY;
-   
+
     $.ajax({
 		type : "POST",
 		contentType : "application/json",
@@ -293,11 +315,16 @@ function updateProductQunatity(code, price, qty) {
 			}
 		}
 	});
+    }
+	catch (e) {
+		console.error(e.message);
+	}
 }
 
 
 
 function removeProductFromCart(code) {
+	try {
 	var productCode = code.replace(/['"]+/g, '');
 		
 	var estimatedTotal = parseFloat($("#cartEstimatedTotal").html());
@@ -333,10 +360,15 @@ function removeProductFromCart(code) {
 			}
 		}
 	});
+	}
+	catch (e) {
+		console.error(e.message);
+	}
 }
 
 
 function loginUser() {
+	try {
 	modalLoadingState = true;
 		
 	var email = document.getElementById('loginEmail').value;
@@ -381,9 +413,15 @@ function loginUser() {
 		});
 	}
 	
+	}
+	catch (e) {
+		console.error(e.message);
+	}
+	
 }
 
 function signupUser() {
+	try {
 	modalLoadingState = true;
 	
 	var name = document.getElementById('signupName').value;
@@ -424,21 +462,28 @@ function signupUser() {
 					$(".isa_error_modal").css('display','none');
 					$("#loginModelSuccessMessage").html(data);
 					
-					
+					console.log("Signup success");
 				}
 				else {
 					$(".isa_success_modal").css('display','none');
 					$(".isa_error_modal").css('display','block');
 					$("#loginModelErrorMessage").html(data);
 				}
+			
 			}
 		});
+	}
+	
+	}
+	catch (e) {
+		console.error(e.message);
 	}
 	
 }
 
 
 function checkoutPage(code) {
+	try {
 	var productCode = code.replace(/['"]+/g, '');
 	
 	$.ajax({
@@ -455,8 +500,14 @@ function checkoutPage(code) {
 				window.location = "checkout?productCode=" + productCode;
 			}
 			
+			console.log("Checkout page success");
 		}
 	});
+	
+	}
+	catch (e) {
+		console.error(e.message);
+	}
 }
 
 
@@ -466,8 +517,8 @@ function forgotPassword() {
 
 
 function sendFeedbackMail() {
-	 				
-
+	try { 				
+	
 	var name = document.getElementById('feedbackMailName').value;
 	var email = document.getElementById('feedbackMailEmail').value;
 	var subject = document.getElementById('feedbackMailSubject').value;
@@ -505,14 +556,22 @@ function sendFeedbackMail() {
 					$(".isa_success").css('display','block');
 					$(".isa_error").css('display','none');
 					$("#successMessage").html(data);
+					
+					console.log("Feedback mail success");
 				}
 				else {
 					$(".isa_error").css('display','block');
 					$(".isa_success").css('display','none');
 					$("#errorMessage").html(data);
 				}
+				
 			}
 		});
+	}
+	
+	}
+	catch (e) {
+		console.error(e.message);
 	}
 }
 

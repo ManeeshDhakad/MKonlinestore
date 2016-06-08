@@ -21,8 +21,8 @@ public class CartServiceImpl implements CartService{
 	private CartDao cartDao;
 	
 	@Transactional
-	public List<Cart> getCartProductList(Cart cart) {
-		return cartDao.getCartProductList(cart);
+	public List<Cart> getCartProductList(int userId) {
+		return cartDao.getCartProductList(userId);
 	}
 
 	@Transactional

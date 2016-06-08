@@ -37,8 +37,14 @@ $(document).ready(function(){
 		}
 	}
 	
+	
 });
 
+
+// Hide add new address collapse button
+$("#div_addNewAddress").on("show.bs.collapse", function(){
+	$("#btn_addNewAddressCollapse").css('display','none');
+});
 
 
 // User profile
@@ -171,6 +177,7 @@ $("#userWishlistLink").click(function(){
 
 
 function saveUsersPersonalInfo(name, email, mobile) {
+	try {
 	name = name.replace(/['"]+/g, '');
 	email = email.replace(/['"]+/g, '');
 	mobile = mobile.replace(/['"]+/g, '');
@@ -223,9 +230,14 @@ function saveUsersPersonalInfo(name, email, mobile) {
 		});
 	}
 		
+	}
+	catch (e) {
+		console.error(e.message);
+	}
 }
 
 function updateUserPassword() {
+	try {
 	var oldPassword = document.getElementById('profileUserOldPassword').value;
 	var newPassword = document.getElementById('profileUserNewPassword').value;
 	var confirmNewPassword = document.getElementById('profileUserConfirmNewPassword').value;
@@ -272,10 +284,15 @@ function updateUserPassword() {
 			}
 		});
 	}
+	
+	}
+	catch (e) {
+		console.error(e.message);
+	}
 }
 
 function addUserAddress(page) {
-		
+	try {
 	var name = document.getElementById('userAddressName').value;
 	var streetAddress = document.getElementById('userStreetAddress').value;
 	var landmark = document.getElementById('userAddressLandmark').value;
@@ -308,7 +325,6 @@ function addUserAddress(page) {
 				if(data.indexOf("fa-check") > -1) {
 					$("#div_successMessage").css('display','block');
 					$("#div_errorMessage").css('display','none');
-					$("#successMessage").html(data);
 					$("#checkoutAddressCompleted").removeAttr('style');
 					
 					// Clear all fields
@@ -320,6 +336,26 @@ function addUserAddress(page) {
 					$("#userAddressCounty").val('');
 					$("#userAddressMobile").val('');
 					
+					// Collapse address form
+					$("#div_addNewAddress").collapse('hide');
+					$("#btn_addNewAddressCollapse").css('display','block');
+					
+					var  addressDetail = "";
+					var addressId = data.replace( /^\D+/g, '');
+					addressDetail = "<div id=\"div_address" + addressId + "\" class=\"col-md-3 alert alert-info\" role=\"alert\" " +
+						" style=\"margin-left: 10px; width: 185px; height: 250px\">" +
+						" <strong>" + name + "</strong><br>" +
+						streetAddress + "<br>" + landmark + "<br>" + city + " " + state + "&nbsp;" + country + "<br>" +
+						"Mobile:&nbsp;" + mobile + "<br><br>" + 
+						"<button type=\"button\" class=\"common-btn-border-no-padding\" style=\"text-align: center;\" " +
+						"onclick=\"deleteUserAddress('" + addressId + "'); return false;\">Delete Address</button> </div> ";
+					
+					
+					$("#div_addressList").append(addressDetail);
+					
+					data = data.replace(addressId, '');
+					$("#successMessage").html(data);
+										
 					// Switch to Order Summary
 					$('#checkoutOrderSummaryBody').collapse('show');
 					$('#checkoutAddresBody').collapse('hide');
@@ -334,10 +370,30 @@ function addUserAddress(page) {
 			}
 		});
 	}
+	
+	}
+	catch (e) {
+		console.error(e.message);
+	}
+}
+
+function cancelAddNewAddress() {
+	// Clear all fields
+	$("#userAddressName").val('');
+	$("#userStreetAddress").val('');
+	$("#userAddressLandmark").val('');
+	$("#userAddressCity").val('');
+	$("#userAddressState").val('');
+	$("#userAddressCounty").val('');
+	$("#userAddressMobile").val('');
+	
+	// Collapse address form
+	$("#div_addNewAddress").collapse('hide');
+	$("#btn_addNewAddressCollapse").css('display','block');
 }
 
 function deleteUserAddress(addresId) {
-	
+	try {
 	addresId = addresId.replace(/['"]+/g, '');
 
 	var json = addresId;
@@ -361,10 +417,15 @@ function deleteUserAddress(addresId) {
 			}
 		}
 	});
+	
+	}
+	catch (e) {
+		console.error(e.message);
+	}
 }
 
 function saveForgotPassword() {
-	
+	try {
 	var email = document.getElementById('forgotPasswordEmail').value; 
 	var newPassword = document.getElementById('forgotNewPassword').value;
 	var confirmNewPassword = document.getElementById('forgotConfirmNewPassword').value;
@@ -410,10 +471,16 @@ function saveForgotPassword() {
 			}
 		});
 	}
+	
+	}
+	catch (e) {
+		console.error(e.message);
+	}
 }
 
 
 function cancelOrder(productCode, orderId) {
+	try {
 	productCode = productCode.replace(/['"]+/g, '');
 	orderId = orderId.replace(/['"]+/g, '');
 
@@ -439,4 +506,9 @@ function cancelOrder(productCode, orderId) {
 			}
 		}
 	});
+	
+	}
+	catch (e) {
+		console.error(e.message);
+	}
 }

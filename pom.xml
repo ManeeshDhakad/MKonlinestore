@@ -47,20 +47,20 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.1.6.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 		
 		<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>4.0.1.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
 
 		<!-- The spring AOP -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
-			<version>4.1.6.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<!-- The spring-webmvc -->
@@ -73,14 +73,14 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>4.1.6.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<!-- The spring-web -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>4.1.6.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<!-- spring Transaction -->
@@ -94,7 +94,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>4.0.3.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<!-- Log4j -->
@@ -184,16 +184,6 @@
 			<version>1.0.0.GA</version>
 		</dependency>
 		
-		
-		<dependency>
-    <groupId>com.amazonaws</groupId>
-    <artifactId>aws-java-sdk-rds</artifactId>
-    <version>1.11.3</version>
-</dependency>
-		
-
-
-
 	</dependencies>
 
 

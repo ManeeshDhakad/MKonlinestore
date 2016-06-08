@@ -59,10 +59,9 @@
       										<c:forEach items="${orderList}" var="orderProduct">
         										<tr  id="cart_tr_${orderProduct.productCode}">      
             										<td>
-            											<form action="product-details" method="get">
-      														<input name="productCode" type="text" value="${orderProduct.productCode}" style="display: none" />
-      														<input type="image" src="<%=request.getContextPath()%>/resources/images/product/85x100/${orderProduct.productCode}.jpg" class="img-responsive" alt="Submit">		
-														</form>
+            											<a href="product-details?productCode=${orderProduct.productCode}" >
+      														<img src="<%=request.getContextPath()%>/resources/images/product/85x100/${orderProduct.productCode}.jpg" class="img-responsive" alt="${orderProduct.productName}">		
+														</a>
         											</td>
         								
         											<td>

@@ -79,20 +79,6 @@ select, select option {
   text-overflow: ellipsis;
 }
 
-.common-btn-fb {
-	width:50%;
-  	background-color: #49639F;
-  	border: none;
-  	outline: none;
-  	color: #fff;
-  	font-size: 14px;
-  	font-weight: normal;
-  	padding: 14px 14px 14px 14px;
-  	border-radius: 2px;
-  	text-transform: uppercase;
-  	cursor: pointer; 
-}
-
 .common-btn {
 	width:100%;
   	background-color: #FF8C00;
@@ -117,8 +103,8 @@ select, select option {
 	width:100%;
   	background-color: white; 
     color: black; 
-    border: 2px solid #4CAF50;
-  	outline: none;
+    border: 2px solid #FF8C00;
+  	outline: none;	
   	font-size: 14px;
   	font-weight: normal;
   	padding: 14px 14px 14px 14px;
@@ -141,6 +127,26 @@ select, select option {
   	text-transform: uppercase;
   	margin-bottom: 10px;
 }
+
+.common-btn-border-no-padding{
+	width:100%;
+  	background-color: white; 
+    color: black; 
+    border: 2px solid #FF8C00;
+  	outline: none;
+  	font-size: 14px;
+  	font-weight: normal;
+  	border-radius: 2px;
+  	text-transform: uppercase;
+  	margin-bottom: 10px;
+}
+
+.common-btn-border:hover, .common-btn-border-no-padding:hover, 
+button.common-btn-border:hover, button.common-btn-border-no-padding:hover {
+  background-color: #FFA500;
+  color: #fff;
+}
+
 
 .input-group {
 	width: 50%;
@@ -270,8 +276,8 @@ select, select option {
 
 .lb-header .active{
   	color: #029f5b;
-  	font-size: 25px;
-  	border: 2px solid orange;
+  	font-size: 20px;
+  	border: 2px solid #FFA500;
 }
 
 .close {
@@ -338,14 +344,14 @@ select, select option {
 	transition: 1s ease;
 }
 .product-img-border div:hover{
-	-moz-box-shadow: 0 0 10px orange; 
-	-webkit-box-shadow: 0 0 10px orange; 
+	-moz-box-shadow: 0 0 10px #FFA500; 
+	-webkit-box-shadow: 0 0 10px #FFA500; 
 	border: 1px solid #ccc;
 	box-shadow: 0 0 10px #ccc; 
 }
 
 .product-thumbnail-border, .div-border {
-	border:1px solid orange;
+	border:1px solid #FFA500;
 }
 
 .product-img-grow img {
@@ -410,10 +416,10 @@ select, select option {
    height: 100%;
    position: fixed;
    display: block;
-   opacity: 0.7;
    background-color: #fff;
    z-index: 1000;
    text-align: center;
+   opacity: 0.8;
 }
 
 #loading-image {
@@ -429,7 +435,7 @@ select, select option {
    height: 100%;
    position: fixed;
    display: block;
-   opacity: 0.7;
+   opacity: 0.8;
    background-color: #fff;
    z-index: 1000;
    text-align: center;
@@ -462,7 +468,7 @@ select, select option {
 .stars
 {
     font-size: 18px;
-    color: orange;
+    color: #FFA500;
 }
 
 .review-star-empty {
@@ -472,7 +478,7 @@ select, select option {
 
 .review-star {
 	font-size: 16px;
-    color: orange;
+    color: #FFA500;
 }
 /* Review CSS end */
 

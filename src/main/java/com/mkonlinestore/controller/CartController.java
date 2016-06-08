@@ -44,7 +44,7 @@ public class CartController {
 	
 	@RequestMapping(value = "/add-to-cart", method = RequestMethod.POST)
 	public @ResponseBody
-    String addProductToCart(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String cartProductCode) {    
+    String addProductToCart(HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String cartProductCode) {    
 		String result = Constants.COMMON_ERROR;
 		
 		try {
@@ -96,7 +96,7 @@ public class CartController {
 	
 	@RequestMapping(value = "/update-product-qty", method = RequestMethod.POST)
 	public @ResponseBody
-    String updateProductQunatity(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String cartProduct) {    
+    String updateProductQunatity(HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String cartProduct) {    
 		String result = Constants.COMMON_ERROR;;
 		try {
 			Product product = new Product();
@@ -151,7 +151,7 @@ public class CartController {
 	}
 	
 	@RequestMapping(value = "/view-cart", method = RequestMethod.GET)
-	public ModelAndView viewCart(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {    
+	public ModelAndView viewCart(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {    
 		ModelAndView view = new ModelAndView("cart");
 		try {
 			User user = ssn.checkUserSession(request);
@@ -228,16 +228,12 @@ public class CartController {
 		List<Cart> cartProductListDB = new ArrayList<Cart>(); 
 		List<Product> cartProductListCK = new ArrayList<Product>(); 
 		List<Product> cartProductList = new ArrayList<Product>(); 
-		Cart cart = new Cart();
-				
+						
 		// Check if user is logged in
 		if(user != null) {
-			cart.setUserId(user.getUserId());
-			cartProductListDB = cartService.getCartProductList(cart);
+			cartProductListDB = cartService.getCartProductList(user.getUserId());
 		}
-				
-		cartProductListCK = ssn.getCartSession(session, request, response);
-					
+								
 		// Get cart product from DB
 		if(cartProductListDB != null && cartProductListDB.size() > 0) {
 			for(Cart cartInfo : cartProductListDB) {
@@ -249,6 +245,7 @@ public class CartController {
 		}
 					
 		// Get cart product from cookies
+		cartProductListCK = ssn.getCartSession(session, request, response);
 		if(cartProductListCK != null && cartProductListCK.size() > 0) {
 			for(Product product : cartProductListCK) {
 				if(!productExistsToCart(cartProductList, session, request, response, product)) // Avoid cookies product which are already in DB

@@ -61,31 +61,31 @@
 						</div>
 
 						<div class="panel-body" >
-							<div class="input-group" style="margin-left: 9%">
+							<div class="input-group" style="margin-left: 12%">
       							<span class="input-group-addon glyphicon glyphicon-user" id="icon_profileUserName"></span>
 								<input type="text" id="profileUserName" name="profileUserName" value="${user.userName}" class="form-control common-input-transparent"
-										style="width: 80%" placeholder="Enter Name*" aria-describedby="icon_profileUserName" />
+										style="width: 70%" placeholder="Enter Name*" aria-describedby="icon_profileUserName" />
 							</div>
 
-							<div class="input-group" style="margin-left: 9%">
+							<div class="input-group" style="margin-left: 12%">
       							<span class="input-group-addon glyphicon glyphicon-envelope" id="icon_profileUserEmail"></span>
 									<input type="text" id="profileUserEmail"
 										name="profileUserEmail" value="${user.userEmail}" aria-describedby="icon_profileUserEmail"
-										style="width: 80%" class="form-control common-input-transparent" placeholder="Enter Email*" />
+										style="width: 70%" class="form-control common-input-transparent" placeholder="Enter Email*" />
 							</div>
 
-							<div class="input-group" style="margin-left: 9%">
+							<div class="input-group" style="margin-left: 12%">
       							<span class="input-group-addon glyphicon glyphicon-earphone" id="icon_userMobile"></span>
 								<c:set var="userMobile" value="${user.userMobile}" scope="page" />
 								<c:if test="${user.userMobile == 0}">
 									<c:set var="userMobile" value="" scope="page"></c:set>
 								</c:if>
 								<input type="text" id="profileUserMobile" name="profileUserMobile" class="form-control common-input-transparent" aria-describedby="icon_userMobile"
-										style="width: 80%" value="${userMobile}" placeholder="Enter Mobile" />
+										style="width: 70%" value="${userMobile}" placeholder="Enter Mobile" />
 							</div>
-							<div class="input-group" style="margin-left: 9%">
+							<div class="input-group" style="margin-left: 12%">
       							<span class="input-group-addon glyphicon glyphicon-send" id="icon_updateUserInfoBTN" style="display: none"></span>
-									<input style="height: 45px; width: 82%" id="updateUserInfoBTN" type="submit" class="form-control common-btn" value="Save Changes" aria-describedby="icon_updateUserInfoBTN"
+									<input style="height: 45px; width: 73%" id="updateUserInfoBTN" type="submit" class="form-control common-btn" value="Save Changes" aria-describedby="icon_updateUserInfoBTN"
 										onclick="saveUsersPersonalInfo('${user.userName}', '${user.userEmail}', '${userMobile}'); return false;" />
 								
 							</div>
@@ -100,32 +100,32 @@
 
 						<div class="panel-body">
 
-							<div class="input-group" style="margin-left: 9%">
+							<div class="input-group" style="margin-left: 12%">
       							<span class="input-group-addon glyphicon glyphicon-lock" id="icon_profileUserOldPassword"></span>
 								<input type="password" id="profileUserOldPassword" aria-describedby="icon_profileUserOldPassword"
-										name="profileUserOldPassword" class="form-control common-input-transparent" style="width: 80%"
+										name="profileUserOldPassword" class="form-control common-input-transparent" style="width: 70%"
 										placeholder="Enter Old Password*" />
 							</div>
 
-							<div class="input-group" style="margin-left: 9%">
+							<div class="input-group" style="margin-left: 12%">
       							<span class="input-group-addon glyphicon glyphicon-lock" id="icon_profileUserNewPassword"></span>
 									<input type="password" id="profileUserNewPassword" aria-describedby="icon_profileUserNewPassword"
-										name="profileUserNewPassword" class="form-control common-input-transparent" style="width: 80%"
+										name="profileUserNewPassword" class="form-control common-input-transparent" style="width: 70%"
 										placeholder="Enter New Password*" />
 								
 							</div>
 
-							<div class="input-group" style="margin-left: 9%">
+							<div class="input-group" style="margin-left: 12%">
       							<span class="input-group-addon glyphicon glyphicon-lock" id="icon_profileUserConfirmNewPassword"></span>
 									<input type="password" id="profileUserConfirmNewPassword" aria-describedby="icon_profileUserConfirmNewPassword"
-										name="profileUserConfirmNewPassword" class="form-control common-input-transparent" style="width: 80%"
+										name="profileUserConfirmNewPassword" class="form-control common-input-transparent" style="width: 70%"
 										placeholder="Enter Confirm New Password*" />
 							
 							</div>
 
-							<div class="input-group" style="margin-left: 9%">
+							<div class="input-group" style="margin-left: 12%">
       							<span class="input-group-addon glyphicon glyphicon-send" id="icon_updatePasswordBTN" style="display: none"></span>
-								<input style="height: 45px; width: 82%" id="updatePasswordBTN" type="submit" class="form-control common-btn" value="Save Changes" aria-describedby="icon_updatePasswordBTN"
+								<input style="height: 45px; width: 73%" id="updatePasswordBTN" type="submit" class="form-control common-btn" value="Save Changes" aria-describedby="icon_updatePasswordBTN"
 										onclick="updateUserPassword(); return false;" />
 							
 							</div>
@@ -140,7 +140,7 @@
 
 						<div class="panel-body">
 
-							<button class="common-btn-border"
+							<button id="btn_addNewAddressCollapse" class="common-btn-border"
 								style="width: 30%" type="button" data-toggle="collapse"
 								data-target="#div_addNewAddress" aria-expanded="false"
 								aria-controls="div_addNewAddress">Add New Address</button>
@@ -215,16 +215,20 @@
 								</div>
 
 								<div class="row">
-									<div class="col-md-4"></div>
+									<div class="col-md-4">
+										<input type="submit" class="common-btn" value="Cancel"
+											onclick="cancelAddNewAddress(); return false;" />
+									
+									</div>
 
 									<div class="col-md-5">
-										<input type="submit" class="common-btn" value="Save Changes"
+										<input type="submit" class="common-btn" value="Add New Address"
 											onclick="addUserAddress('profile'); return false;" />
 									</div>
 								</div>
 							</div>
 
-							<div class="row">
+							<div id="div_addressList" class="row">
 
 								<c:set var="addressCount" value="0" scope="page" />
 								<c:forEach items="${addressList}" var="address">
@@ -236,10 +240,8 @@
 										${address.addressCity} ${address.addressState},&nbsp;
 										${address.addressCountry}<br>
 										Mobile:&nbsp;${address.addressMobile}
-										<hr
-											style="border-top: 1px solid #8c8b8b; margin: 5px 1px 0px 1px">
-
-										<button type="button" class="btn btn-link"
+										<br><br>
+										<button type="button" class="common-btn-border-no-padding"
 											style="text-align: center;"
 											onclick="deleteUserAddress('${address.addressId}'); return false;">Delete
 											Address</button>
@@ -285,13 +287,11 @@
 										
 										<tr id="tr_orderHistory${orderHistoryProduct.productCode}">
 											<td>
-												<form action="product-details" method="get">
-													<input name="productCode" type="text"
-														value="${orderHistoryProduct.productCode}"
-														style="display: none" /> <input type="image"
+												<a href="product-details?productCode=${orderHistoryProduct.productCode}">
+													<img
 														src="<%=request.getContextPath()%>/resources/images/product/85x100/${orderHistoryProduct.productCode}.jpg"
-														class="img-responsive" alt="Submit">
-												</form>
+														class="img-responsive" alt="${orderHistoryProduct.productName}">
+												</a>
 											</td>
 											<td>${orderHistoryProduct.productName} <br> 
 											<strong>QTY : ${orderHistoryProduct.productQuantity}</strong> <br> 
@@ -371,20 +371,18 @@
 
 										<tr id="tr_wishlist${wishlistProduct.productCode}">
 											<td>
-												<form action="product-details" method="get">
-													<input name="productCode" type="text"
-														value="${wishlistProduct.productCode}"
-														style="display: none" /> <input type="image"
+												<a href="product-details?productCode=${wishlistProduct.productCode}">
+													<img
 														src="<%=request.getContextPath()%>/resources/images/product/85x100/${wishlistProduct.productCode}.jpg"
-														class="img-responsive" alt="Submit">
-												</form>
+														class="img-responsive" alt="${wishlistProduct.productName}">
+												</a>
 											</td>
 											<td>${wishlistProduct.productName} <br> <strong>${wishlistProduct.productStatus}
 													<br> Rs : ${wishlistProduct.productPrice}
 											</strong>
 											</td>
 
-											<td><input type="submit" class="btn btn-link"
+											<td><input type="submit" class="common-btn"
 												value="Remove From Wishlist"
 												onclick="deleteProductFromWishlist('${wishlistProduct.productCode}');" />
 

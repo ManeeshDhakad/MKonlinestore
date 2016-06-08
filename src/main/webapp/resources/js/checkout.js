@@ -16,6 +16,7 @@ function goToPayment() {
 }
 
 function makeDeliveryAddress(addressId) {
+	try {
 	addressId = addressId.replace(/['"]+/g, '');
 	var json = addressId;	
 	
@@ -44,10 +45,16 @@ function makeDeliveryAddress(addressId) {
 			}
 		}
 	});
+	
+	}
+	catch (e) {
+		console.error(e.message);
+	}
 }
 
-
+var oldQuantityCheckout = new Object(); // Hold last updated qty
 function updateCheckoutProductQunatity(code, price, qty) {
+	try {
 	var productCode = code.replace(/['"]+/g, '');
 	var productPrice = price.replace(/['"]+/g, '');
 	var oldQTY = qty.replace(/['"]+/g, '');
@@ -59,6 +66,12 @@ function updateCheckoutProductQunatity(code, price, qty) {
 	var selectQTY = document.getElementById('select_' + productCode);
     var productQTYIndex = selectQTY.selectedIndex;
     var newQTY = selectQTY[productQTYIndex].text;
+    
+    // Hold last updated qty
+    if(oldQuantityCheckout[productCode] != undefined || oldQuantityCheckout[productCode] != null)
+    	oldQTY = oldQuantityCheckout[productCode];
+    
+    oldQuantityCheckout[productCode] = newQTY;
     
     if(newQTY > oldQTY) {
     	var remainQTY = newQTY - oldQTY;
@@ -95,11 +108,17 @@ function updateCheckoutProductQunatity(code, price, qty) {
 			}
 		}
 	});
+    
+	}
+	catch (e) {
+		console.error(e.message);
+	}
 }
 
 
 
 function removeProductFromCheckout(code) {
+	try {
 	var productCode = code.replace(/['"]+/g, '');
 	
 	var estimatedTotal = parseFloat($("#cartEstimatedTotal").html());
@@ -132,9 +151,15 @@ function removeProductFromCheckout(code) {
 			}
 		}
 	});
+	
+	}
+	catch (e) {
+		console.error(e.message);
+	}
 }
 
 function orderCompletion() { 		
+	try {
 	var cardName = document.getElementById('paymentCardName').value;
 	var cardNumber = document.getElementById('paymentCardNumber').value;
 	var cardCVV = document.getElementById('paymentCardCVV').value;
@@ -151,6 +176,10 @@ function orderCompletion() {
 	else {
 		$("#loading").css('display','block');
 		window.location = "order?productCode=" + getParameterByName('productCode');
+	}
+	}
+	catch (e) {
+		console.error(e.message);
 	}
 
 }

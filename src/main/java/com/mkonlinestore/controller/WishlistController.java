@@ -41,7 +41,7 @@ public class WishlistController {
 	
 	@RequestMapping(value = "/add-to-wishlist", method = RequestMethod.POST)
 	public @ResponseBody
-    String addToWishlist(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String productCode) {    
+    String addToWishlist(HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String productCode) {    
 		String result = Constants.COMMON_ERROR;
 		
 		try {
@@ -73,7 +73,7 @@ public class WishlistController {
 	
 	@RequestMapping(value = "/delete-from-wishlist", method = RequestMethod.POST)
 	public @ResponseBody
-    String deleteFromWishlist(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String productCode) {    
+    String deleteFromWishlist(HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String productCode) {    
 		String result = Constants.COMMON_ERROR;
 		
 		try {

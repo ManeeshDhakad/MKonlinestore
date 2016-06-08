@@ -44,29 +44,29 @@
 								<h4>Send your feedback</h4>
 								
   						
- 						 		<div class="input-group"    style="margin-left: 9%">
+ 						 		<div class="input-group"    style="margin-left: 12%">
 									<span class="input-group-addon glyphicon glyphicon-user" id="icon_feedbackMailName"></span>
-									<input type="text" id="feedbackMailName" name="feedbackMailName" class="form-control common-input-transparent" aria-describedby="icon_feedbackMailName" placeholder="Enter Name*" style="width: 80%" />
+									<input type="text" id="feedbackMailName" name="feedbackMailName" class="form-control common-input-transparent" aria-describedby="icon_feedbackMailName" placeholder="Enter Name*" style="width: 70%" />
 								</div>
 								
-								<div class="input-group" style="margin-left: 9%">
+								<div class="input-group" style="margin-left: 12%">
 									<span class="input-group-addon glyphicon glyphicon-envelope" id="icon_feedbackMailEmail"></span>
-									<input type="text" id="feedbackMailEmail" name="feedbackMailEmail" class="form-control common-input-transparent" aria-describedby="icon_feedbackMailEmail" placeholder="Enter Email*" style="width: 80%" />
+									<input type="text" id="feedbackMailEmail" name="feedbackMailEmail" class="form-control common-input-transparent" aria-describedby="icon_feedbackMailEmail" placeholder="Enter Email*" style="width: 70%" />
 								</div>
 								
-								<div class="input-group" style="margin-left: 9%">
+								<div class="input-group" style="margin-left: 12%">
 									<span class="input-group-addon glyphicon glyphicon-header" id="icon_feedbackMailSubject"></span>
-									<input type="text" id="feedbackMailSubject" name="feedbackMailSubject" class="form-control common-input-transparent" aria-describedby="icon_feedbackMailSubject" placeholder="Enter Subject*" style="width: 80%"  />
+									<input type="text" id="feedbackMailSubject" name="feedbackMailSubject" class="form-control common-input-transparent" aria-describedby="icon_feedbackMailSubject" placeholder="Enter Subject*" style="width: 70%"  />
 								</div>
 								
-								<div class="input-group" style="margin-left: 9%">
+								<div class="input-group" style="margin-left: 12%">
 									<span class="input-group-addon glyphicon glyphicon-edit" id="icon_feedbackMailMessage"></span>
-									<textarea id="feedbackMailMessage" name="feedbackMailMessage" class="form-control common-input-transparent" aria-describedby="icon_feedbackMailMessage" placeholder="Enter Messages*" style="height : 100px; width: 80%" ></textarea>
+									<textarea id="feedbackMailMessage" name="feedbackMailMessage" class="form-control common-input-transparent" aria-describedby="icon_feedbackMailMessage" placeholder="Enter Messages*" style="height : 100px; width: 70%" ></textarea>
 								</div>
 								
-								<div class="input-group" style="margin-left: 9%">
+								<div class="input-group" style="margin-left: 12%">
 									<span class="input-group-addon glyphicon glyphicon-send" id="icon_sendMailMessage" style="display: none"></span>
-									<input type="submit" class="form-control common-btn" onclick="sendFeedbackMail(); return false;" style="width: 82%; height: 45px" aria-describedby="icon_sendMailMessage" value="send mail" />
+									<input type="submit" class="form-control common-btn" onclick="sendFeedbackMail(); return false;" style="width: 73%; height: 45px" aria-describedby="icon_sendMailMessage" value="send mail" />
 								</div>
 								
 						</div>

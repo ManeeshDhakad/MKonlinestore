@@ -41,28 +41,28 @@
 
 					<div align="center">
 
-      					<div class="input-group" style="margin-left: 9%">
+      					<div class="input-group" style="margin-left: 12%">
       						<span class="input-group-addon glyphicon glyphicon-envelope" id="icon_forgotPasswordEmail"></span>
-							<input type="text" id="forgotPasswordEmail" name="forgotPasswordEmail" aria-describedby="icon_forgotPasswordEmail" style="width: 80%" class="form-control common-input-transparent" placeholder="Enter Email*" />
+							<input type="text" id="forgotPasswordEmail" name="forgotPasswordEmail" aria-describedby="icon_forgotPasswordEmail" style="width: 70%" class="form-control common-input-transparent" placeholder="Enter Email*" />
 						</div>
 
-						<div class="input-group" style="margin-left: 9%">
+						<div class="input-group" style="margin-left: 12%">
       						<span class="input-group-addon glyphicon glyphicon-lock" id="icon_forgotNewPassword"></span>
-							<input type="password" id="forgotNewPassword" aria-describedby="icon_forgotNewPassword" style="width: 80%"
+							<input type="password" id="forgotNewPassword" aria-describedby="icon_forgotNewPassword" style="width: 70%"
 									name="forgotNewPassword" class="form-control common-input-transparent" placeholder="Enter New Password*" />
 						</div>
 
-						<div class="input-group" style="margin-left: 9%">
+						<div class="input-group" style="margin-left: 12%">
       						<span class="input-group-addon glyphicon glyphicon-lock" id="icon_forgotConfirmNewPassword"></span>
-							<input type="password" id="forgotConfirmNewPassword" aria-describedby="icon_forgotConfirmNewPassword" style="width: 80%"
+							<input type="password" id="forgotConfirmNewPassword" aria-describedby="icon_forgotConfirmNewPassword" style="width: 70%"
 									name="forgotConfirmNewPassword" class="form-control common-input-transparent"
 									placeholder="Enter Confirm New Password*" />
 							
 						</div>
 
-						<div class="input-group" style="margin-left: 9%">
+						<div class="input-group" style="margin-left: 12%">
       						<span class="input-group-addon glyphicon glyphicon-send" id="icon_savePasswordBTN" style="display: none"></span>
-							<input type="submit" style="height: 45px; width: 82%" id="savePasswordBTN" class="form-control common-btn" value="Save Changes" aria-describedby="icon_savePasswordBTN" onclick="saveForgotPassword(); return false;" />
+							<input type="submit" style="height: 45px; width: 73%" id="savePasswordBTN" class="form-control common-btn" value="Save Changes" aria-describedby="icon_savePasswordBTN" onclick="saveForgotPassword(); return false;" />
 						
 						</div>
 

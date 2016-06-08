@@ -63,64 +63,29 @@
 					</c:if>
 
 					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-						<form action="product-details" method="get">
-							<input name="productCode" type="text"
-								value="${product.productCode}" style="display: none" /> <input
-								type="image"
+						<a href="product-details?productCode=${product.productCode}" >
+							<img
 								src="<%=request.getContextPath()%>/resources/images/product/300x400/${product.productCode}.jpg"
 								title="${product.productName}" class="img-responsive"
-								alt="Submit"> ${product.productName} <br /> 
-								<c:set var="reviewRating" value="${ratings[count]}" scope="page" />
-								<c:choose>
-								<c:when test="${reviewRating == 0 }">
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								</c:when>
-								<c:when test="${reviewRating < 2 }">
-								<span class="glyphicon glyphicon-star review-star"></span>
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								</c:when>
-								<c:when test="${reviewRating < 3 }">
-								<span class="glyphicon glyphicon-star review-star"></span>
-								<span class="glyphicon glyphicon-star review-star"></span>
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								</c:when>
-								<c:when test="${reviewRating < 4 }">
-								<span class="glyphicon glyphicon-star review-star"></span>
-								<span class="glyphicon glyphicon-star review-star"></span>
-								<span class="glyphicon glyphicon-star review-star"></span>
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								</c:when>
-								<c:when test="${reviewRating < 5 }">
-								<span class="glyphicon glyphicon-star review-star"></span>
-								<span class="glyphicon glyphicon-star review-star"></span>
-								<span class="glyphicon glyphicon-star review-star"></span>
-								<span class="glyphicon glyphicon-star review-star"></span>
-								<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
-								</c:when>
-								<c:when test="${reviewRating == 5 }">
-								<span class="glyphicon glyphicon-star review-star"></span>
-								<span class="glyphicon glyphicon-star review-star"></span>
-								<span class="glyphicon glyphicon-star review-star"></span>
-								<span class="glyphicon glyphicon-star review-star"></span>
-								<span class="glyphicon glyphicon-star review-star"></span>
-								</c:when>
+								alt="${product.productName}"> 
+						</a>
+								${product.productName} <br /> 
 								
-								</c:choose>(${ reviews[count]})
+								<c:forEach begin="0" end="4" varStatus="loop">
+									<c:choose>
+										<c:when test="${loop.index < ratings[count]}">
+											<span class="glyphicon glyphicon-star review-star"></span>
+										</c:when>
+										<c:otherwise>
+											<span class="glyphicon glyphicon-star-empty review-star-empty"></span>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>(${ reviews[count]})
 								&nbsp;&nbsp;&nbsp;
 								<strong><span>Rs.	${product.productPrice} &nbsp;&nbsp;</span></strong>
 								
 
-						</form>
+						
 					</div>
 
 					<c:set var="count" value="${count + 1}" scope="page" />
@@ -167,9 +132,6 @@
 
 
 <!-- JavaScript -->
-<script type="text/javascript">
-		$("#menu_man").addClass("menu-underline");
-</script>
 <script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript"

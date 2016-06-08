@@ -2,9 +2,11 @@ package com.mkonlinestore.common;
 
 public class Constants {
 	
+	public static final String SERVER_DOWN = "<i class=\"fa fa-warning\"></i>&nbsp; Server is down please try after some time!";
+	
 	public static final String MK_EMAIL = "mkonlinestore16@gmail.com";
 	
-	public static final String MK_FEEDBACK_MAIL_BODY = "We have received your feeback mail. Our team will look into it shortly. <br>Enjoy shopping at MKonlinestore.com <br>Thanks, <br> MKonlinestore.com";
+	public static final String MK_FEEDBACK_MAIL_BODY = "We have received your feeback mail. Our team will look into it shortly. \nEnjoy shopping at MKonlinestore.com \n\nThanks, \n MKonlinestore.in";
 	
 	public static final String FEEDBACK_MAIL_SUCCESS = "<i class=\"fa fa-check\"></i>&nbsp; We have successfully recieved your feedback mail. Please check your email for more details.";
 	
@@ -23,7 +25,7 @@ public class Constants {
 	
 	public static final String CATEGORY_NOT_AVAILABLE = "<i class=\"fa fa-warning\"></i>&nbsp; Selected category is not available. Please select from product category menu. Enjoy shopping";
 	
-	public static final String USER_EXISTS = "<strong>INFO!</strong> You are already Signup with this email.";
+	public static final String USER_EXISTS = "<i class=\"fa fa-warning\"></i>&nbsp; You are already Signup with this email.";
 	
 	public static final String SIGNUP_SUCCESS = "<i class=\"fa fa-check\"></i>&nbsp; You are successfully signup. Please Login with your credentials.";
 	
@@ -80,7 +82,7 @@ public class Constants {
 	
 	public static final String FORGOT_PASSWORD_UPDATE_ERROR = "<i class=\"fa fa-warning\"></i>&nbsp; Your password not updated. Please enter correct email.";
 
-	public static final String USER_ADDRESS_ADDED_SUCCESS = "<i class=\"fa fa-check\"></i>&nbsp; Your Address saved successfully. Please refresh the profile page to see new address.";
+	public static final String USER_ADDRESS_ADDED_SUCCESS = "<i class=\"fa fa-check\"></i>&nbsp; Your Address saved successfully. See details below";
 	
 	public static final String CHECKOUT_ADDRESS_ADDED_SUCCESS = "<i class=\"fa fa-check\"></i>&nbsp; Your Address saved successfully. And Selected as delivery address.";
 	
@@ -109,6 +111,10 @@ public class Constants {
 	public static final String CANCEL_ORDER_SUCCESS = "<i class=\"fa fa-check\"></i>&nbsp; Your order successfully Cancelled. We will refund your money in 7 working days. Enjoy shopping";
 	
 	public static final String CANCEL_ORDER_ERROR = "<i class=\"fa fa-warning\"></i>&nbsp; Your order not caclled. Something went wrong. Contact to our help care";
+	
+	public static final String SAVE_REVIEW_SUCCESS = "<i class=\"fa fa-check\"></i>&nbsp;Your review submitted successfully, Thanks for your review. Enjoy shopping";
+	
+	public static final String SAVE_REVIEW_ERROR = "<i class=\"fa fa-warning\"></i>&nbsp; Your review not submitted. Something went wrong. Please try again later.";
 	
 }
 

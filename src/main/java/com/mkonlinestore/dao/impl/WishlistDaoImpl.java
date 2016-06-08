@@ -44,7 +44,7 @@ public class WishlistDaoImpl implements WishlistDao {
 		List<Wishlist> wishlist = null;
 		
 		try {
-			String hql = "from Wishlist as w where w.userId = :userId";
+			String hql = "from Wishlist as w where w.userId = :userId ORDER BY w.wishlistId DESC";
 			wishlist = sessionFactory.getCurrentSession().createQuery(hql).
 										 setParameter("userId", userId).list();	
 		}

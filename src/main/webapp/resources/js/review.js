@@ -33,8 +33,8 @@ $(function(){
       });
     closeReviewBtn.hide();
     $("#reviewComment").val('');
-    $("#reviewMessage").css('display','none');
     $("#reviwStars").prop('data-rating','0');
+    $("#reviewMessage").css('display','none');
     
   });
 
@@ -45,6 +45,7 @@ $(function(){
 
 
 function saveReview() {
+	try {
 	var comment = document.getElementById('reviewComment').value;
 	var rating = document.getElementById('reviewRating').value;
 	
@@ -56,24 +57,69 @@ function saveReview() {
 	}
 	else {
 		var json = getParameterByName('productCode') + "####@@@@####" + comment + "####@@@@####" + rating;
-	
+		
 		$.ajax({
 			type : "POST",
 			contentType : "application/json",
 			url : "save-product-review",
 			data : JSON.stringify(json),
 			success : function(data) {	
-				$("#reviewMessage").css('display','block');
-//				$(".isa_success_modal").css('display','block');
-//				$(".isa_error_modal").css('display','none');
-//				$("#MessageModalSuccessMessage").html(data);
-//				$('#message-modal').modal('show');
-				
-				document.getElementById("reviewMessage").innerHTML = data;
+				if(data.indexOf("fa-check") > -1) {
+					$("#div_successMessage").css('display','block');
+					$("#div_errorMessage").css('display','none');
+					$("#successMessage").html(data);
+					
+					// Clear review form
+					$("#reviewComment").val('');
+					$("#reviwStars").prop('data-rating','0');
+					
+					var userName = document.getElementById('loginUserName').value;
+					if(userName == null || userName == "null" || userName == "")
+						userName = "Anonymous User";
+
+					var d = new Date();
+					var day = d.getDate();
+					var month =  d.getMonth();
+
+					if(day < 10 )
+					   day = "0" + day;
+					if(month < 10)
+					   month = "0" + month;
+					var date =  day + '/' + month + '/' +  d.getFullYear();
+					
+					var reviewRatings = "";
+					for(var i = 0; i <= 4 ; i++) {
+						if(i < rating) {
+							reviewRatings = reviewRatings + "<span class=\"glyphicon glyphicon-star review-star\"></span>";
+						}
+						else {
+							reviewRatings = reviewRatings + "<span class=\"glyphicon glyphicon-star review-star-empty\"></span>";
+						}
+					}
+					var reviewDetail = "<tr><td style=\"width: 20%\">" + reviewRatings + "<br>" + userName + "<br>" + date + "</td><td align=\"left\">" +
+									   "<p>" + comment + "</p></td></tr>";
+					
+					$('#reviewTable tr:first').after($(reviewDetail)); // $(reviewDetail) Convert reviewDetail to HTML
+					
+					$('#post-review-box').css('display','none');
+					$('#open-review-box').show();
+					$('#tr_noReviews').css('display','none');
+					
+				}
+				else {
+					$("#div_successMessage").css('display','none');
+					$("#div_errorMessage").css('display','block');
+					$("#errorMessage").html(data);
+				}
 			}
+			
 		});
 	}
 	
+	}
+	catch (e) {
+		console.error(e.message);
+	}
 	
 	return false;
 }

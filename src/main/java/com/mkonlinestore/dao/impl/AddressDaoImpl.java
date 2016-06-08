@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.mkonlinestore.dao.AddressDao;
 import com.mkonlinestore.model.Address;
 
@@ -42,7 +43,7 @@ public class AddressDaoImpl implements AddressDao {
 		List<Address> addressList = null;
 		
 		try {
-			String hql = "from Address as a where a.userId = :userId";
+			String hql = "from Address as a where a.userId = :userId ORDER BY a.addressId DESC";
 			addressList = sessionFactory.getCurrentSession().createQuery(hql).setParameter("userId", userId).list();
 		}
 		catch(HibernateException ex) {
@@ -58,11 +59,12 @@ public class AddressDaoImpl implements AddressDao {
 		boolean result = false;
 		
 		try {
-			Address address = (Address) sessionFactory.getCurrentSession().load(Address.class, addressId);
-	        if(address != null){
-	        	sessionFactory.getCurrentSession().delete(address);
-	            result = true;
-	        }
+			String hql = "delete from Address as a " +
+					 "where a.addressId = :addressId";
+			int rowDeleted = sessionFactory.getCurrentSession().createQuery(hql).
+									 setParameter("addressId", addressId).executeUpdate();
+			if(rowDeleted > 0)
+				result = true;
 	  	}
 		catch(HibernateException ex) {
 			logger.error(ex);

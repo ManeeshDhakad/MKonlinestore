@@ -59,7 +59,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/login-user", method = RequestMethod.POST)
 	public @ResponseBody    
-	String loginUser(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response, @RequestBody String userInfo) {    
+	String loginUser(HttpSession session, HttpServletRequest request, HttpServletResponse response, @RequestBody String userInfo) {    
 		String result = Constants.COMMON_ERROR;
 		
 		try {
@@ -91,7 +91,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/signup-user", method = RequestMethod.POST)
 	public @ResponseBody    
-	String signupUser(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response, @RequestBody String userInfo) {
+	String signupUser(HttpSession session, HttpServletRequest request, HttpServletResponse response, @RequestBody String userInfo) {
 		String result = Constants.COMMON_ERROR;
 		
 		try {
@@ -213,7 +213,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/save-personal-info", method = RequestMethod.POST)
 	public @ResponseBody
-    String saveUsersPersonalInfo(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String userInfo) {    
+    String saveUsersPersonalInfo(HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String userInfo) {    
 		String result = Constants.COMMON_ERROR;
 		
 		try {
@@ -245,7 +245,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/update-user-password", method = RequestMethod.POST)
 	public @ResponseBody
-    String updateUserPassword(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String password) {    
+    String updateUserPassword(HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String password) {    
 		String result = Constants.COMMON_ERROR;
 		
 		try {
@@ -276,7 +276,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/add-user-address", method = RequestMethod.POST)
 	public @ResponseBody
-    String addUserAddress(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String addressInfo) {    
+    String addUserAddress(HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String addressInfo) {    
 		String result = Constants.COMMON_ERROR;
 		
 		try {
@@ -300,7 +300,7 @@ public class UserController {
 				int addressId = addressService.addUserAddress(address);
 				if(addressId != -1) {	
 					if(checkoutAddress.equalsIgnoreCase("profile"))
-						result = Constants.USER_ADDRESS_ADDED_SUCCESS;
+						result = Constants.USER_ADDRESS_ADDED_SUCCESS + addressId;
 					else {
 						ssn.addCheckoutAddressSession(session, request, addressId);
 						result = Constants.CHECKOUT_ADDRESS_ADDED_SUCCESS;
@@ -322,7 +322,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/delete-user-address", method = RequestMethod.POST)
 	public @ResponseBody
-    String deleteUserAddress(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String addressId) {    
+    String deleteUserAddress(HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String addressId) {    
 		String result = Constants.COMMON_ERROR;
 		
 		try {
@@ -350,7 +350,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/check-user-login", method = RequestMethod.POST)
 	public @ResponseBody
-    String checkUserLogin(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) {    
+    String checkUserLogin(HttpSession session, HttpServletRequest request, HttpServletResponse response) {    
 		String result = Constants.COMMON_ERROR;
 		
 		try {
@@ -372,7 +372,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/make-delivery-address", method = RequestMethod.POST)
 	public @ResponseBody
-    String makeDeliveryAddress(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response, @RequestBody String addressId) {    
+    String makeDeliveryAddress(HttpSession session, HttpServletRequest request, HttpServletResponse response, @RequestBody String addressId) {    
 		String result = Constants.COMMON_ERROR;
 		
 		try {
@@ -420,7 +420,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/save-forgot-password", method = RequestMethod.POST)
 	public @ResponseBody
-    String saveForgtPassword(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String userInfo) {    
+    String saveForgtPassword(HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String userInfo) {    
 		String result = Constants.COMMON_ERROR;
 		
 		try {

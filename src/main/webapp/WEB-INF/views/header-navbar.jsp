@@ -55,7 +55,7 @@
 					</a> 
 						
 					<button class="dropdown-toggle hidden-sm hidden-md hidden-lg" style="background: initial; border:none" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    					<img style="height: 30px; width: 60px"
+    					<img style="height: 25px; width: 50px"
 						src="<%=request.getContextPath()%>/resources/images/drop-down.png" />
     					<span class="caret"></span>
   					</button>
@@ -87,7 +87,7 @@
   					<button class="btn btn-primary hidden-sm hidden-md hidden-lg " style="background: initial; border: none;" type="button" onclick="goToViewCart(); return false;">
  						 <span class="glyphicon glyphicon-shopping-cart"> </span>
 						 <c:if test="${cartProductCount == null}">
-							<c:set var="cartProductCount" value="0"></c:set>
+							<c:set var="cartProductCount" value="0" scope="page"></c:set>
 						</c:if>
 							CART <strong><span class="badge crtProductCount" >${cartProductCount}</span></strong> 
 					</button>
@@ -107,7 +107,7 @@
 							<a  href="#" onclick="goToViewCart(); return false;">
  						 		<span class="glyphicon glyphicon-shopping-cart"> </span>
 						 		<c:if test="${cartProductCount == null}">
-									<c:set var="cartProductCount" value="0"></c:set>
+									<c:set var="cartProductCount" value="0" scope="page"></c:set>
 								</c:if>
 									CART <strong><span class="badge crtProductCount" >${cartProductCount}</span></strong> 
 							</a>
@@ -161,4 +161,7 @@
 
 <!-- Success and error messages -->
 <input type="hidden" id="profileType" value="${profileType}">
+
+<!-- Success and error messages -->
+<input type="hidden" id="loginUserName" value="<%= userName%>">
 

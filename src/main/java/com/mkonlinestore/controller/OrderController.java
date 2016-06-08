@@ -119,7 +119,7 @@ public class OrderController {
 	
 	@RequestMapping(value = "/checkout-update-product-qty", method = RequestMethod.POST)  
 	public @ResponseBody
-    String checkoutUpdateProductQunatity(ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String cartProduct) {    
+    String checkoutUpdateProductQunatity(HttpSession session, HttpServletRequest request, HttpServletResponse response,  @RequestBody String cartProduct) {    
 		String result = Constants.COMMON_ERROR;;
 		try {
 			Product product = new Product();
@@ -350,11 +350,17 @@ public class OrderController {
 						view.addObject("message", Constants.ORDER_ERROR);
 					}
 					
-					cartProductList = cartCotroller.getCartProductList(session, request, response, user);
-					if(cartProductList != null) {
-						view.addObject("cartProductCount", cartProductList.size());
+					// Order booked through cart
+					if(productCode.equalsIgnoreCase("cart")) {
+						view.addObject("cartProductCount", 0);
 					}
-				
+					else { // Order booked for particular product clicking buy now
+						cartProductList = cartCotroller.getCartProductList(session, request, response, user);
+						if(cartProductList != null) {
+							view.addObject("cartProductCount", cartProductList.size());
+						}
+					}
+					
 				}
 				else {
 					view.setViewName("redirect:/user-profile?type=2");

@@ -79,9 +79,9 @@
 						<a href="https://in.linkedin.com/in/maneesh-dhakad-525ba485"><img
 							style="width: 30px; height: 30px"
 							src="<%=request.getContextPath()%>/resources/images/linked-in.png" /></a>
-						<a href="https://github.com/ManeeshDhakad"><img
-							style="width: 30px; height: 30px"
-							src="<%=request.getContextPath()%>/resources/images/github.png" /></a>
+<!-- 						<a href="https://github.com/ManeeshDhakad"><img -->
+<!-- 							style="width: 30px; height: 30px" -->
+<%-- 							src="<%=request.getContextPath()%>/resources/images/github.png" /></a> --%>
 					</div>
   				</div>					
 			</div>

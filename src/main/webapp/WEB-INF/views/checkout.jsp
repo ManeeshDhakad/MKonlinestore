@@ -57,7 +57,7 @@
 					role="tabpanel" aria-labelledby="checkoutAddressHeading">
 					<div class="panel-body">
 					
-						<button class="common-btn-border" style="width: 25%" type="button" data-toggle="collapse" data-target="#div_addNewAddress" aria-expanded="false" aria-controls="div_addNewAddress">
+						<button class="common-btn-border" id="btn_addNewAddressCollapse" style="width: 25%" type="button" data-toggle="collapse" data-target="#div_addNewAddress" aria-expanded="false" aria-controls="div_addNewAddress">
   							Add New Address
 						</button>		
 						<br>
@@ -133,7 +133,10 @@
 							</div>
 										
 							<div class="row">
-								<div class="col-md-3"></div>
+								<div class="col-md-3">
+									<input type="submit" class="common-btn" value="Cancel"
+											onclick="cancelAddNewAddress(); return false;" />
+								</div>
 								
 								<div class="col-md-4">
 									<input type="submit" class="common-btn" value="Save Changes" onclick="addUserAddress('checkout'); return false;"  />
@@ -153,12 +156,11 @@
 									${address.addressCity} ${address.addressState},&nbsp;
 									${address.addressCountry}<br>
 									Mobile:&nbsp;${address.addressMobile}
-									<hr style="border-top: 1px solid #8c8b8b; margin: 5px 1px 0px 1px">
-
-									<button id="btn_deleteAddress" type="button" class="btn btn-link"
+									<br><br>
+									<button id="btn_deleteAddress" type="button" class="common-btn-border-no-padding"
 										style="text-align: center;" onclick="deleteUserAddress('${address.addressId}'); return false;">Delete
 												Address</button>
-									<button id="btn_makeDeliveryAddress${address.addressId}" type="button" class="btn btn-link"
+									<button id="btn_makeDeliveryAddress${address.addressId}" type="button" class="common-btn-border-no-padding"
 										style="text-align: center;"
 										onclick="makeDeliveryAddress('${address.addressId}'); return false;">
 										Make Delivery Address</button>
@@ -194,10 +196,10 @@
 									<table class="table" id="cartTable">
 										<thead>
 											<tr>
-												<th colspan="2" style="width: 50%">ITEM</th>
+												<th colspan="2" style="width: 40%">ITEM</th>
 												<th style="width: 20%">PRICE</th>
 												<th style="width: 20%">QTY</th>
-												<th style="width: 30%">SUBTOTAL</th>
+												<th style="width: 20%">SUBTOTAL</th>
 											</tr>
 										</thead>
 
@@ -210,7 +212,7 @@
 														class="img-responsive"></td>
 
 													<td>${product.productName} <br>
-													<br> <input type="submit" class="btn btn-link"
+													<br> <input type="submit" class="common-btn-border-no-padding"
 														value="Remove"
 														onclick="removeProductFromCheckout('${product.productCode}');" />
 													</td>

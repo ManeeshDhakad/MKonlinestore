@@ -40,14 +40,14 @@ public class CartDaoImpl implements CartDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Cart> getCartProductList(Cart cart) {
+	public List<Cart> getCartProductList(int userId) {
 		List<Cart> cartProductList= null;
 		
 		try {
 			
-			String hql = "from Cart as c where c.userId = :userId";
+			String hql = "from Cart as c where c.userId = :userId ORDER BY c.cartId DESC";
 			cartProductList = sessionFactory.getCurrentSession().createQuery(hql).
-										 	 setParameter("userId", cart.getUserId()).list();	
+										 	 setParameter("userId", userId).list();	
 		}
 		catch(HibernateException ex) {
 			logger.error(ex);

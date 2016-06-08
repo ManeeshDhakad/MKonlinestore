@@ -52,7 +52,7 @@ public class OrderDaoImpl implements OrderDao {
 		List<Order> orderList = null;
 		
 		try {
-			String hql = "from Order as o where o.userId = :userId";
+			String hql = "from Order as o where o.userId = :userId ORDER BY o.orderId DESC";
 			orderList = sessionFactory.getCurrentSession().createQuery(hql).
 										 setParameter("userId", userId).list();			
 		}

@@ -1,6 +1,7 @@
 package com.mkonlinestore.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -142,13 +143,15 @@ public class HomeController {
 			category = Constants.CATEGORY_MENS;
 			mansProductList = productService.getProductList(category);
 			if(mansProductList != null && mansProductList.size() > 0) {
+				Collections.reverse(mansProductList);
 				view.addObject("mansProductList", mansProductList);
 			}
 			
 			List<Product> womansProductList = new ArrayList<Product>(); 
 			category = Constants.CATEGORY_WOMENS;	
 			womansProductList = productService.getProductList(category);
-			if(womansProductList != null && womansProductList.size() > 0) {			
+			if(womansProductList != null && womansProductList.size() > 0) {	
+				Collections.reverse(womansProductList);
 				view.addObject("womansProductList", womansProductList);
 			}
 			

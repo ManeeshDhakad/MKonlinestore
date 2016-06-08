@@ -30,6 +30,7 @@ import com.mkonlinestore.model.Review;
 import com.mkonlinestore.model.User;
 import com.mkonlinestore.service.ProductService;
 import com.mkonlinestore.service.ReviewService;
+import java.util.Collections;
 
 @Controller
 public class ProductController {
@@ -108,7 +109,7 @@ public class ProductController {
 						}
 						
 					}
-					
+									
 					view.addObject("ratings", ratings);
 					view.addObject("reviews", reviews);
 					
@@ -137,7 +138,7 @@ public class ProductController {
 		return view;
     }
 	
-	@RequestMapping(value = "product-details", method = RequestMethod.GET)
+	@RequestMapping(value = "/product-details", method = RequestMethod.GET)
     public ModelAndView productDetails(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView view = new ModelAndView("product-details");
 		try {
