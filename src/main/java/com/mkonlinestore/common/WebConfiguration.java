@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 @Configuration
-@ComponentScan(basePackages="org.bk.webtestuuid")
+@ComponentScan(basePackages="com.mkonlinestore")
 public class WebConfiguration extends WebMvcConfigurationSupport{
 
     @Bean
