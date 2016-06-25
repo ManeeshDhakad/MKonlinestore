@@ -81,11 +81,11 @@
     
     <!-- Dao bean -->
     <bean id="userDao" class="com.mkonlinestore.dao.impl.UserDaoImpl"></bean>
-  	<bean id="productDao" class="com.mkonlinestore.dao.impl.ProductDaoImpl"></bean>
-  	<bean id="cartDao" class="com.mkonlinestore.dao.impl.CartDaoImpl"></bean>
-  	<bean id="addressDao" class="com.mkonlinestore.dao.impl.AddressDaoImpl"></bean>
-  	<bean id="wishlistDao" class="com.mkonlinestore.dao.impl.WishlistDaoImpl"></bean>
-  	<bean id="orderDao" class="com.mkonlinestore.dao.impl.OrderDaoImpl"></bean>
+    <bean id="productDao" class="com.mkonlinestore.dao.impl.ProductDaoImpl"></bean>
+    <bean id="cartDao" class="com.mkonlinestore.dao.impl.CartDaoImpl"></bean>
+    <bean id="addressDao" class="com.mkonlinestore.dao.impl.AddressDaoImpl"></bean>
+    <bean id="wishlistDao" class="com.mkonlinestore.dao.impl.WishlistDaoImpl"></bean>
+    <bean id="orderDao" class="com.mkonlinestore.dao.impl.OrderDaoImpl"></bean>
     
     <!-- Service bean -->
     <bean id="userService" class="com.mkonlinestore.service.impl.UserServiceImpl"></bean>
