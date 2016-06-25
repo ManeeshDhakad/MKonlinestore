@@ -4,7 +4,7 @@ public class Constants {
 	
 	public static final String SERVER_DOWN = "<i class=\"fa fa-warning\"></i>&nbsp; Server is down please try after some time!";
 	
-	public static final String MK_EMAIL = "mkonlinestore16@gmail.com";
+	public static final String MK_EMAIL = "#####@gmail.com";
 	
 	public static final String MK_FEEDBACK_MAIL_BODY = "We have received your feeback mail. Our team will look into it shortly. \nEnjoy shopping at MKonlinestore.com \n\nThanks, \n MKonlinestore.in";
 	
