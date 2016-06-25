@@ -95,7 +95,7 @@
     <bean id="wishlistService" class="com.mkonlinestore.service.impl.WishlistServiceImpl"></bean>
     <bean id="orderService" class="com.mkonlinestore.service.impl.OrderServiceImpl"></bean>
     
-    <!-- Service bean -->
+    <!-- Controller bean -->
     <bean id="homeController" class="com.mkonlinestore.controller.HomeController"></bean>
     <bean id="userController" class="com.mkonlinestore.controller.UserController"></bean>
     <bean id="productController" class="com.mkonlinestore.controller.ProductController"></bean>
